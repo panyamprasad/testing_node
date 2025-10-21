@@ -1,4 +1,4 @@
-//---> Almost every they asked all the nodeJs and JavaScript and Middlewares and aws lambda/sns&sqs/apigateway everything they asked the questions
+//---> Almost every topic asked all the nodeJs and JavaScript and Middlewares and aws lambda/sns&sqs/apigateway everything they asked the questions
 
 //---> After this they started for coding part:
 //--->  What is the output of the below code?
@@ -21,12 +21,12 @@
         function largestNumber(arr){
             let large = -Infinity;
             let secondLargest = -Infinity;
-            for(i=0; i<arr.length; i++){
-                if(arr[i] > large){
+            for(let value of arr){
+                if(value > large){
                     secondLargest = large;
-                    large = arr[i];
-                }else if(arr[i] > secondLargest && arr[i] !== large){
-                    secondLargest = arr[i]
+                    large = value;
+                }else if(value > secondLargest && value < large){
+                    secondLargest = value
                 }
             }
             return secondLargest;
@@ -105,8 +105,16 @@
 
         route.get('./users', users);
 
-//  Step 3: Create middleware for logging
-//      📄 middleware/logger.js
+// 🪜 Step 3: Create middleware for logging
+
+//     📄 middleware/logger.js
+        export const logger = (req, res, next) => {
+            console.log(`${req.method} ${req.url}`);
+            next();  // Go to next middleware or route
+        };
+
+//  Step 4: Create the main server file
+//      📄 server.js
         import express from 'express';
         import { logger } from './middleware/logger.js';
         import userRoutes from './routes/userRoutes.js';
@@ -146,23 +154,50 @@
         //     └─ logger.js   
 
 //-----------------------------------------------------------------------------
-
 // 1. What is event loop?
 // 2. What is the streams and types of streams?
 // 3. What is promises and async/await? difference?
 // 4. What is the microTasks & MacroTasks?
 // 5. What is callback?
+//      1. Callback is a function, it will run after another function execution is completes.
+//      2. It will handle the asynchonous operations.
+//      3. It's not a phase of a event loop, it's a function executed within one of the event loop's phases.
+
 // 6. What is different between Process.nextTick() and setImeediate?
 // 7. What is Closure?
 // 8. What is memory leak?
+//      1. A Memory leak happens when the function keeps using the memory and it's not no logger needed then the memory leak will happen.
 // 9. What are the advantages of lambda?
+//      1. No need to handle the servers.
+//      2. It is flexible, it means it will support multi language support.
+//      3. Scalabulity, it will handle the multiple requests.
+//      4. Cost effective: How much we use that much only should we pay. There is not cost for hidle time.
+//      5. High Avilabulity: Lambda code will run across the multiple avilabulity zones.
+//      6. Eazy Integration: We can integrate multiple services like S3, dynamoDB, SNS, SQS etc.
+
 // 10. What is Sns & SQS?
+//      SNS:
+//          1. SNS means simple notification service.
+//          2. Used to send notificaitons and messages to multiple subscribers at once.
+//          3. It is publish/subscribe messaging service.
+//      SQS:
+//          1. SQS means Simple Queue Service.           
+//          2. Used to store and publish the messages to the subscibers.
+//          3. We can store the message or event we can distribute the message to subscribers when they required.
+
 // 11. What is the EC2?
 // 12. What is the microServices?
 // 13. What is difference between var and let?
 // 14. What is the middleware?
 // 15. What is the cluster?
 // 16. How you will improve the performance?
+//      1. Modularization: Breck the applications into small and reusable modules.
+//      2. Caching: Cache the frequently use data into Redis or memory cache.
+//      3. Optimize Database Queries: Use the Index, pagination and optimized joins.
+//      4. Use Asynchronous and non blocking code: Use Promises, async/await functions to improve the performance.
+
+
+
 
 
 

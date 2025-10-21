@@ -34,7 +34,7 @@
 			}
 // 		---------------------------------------------------
 // ---> How to access the obj keys inside this arrow function? if it is null how will do?
-// 		1. Using the optional chaining to safely access the object keys inside arrow.
+// 		1. Using the optional chaining to safely access the object keys inside arrow without any error.
 // 		2. If the object key null or undefind we can assign defalut values check with nullish.
 // 		---------------------------------------------------
 // ---> Can we change the const value? No.. if array we can change? Yes.. then why what is difference?
@@ -84,21 +84,29 @@
 // 		------------------------------------------------------
 	
 // ---> Explain the restful api work flow with node and how will implement this.
-// 		1. RESTful API is a way for client and server to communicate using standard HTTP methods like GET, POST, PUT, DELETE.
-// 		2. In Node.js, we use frameworks like Express.js to handle these API routes.
-// 		3. The client (like React or Postman) sends a request → Node.js processes it → interacts with the database → and returns a JSON response.
-// 		4. For example, when you hit /users, Node.js fetches data from MongoDB and sends it back to the client.
-// 		5. This architecture separates frontend and backend, making the app scalable and easy to maintain.
+// 		1. Basically in my previous projects we are using the serverless framework workflow.
+//		2. In serverless the RESTful APIs using API Gateway and lambda functions instend of Express framework.
+//		3. When user/client/postman if we trigger any endpoint like /users or /users/{id} it will mapped to different endpoints and different lambda funcitons.
+//		4. Once user send the request the api gateway identify the route and trigger the lambda funcitons and it will connect with respective services and collecte the response from them and send back to the client in json format.
+// 		5. This makes the architecture scalable, cost-efficient and event-driven because lambda trigger when needed.
 // 		------------------------------------------------------
+
 // ---> Coldstart how will overcome this.
+//		------------------------------------------------------
+
 // ---> What is CI-CD how it will work?
+//		1. CI/CD stands for Continuous Integration and Continuous Deployment, which means an automated deployment process — instead of deploying manually.
+//		2. When we push the code to GitHub, the CI/CD pipeline (like Jenkins, GitHub Actions, or GitLab CI) automatically gets triggered.
+//		3. It first installs all dependencies, then runs unit tests and integration tests.
+//		4. If all tests pass, it verifies code quality through tools like SonarQube using quality gates.
+//		5. After successful verification, the pipeline builds a Docker image for the application.
+//		6. This Docker image can be deployed to any environment (dev, QA, prod) without dependency issues.
+//		7. The image is deployed into containers, and Kubernetes manages these containers — handling deployment, scaling, load balancing, and self-healing (automatically restarting failed containers).
+//		8. Finally, once the deployment is done, the team performs validation and monitoring to ensure everything is working as expected.
+//		------------------------------------------------------
+
 // ---> If any thing fail in deployments what will do the maintanence...?
-//         1. In one of my previous projects, after a new API deployment, users started getting 500 errors.
-//         2. We first checked CloudWatch logs and found the issue was due to a missing environment variable in production.
-
-//         3. We immediately rolled back to the previous build to stabilize production.
-//         4. Then, in the Dev environment, we fixed the configuration and re-tested the deployment using CI/CD.
-//         5. After verifying it worked, we re-deployed the new version successfully.
-
-//         6. Post-deployment, we added an automated check in the pipeline to verify environment variables before deployment.
-
+//      1. First, we check the CloudWatch logs to identify the root cause of the deployment failure and start the investigation.
+//      2. If we’re unable to fix the issue immediately or don’t find a quick solution, we rollback to the previous stable version to restore the application.
+//      3. Next, we reproduce the issue in a lower environment (like dev or QA) to analyze and fix the root cause
+//      4. Once the fix is verified and tested successfully in all lower environments, we redeploy the updated version to production.
