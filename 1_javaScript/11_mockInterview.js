@@ -1,20 +1,20 @@
-// --- Mock Interveiw ---
+// --- Mock Interview ---
 
 // 1. Can you explain what is hoisting in JavaScript and how it works for var, let, and const?
 
 // Ans:
-    // Hoisting means during the compilation phase, variables and fucntions are coming to the top of the scope it's called as the Hoisting.
-    // Var, let, const and fucntions are the hoisting but there is some difference is there.
-    // Var: IF we declare any variable as var if we try to print this before initilization it will print the undefined but it will not give any error.
-    // Let, const: But using the let and const we try to print this will get the error as refarench error. 
-    // But functions we can accsss before intilization.
+    // Hoisting means during the compilation phase, variables and functions are coming to the top of the scope it's called as the Hoisting.
+    // Var, let, const and functions are the hoisting but there is some difference is there.
+    // Var: IF we declare any variable as var if we try to print this before initialization it will print the undefined but it will not give any error.
+    // Let, const: But using the let and const we try to print this will get the error as reference error. 
+    // But functions we can access before initialization.
 
 //-------------------------
 
 // 2. Can you explain what is a closure in JavaScript and give me a simple real-time use case? (not just definition — when would you actually use it?)
 
 // Ans:
-    // Using closure we can access the varibales from outer scope even the outer scope exectuion is completed. It means When outer scope execution is complete the inner scopre stroe the variable in the meemory for feature reference.
+    // Using closure we can access the variables from outer scope even the outer scope execution is completed. It means When outer scope execution is complete the inner scope store the variable in the memory for feature reference.
     // for EXamples: Banking application.
     // when a user opens an account, we store their balance in a variable inside a parent function.
     // Later, even after that function finishes, the inner functions like deposit() and withdraw() can still access and modify that balance.
@@ -24,19 +24,19 @@
 
 // 3. What is the difference between call, apply, and bind in JavaScript?
 // Ans:
-    // CAll , apply, bind this three are the methods in javaScipt. 
-    // In call we can use this pass the comma saparated aruguments it will execute immediatly.
-    // Uisng apply we can pass the array values as a aruguments, it willl also execute immediatly.
+    // CAll , apply, bind this three are the methods in javaScript. 
+    // In call we can use this pass the comma separated arguments it will execute immediately.
+    // Uisng apply we can pass the array values as a arguments, it willl also execute immediatly.
     // Bind will not execute immediatly and we didn't pass any arguments. 
 
 //------------------------=
 
 // 4. What is the difference between == and === in JavaScript? And which one should we prefer in real projects?
 // Ans:
-    // Using the == we can check the value equality. Here type converastion will happend.
-    // Using the === we can verify the both value and type. There is no type converstion
+    // Using the == we can check the value equality. Here type conversations will happen.
+    // Using the === we can verify the both value and type. There is no type conversion
 
-    // Compare to both === is more prefarable.
+    // Compare to both === is more preferable.
 
 //--------------------------
 

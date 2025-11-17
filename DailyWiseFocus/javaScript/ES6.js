@@ -50,6 +50,11 @@
         // Ravi works at Unknow
         // 🧠 Hint: Use default + renaming in parameters ({ location: city = 'Unknown' }).
 
+        function printName(emp){
+            const { firstName, location: city = 'Unknown' } = emp;
+            console.log(`${firstName} works at ${city}`);
+        }
+
 // 🧩 Q2. Nested Destructuring
         // You’ll get this data:
         // const project = {
@@ -103,7 +108,7 @@
         // 🧠 Hint: Use nested destructuring on function call return.
 //-------------------------------------------------------------------------------------------------
 // -- Spread Operator--
-// Spread operator is used to expand the individaula elements from the array or objects.
+// Spread operator is used to expand the individual elements from the array or objects.
 // It is represented by three dots(...).
 // We can use the spread operator in the following scenarios:
 // 1. Copying the array
@@ -241,7 +246,7 @@
 //-------------------------------------------------------------------------------------------------
 // -- Arrow Functions--
 // Arrow functions are latest format in javaScript.
-// It is short syntax of writting the functions.
+// It is short syntax of writing the functions.
 // it doesn't have the own this, it means it will depends on the function defined.
 // In arrow functions don't have the default aruguments, it will come from parent scope.
 //-------------------------------------------------------------------------------------------------

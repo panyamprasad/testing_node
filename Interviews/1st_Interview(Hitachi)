@@ -1,25 +1,54 @@
 // --- First Interview (Hitachi) ---
 // ---> 1. What is the disAdvantages of Lambda?
 // 		1. Max Lambda execution time is only 15 min. If increase more than this it will give the time out error.
-// 		2. Cold Start: It means if any lambda we didn't used for a while, it will go to the sleep mode, after some time we try to start it will take little more time for execution. Because it will start from scarch.
+// 		2. Cold Start: It means if any lambda we didn't used for a while, it will go to the sleep mode, after some time we try to start it will take little more time for execution. Because it will start from scratch.
 // 		3. Max Memory size is 10gb for lambda allocation, if required more than this it will throw the error.
 // 		4. Deployment package size max 10mb, if required more we should store the data using s3.
 //		-----------------------------------------------------------------------
 // ---> 2. How to storage the file in S3? What is the process?
-// 		1. To upload a file from the local system to Amazon S3, first we need to create an S3 bucket where the files will be stored.
-// 		2. Each file in S3 is stored using a key (path) that acts like a unique file name or folder structure.
-// 		3. In Node.js, we can use the built-in fs (file system) module to read the file from our local machine.
-// 		4. Then we use AWS SDK or a pre-signed URL to upload the file to S3.
-// 		5. Once the upload is successful, the file is stored as private by default, but we can make it public or generate a pre-signed URL to securely access it.
+// 		To upload a file to an Amazon S3 bucket, you can follow these steps:
+
+// 		Check for an existing S3 bucket:
+// 			1. Before uploading a file, you need to have an S3 bucket.
+// 			2. If the bucket already exists, you can use it.
+// 			3. Otherwise, you can create a new bucket using the AWS Management Console or programmatically with the AWS SDK.
+
+// 		Use a unique key for each file:
+// 			1. Every file in S3 is stored as an object.
+// 			2. Each object has a key (unique name) that identifies it within the bucket.
+// 			3. You can think of the key as the file path or name inside the bucket.
+
+// 		Read the file from the local system:
+// 			1. In Node.js, you can use the built-in fs (File System) module to read files from your local system before uploading them.
+
+// 		Upload the file to S3:
+// 			1. You can use the AWS SDK for JavaScript (aws-sdk or @aws-sdk/client-s3 in v3) to upload files.
+		
+// 		Using pre-signed URLs (optional):
+// 			1. Instead of directly uploading from your backend, you can generate a pre-signed URL.
+// 			2. This URL lets clients securely upload files directly to S3 without exposing your AWS credentials.
+// 			3. You can also generate pre-signed URLs for downloading (fetching) private files.
+
+// 		Access permissions:
+// 			1. By default, uploaded files are private.
+// 			2. You can make an object public (e.g., for public downloads), or use pre-signed URLs to provide temporary, controlled access.
 //		-----------------------------------------------------------------------
 // --->	What is pre-signed url?
+//			1. It is temporary url it is used to provide the access to the private files in s3. 
+//          2. Instead of exposing the aws credentials we can use the pre-signed url to provide the access to the private files.
+//			3. A pre-signed URL is a URL that includes:
+// 					The bucket name (where the object is stored)
+// 					The object key (path or filename)
+// 					A signature generated using your access credentials
+// 					An expiration time (after which the URL stops working)
+//		-----------------------------------------------------------------------
 // ---> 3. What is the closure?
 // 		A Closure allows an innerfunction to access the variables from it's outerscope, even the outerscope function scope execution is completed. This is possible because javascript keeps a reference outerscope in memory.
-		
-// 		For Example: We have the accountOpening funciton with minimum balance, after function execution is done, but it will return inner functions like deposit, withDraw, balanceEnquiry still have the access to get balance through the Closure. That's way the balance is stays in the memory.
+//
+// 		For Example: We have the accountOpening function with minimum balance, after function execution is done, but it will return inner functions like deposit, withDraw, balanceEnquiry still have the access to get balance through the Closure. That's way the balance is stays in the memory.
 
 // ---> 4. How to remove the duplicates from array using the closer?
-			function removeDuplicat(){
+			function removeDuplicate(){
 				let seen = new Set();
 				
 				return function(arr){
@@ -33,5 +62,5 @@
 					return unique;
 				};
 			}
-			const uniquevalue = removeDuplicat();
+			const uniquevalue = removeDuplicate();
 			console.log(uniquevalue([1,1,2,2,3,3,4,4,5,5]))

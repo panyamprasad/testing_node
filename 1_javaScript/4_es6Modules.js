@@ -1,6 +1,6 @@
 // ------------- Destructuring -----------------
 // Destructuring is way to unpack the values and assign the variables from arrays, objects.
-// it makes the code more redable and easier to developer.
+// it makes the code more readable and easier to developer.
 // There are two types of destructuring are there.
 // 1. array destructuring
 // 2. object destructuring
@@ -23,7 +23,7 @@ console.log(age); // 38
 
 // ------------------------------------------------------------------------------
 // -------------- Modules -----------------
-// Module is nothing it is a javaScript files. It containes the variables, fucntions, classes etc. We can export and import anywhere in the project.
+// Module is nothing it is a javaScript files. It contained the variables, functions, classes etc. We can export and import anywhere in the project.
 // Modules are way to organize the code in to small parts.
 // It will help to reuseable purpose.
 // There are two types of modules are there.
@@ -60,7 +60,7 @@ console.log(greet()); // Hello, Guest!
 console.log(greet("Prasad")); // Hello, Prasad!
 // ------------------------------------------------------------------------------
 // -------------- Template Literals -----------------
-// Template Literals is used to create the string in more redable way.
+// Template Literals is used to create the string in more readable way.
 // It will help to avoid the concatenation.
 // Example: 
 const name1 = "Prasad";

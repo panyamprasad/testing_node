@@ -1,9 +1,9 @@
 // Scope:
 // Scope defines the accessibility of variables, functions and objects in the code.
-// there are three types of scorps are there.
-// 1. global scope : global scope is we can access the varibale from any where from the code.
+// there are three types of scoops are there.
+// 1. global scope : global scope is we can access the variable from any where from the code.
 // 2. function Scope : function scope is we can access the variable inside the function only.
-// 3. Block Scope : blocked scope is we can access the varibale inside the block. It means if we declear a varibale as let or const we can access inside the block only.
+// 3. Block Scope : blocked scope is we can access the variable inside the block. It means if we declear a varibale as let or const we can access inside the block only.
 
 // Example:
 var a = 100; // global scopevar a = 100;
@@ -21,8 +21,8 @@ function test2(){
     console.log(a-b)
 } test2();
 
-// Laxical Scope:
-// Laxical scope means inner function can access the variable from the outer function but outer function can't access the varaibale from the inner function.
+// Lexical Scope:
+// Lexical scope means inner function can access the variable from the outer function but outer function can't access the variable from the inner function.
 // Example:
 function outer(){
     let a = 500;
@@ -34,7 +34,7 @@ function outer(){
 }outer();
 
 // Closers:
-// Closer mesans if a function is acessing the varibale from the outer function even after completing the outer function excution,it's called closer.
+// Closer means if a function is accessing the variable from the outer function even after completing the outer function execution,it's called closer.
 // Example:
 function outer(){
     let count = 0;
@@ -55,8 +55,8 @@ out();
 // these are the methods in javascript.
 // Call and apply methods are used to invoke the function and bind is used to create the new function.
 // Difference between call and apply.
-// Using call methods we can pass the arugument with comma saparated.
-// Using apply method we can pass the aruguments with array format.
+// Using call methods we can pass the argument with comma separated.
+// Using apply method we can pass the arguments with array format.
 // Example:
 const obj1 = { name: 'John', age: 25 };
 const obj2 = { name: 'Jane', age: 30 }; 

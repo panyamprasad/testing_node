@@ -43,7 +43,7 @@
             // You can keep the varible alive between the multiple calls, even the outer scope completed.
 
 // Disadvantages:
-            // Memory leaks: For example for large data strutures we can refer in anywhere, we can't close them it will stay in memory it's causing memory leak.
+            // Memory leaks: For example for large data structures we can refer in anywhere, we can't close them it will stay in memory it's causing memory leak.
             // Difficult to debugging and maintenance: New developers can't understand for this there is multiple nested loops.
 //-------------------------------------------------------------------------------------------------
 

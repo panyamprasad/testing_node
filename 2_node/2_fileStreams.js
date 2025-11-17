@@ -1,17 +1,17 @@
 // File System & Streams
     // --- File System ---
-    // Node js have the in build function as fs module(file systme).
+    // Node js have the in build function as fs module(file system).
     // the file system allows us to read, write, update, delete and rename the files, in both synchronously and asynchronously.
     // Example:
         const fs = require('fs'); // import fs from 'fs'; --ES6
-const { threadCpuUsage } = require('process');
+        const { threadCpuUsage } = require('process');
         fs.readFile('C:/Users/prasad/OneDrive/Desktop/VCM/JavaScript/eventLoop.txt', 'utf8', (err, res) => {
             if(err) throw err;
             console.log("File data : ",+ res.length);
         });
     
     // --- Stream ---
-    // Stream is nothing but way to handle the file. It means handle the data piece by piece, instend of loading the all the data at once.
+    // Stream is nothing but way to handle the file. It means handle the data piece by piece, instead of loading the all the data at once.
     // Useful for large files, network data, video/audio file etc.
     // NodeJs have 4 different types of streams.
     // 1. Readable --> Reading data
@@ -36,16 +36,16 @@ const { threadCpuUsage } = require('process');
     // .readFile(): 
             // 1. Reads the entire file at once into memory.
             // 2. Simple to use the small files.
-            // 3. Not effcient for large files.
+            // 3. Not efficient for large files.
 
     // .createReadStream():
             // 1. Read the file piece by piece.
-            // 2. Very effcient for larger files.
+            // 2. Very efficient for larger files.
     // -------------------------------------------------------
 
     // What is difference between buffer and stream?
         //Buffer:
-            // 1. Buffer is temporary stroage in memory.
+            // 1. Buffer is temporary storage in memory.
             // 2. It hold the binary data when reading/writing the file.
             // 3. Once it's done it will process.
             // Example:
@@ -53,8 +53,8 @@ const { threadCpuUsage } = require('process');
                 console.log(buffer);
         
         //Stream:
-            // 1. Stream is like a pipline.
-            // 2. It will read the file piece by piece instend of waiting for full file.
+            // 1. Stream is like a pipeline.
+            // 2. It will read the file piece by piece instead of waiting for full file.
             // 3. It will work for large files like video/audio etc.
             // Example:
                 // const fs = require('fs');

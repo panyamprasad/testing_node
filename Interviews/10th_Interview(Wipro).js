@@ -64,8 +64,8 @@
 //---> What is the output of the below line?
         console.log(typeof null);
     // Output : object
-    // Actuvally it is a bug, it is existed since very first version of javaScript.
-    // null has the primitive value it represents 'novalue' or 'empty'.
+    // Actually it is a bug, it is existed since very first version of javaScript.
+    // null has the primitive value it represents 'null' or 'empty'.
 //     👉 If you really want to check whether a value is null, don’t use typeof.
 //      Use:
         if (value === null) {
@@ -78,7 +78,7 @@
 
 //------------------------------------------------------------------------
 
-//---> How to fetch the data from an end point, routing and middel were need like thus function?
+//---> How to fetch the data from an end point, routing and middle were need like this function?
 
 //  Step 1: Create a controller function to fetch data
 //      📄 controller/userController.js
@@ -160,29 +160,35 @@
 // 4. What is the microTasks & MacroTasks?
 // 5. What is callback?
 //      1. Callback is a function, it will run after another function execution is completes.
-//      2. It will handle the asynchonous operations.
+//      2. It will handle the asynchronous operations.
 //      3. It's not a phase of a event loop, it's a function executed within one of the event loop's phases.
 
-// 6. What is different between Process.nextTick() and setImeediate?
+// 6. What is different between Process.nextTick() and setImmediate?
 // 7. What is Closure?
+//   -----------------------------------------------------------------------------
+
 // 8. What is memory leak?
-//      1. A Memory leak happens when the function keeps using the memory and it's not no logger needed then the memory leak will happen.
+//      1. When a function or program allocates memory — for example, by creating objects, arrays, or other data — that memory is used while the program needs it.
+//      2. But if the program no longer needs that data and still keeps a reference to it, the memory cannot be released by the garbage collector.
+//      3. Over time, this unused memory keeps growing, reducing available memory, which can slow down the application or even cause it to crash.
+//   -----------------------------------------------------------------------------
+
 // 9. What are the advantages of lambda?
 //      1. No need to handle the servers.
 //      2. It is flexible, it means it will support multi language support.
-//      3. Scalabulity, it will handle the multiple requests.
-//      4. Cost effective: How much we use that much only should we pay. There is not cost for hidle time.
-//      5. High Avilabulity: Lambda code will run across the multiple avilabulity zones.
-//      6. Eazy Integration: We can integrate multiple services like S3, dynamoDB, SNS, SQS etc.
+//      3. Scalability, it will handle the multiple requests.
+//      4. Cost effective: How much we use that much only should we pay. There is not cost for idle time.
+//      5. High Availability: Lambda code will run across the multiple availability zones.
+//      6. Easy Integration: We can integrate multiple services like S3, dynamoDB, SNS, SQS etc.
 
 // 10. What is Sns & SQS?
 //      SNS:
 //          1. SNS means simple notification service.
-//          2. Used to send notificaitons and messages to multiple subscribers at once.
+//          2. Used to send notifications and messages to multiple subscribers at once.
 //          3. It is publish/subscribe messaging service.
 //      SQS:
 //          1. SQS means Simple Queue Service.           
-//          2. Used to store and publish the messages to the subscibers.
+//          2. Used to store and publish the messages to the subscribers.
 //          3. We can store the message or event we can distribute the message to subscribers when they required.
 
 // 11. What is the EC2?
@@ -191,7 +197,7 @@
 // 14. What is the middleware?
 // 15. What is the cluster?
 // 16. How you will improve the performance?
-//      1. Modularization: Breck the applications into small and reusable modules.
+//      1. Modularization: Break the applications into small and reusable modules.
 //      2. Caching: Cache the frequently use data into Redis or memory cache.
 //      3. Optimize Database Queries: Use the Index, pagination and optimized joins.
 //      4. Use Asynchronous and non blocking code: Use Promises, async/await functions to improve the performance.

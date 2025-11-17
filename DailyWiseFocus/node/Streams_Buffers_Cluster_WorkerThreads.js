@@ -1,7 +1,7 @@
 // Streams, Buffers, Cluster & Worker Threads
 
 //--- Buffers ---
-    // 1. Buffer is temparory memory, it will store binary data (like audio/videos) while it's being transferred between the processes.
+    // 1. Buffer is temporary memory, it will store binary data (like audio/videos) while it's being transferred between the processes.
     // 2. Javascript basically allows strings and JSON, but binary data are handled using buffers.
     // 3. It is like a bucket they stored temarory before used it.
     // Ex:

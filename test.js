@@ -1,68 +1,51 @@
-// async function test(){
-//     try{
-//         const data = await fetch('https://jsonplaceholder.typicode.com/users');
-//         const data2 = await data.json()
-//         console.log(data2);
+import express from 'express';
 
-//     }catch{error}{
-//         // console.error(error);
+const router = express.Router();
 
-//     }
+const users = [
+    {
+        id: 1,
+        name: 'Prasad'
+    },
+    {
+        id: 2,
+        name: 'Panyam'
+    }
+]
 
-// };
+//Get all users
+router.get('/', (req, res) => {
+    res.json(users);
+});
 
-// test();
+//Get user by ID
+router.get('/:id', (req, res, next) => {
+    try {
+        const user = users.find(u => u.id === parseInt(req.params.id));
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+        return res.json(user);
+    } catch (err) {
+        next(err);
+    }
+});
 
-	// function accountOpen(minimumBalance){
-	// 	let balance = minimumBalance;
-	// 	return{
-	// 		deposit: (amount)=>{
-	// 			balance += amount;
-	// 			console.log('Balance : '+balance);
-	// 		},
-	// 		withdraw: (amount)=> {
-	// 			if(amount > balance){
-	// 				return console.log('Insufficient balance');
-	// 			}else{
-	// 				balance -= amount;
-	// 				console.log('Withdraw completed');
-	// 			}
-	// 		},
-	// 		balanceEnquiry:() =>{
-	// 			console.log('BalanceEnqiry' + balance);
-	// 		}
-	// 	}
-	// }
-	
-	// const account = accountOpen(500);
-	// // account.deposit(400);
-	// account.withdraw(99);
-	// account.balanceEnquiry();
+//Post add new user
+router.post('/', (req, res, next) => {
+    try{
+        const { name}  = req.body;
+        if(!name){
+            return res.status(400).json({
+                message: 'Input data missing'
+            })
+        }
+        const newUser = { id: users.length + 1, name };
+        users.push(newUser);
+        res.status(201).json(newUser);
+    }catch(err){
+        next(err);
+    }
+});
 
-    // function removeDuplicates(){
-    //     const seen = new Set();
-
-    //     return function(arr){
-    //         let result = [];
-    //         for(let value of arr){
-    //             if(!seen.has(value)){
-    //                 seen.add(value);
-    //                 result.push(value);
-    //             }
-    //         }
-    //         return result;
-    //     }
-    // }
-
-    // const unique = removeDuplicates();
-    // console.log(unique([1,1,2,2,3,3,4,4,5,6]));
-
-    // function sorting(arr){
-    //     const unique = {};
-    //     arr.forEach(value => {
-    //         unique[value] = (unique[value] || 0) + 1;
-    //     });
-    //     return [...new Set(arr)].sort((a,b) => unique[b]-unique[a]);
-    // }
-
-    // console.log(sorting([1,1,1,2,2,2,2,3,3,3,3,3,2,2,3,3,4,4,4,4,3,2,1]))
+export default router;

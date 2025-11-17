@@ -1,4 +1,4 @@
-// --- DynamodDB ---
+// --- DynamoDB ---
 
 // 🟡 1. What is DynamoDB?
 
@@ -12,9 +12,9 @@
         // No need to worry about infrastructure — AWS manages it.
 
     // 🧾 Example:
-        // Suppose we want to build any e-commerce or social netwrok applicaitons.
-        // We need to store porifle, orders and products.
-        // During the storing and time, dynamoDb automatically scalling and store the data.
+        // Suppose we want to build any e-commerce or social network applications.
+        // We need to store profile, orders and products.
+        // During the storing and time, dynamoDb automatically scaling and store the data.
         // Performance wise it will fast.
 //------------------------------------------------------------
 
@@ -31,14 +31,14 @@
         // Basically sortKeys are like cratedData, orderId like that.
     
     // Ex:
-        // For example we build e-commerce order table is there. One user order multiple orders. So here userId is unique as partition key, but orderId and crated data is different so these are the sort keys.
-        // So we can easily filter the iteams useing thie userId, cratedData or orderId.
+        // For example we build e-commerce order table is there. One user order multiple orders. So here userId is unique as partition key, but orderId and created date is different so these are the sort keys.
+        // So we can easily filter the items using the userId, createdDate or orderId.
 //------------------------------------------------------------
 
 //  3. What is the Index?
     // Index in the one of the way to access the data from this dynamoDB.
-    // Normaly will use the Portition key and sort key to featch the data from db.
-    // Some times we want to search a differnt attributes. That's way the index will help us.
+    // Normally will use the Partition key and sort key to fetch the data from db.
+    // Some times we want to search a different attributes. That's way the index will help us.
     // It will help us query data in another way without scanning full table.
 
     // Uses:
@@ -64,85 +64,85 @@
                         }
                     };
 
-        // Local seconadary index : 
-                // If Parition key is same but use the different sort key we use the Local secondary index.
-                // It will useful when we need data with different sortkey and same partition key.
+        // Local secondary index : 
+                // If Partition key is same but use the different sort key we use the Local secondary index.
+                // It will useful when we need data with different sortby and same partition key.
 //----------------------------------------------------------------------
 
 // 4. Explain DynamoDB architecture and key concepts?
     // 1. DynamoDB is fully managed , no-sql, serverless and key-value database. it will use the distributed architecture and give the fast performance.
-    // 2. Data store in tables, iteams and attributes. Each item can identified with Partition key and sorting with sort key.
-    // 3. And it have the index to filter and get the data from different Parition and sort key.
+    // 2. Data store in tables, items and attributes. Each item can identified with Partition key and sorting with sort key.
+    // 3. And it have the index to filter and get the data from different Partition and sort key.
     // 4. It have the two types of Index GSI and LSI. Based on the request will use this.
-    // 5. And It can have the streams, real time processing. Because of this it will give the hign performance without managing the servers.
-//----------------------------------------------------------------------
+    // 5. And It can have the streams, real time processing. Because of this it will give the high performance without managing the servers.
+//-----------------------------------------------------------
 
 // 5. What is RCU & WCU in Amazon DynamoDB?
-    // RCU menas Read capacity Unit
-    // WCU meand write capacity Unit.
-    // Uisng this we can find the speed limits on how much fast your table can read and write the data.
+    // RCU means Read capacity Unit
+    // WCU means write capacity Unit.
+    // Using this we can find the speed limits on how much fast your table can read and write the data.
     // Use this we can control the cost
     // And Handle the traffic control
 //----------------------------------------------------------------------
 
 // 6. What is DynamoDB Streams?
-    // 1. Streams are change traker, in the dynamoDB.
-    // 2. When somthing happend in the data like insert, update, delete use this streams we can capture the event.
-    // 3. Use the capture event we can trigger the actions like sending notificaitons, update another table or sync the data.
+    // 1. Streams are change tracker, in the dynamoDB.
+    // 2. When something happened in the data like insert, update, delete use this streams we can capture the event.
+    // 3. Use the capture event we can trigger the actions like sending notifications, update another table or sync the data.
     // Use:
             // Tracking purpose who changed the data.
             // Sync the data between the regions or tables
             // Trigger the events.
-            // Evnt driven architecutres.
+            // Event driven architectures.
 //----------------------------------------------------------------------
 
 // 7. What is TTL (Time to Live) in DynamoDB?
     // TTL (Time to Live): TTL means it will delete the records automatically form the db. 
-    // We have to set the time for each item, when it reach that time record autmatically delete.
+    // We have to set the time for each item, when it reach that time record automatically delete.
 
     // Use:
-        // Always maintain the table clean and maintanable.
+        // Always maintain the table clean and maintainable.
         // To save the storage data.
 
-    // We have to add the numaric attribute like expiretime.
+    // We have to add the numeric attribute like expiretime.
     // We have to enable to TTL for the table and we have to tell db which attribute to use.
     // Basically use this for 
-                    // OPT/Tokes
-                    // Temporary notificaitons
+                    // OTP/Tokes
+                    // Temporary notifications
                     // session Handling
 //-----------------------------------------------------------------------
 
 // 8. Explain Global Tables (Multi-region replication)?
-    // Global tables are allow us to replicate the dynamoDB tables accross multiple regions automatically.
+    // Global tables are allow us to replicate the dynamoDB tables across multiple regions automatically.
     // Event change set like inert, update, create and delete can be update one regions it will automatically change other regions.
-    // There is no manuval replicatioin required AWS Handle everything.
+    // There is no manual replication required AWS Handle everything.
 
     // Advantages:
         // Users can connect nearest regions.
-        // If one region fails, the traffice will move to anohter region.
-        // For Disaster recovery. If any regional failurs.
-        // Ditribute read/write traffic accors the multiple regions to handle the hevay load.
+        // If one region fails, the traffic will move to another region.
+        // For Disaster recovery. If any regional failures.
+        // Distribute read/write traffic accors the multiple regions to handle the heavy load.
 //-----------------------------------------------------------------------
 
 // 9. Common DynamoDB Real-Time Use Cases?
-    // 1. Store data and login sessions with fast accees.
+    // 1. Store data and login sessions with fast access.
     // 2. Auto expire session using the TTL.
     // 3. Triggers workflows automatically.
     // 4. MilliSeconds api response.
 //-----------------------------------------------------------------------
 
-// How to configure the dynamoDB in serverless applicaiton?
+// How to configure the dynamoDB in serverless application?
     // Basically will use the serverless yaml or cloudformation we can configure the dynamoDB tables.
-    // Insted of manuvally creation we use this we can create tatbles, stream, replication and other details we can configure autmaticaaly when we upload this files.
+    // Instead of manually creation we use this we can create tables, stream, replication and other details we can configure automatically when we upload this files.
 //-----------------------------------------------------------------------
 
 // How do you handle dynamoDB error in lambda?
     // Using the try/catch block.   
-    // Implementing the retry mechanisam to fix this issues.
+    // Implementing the retry mechanism to fix this issues.
 //-----------------------------------------------------------------------
 
 // How do you trigger lambda form dynamoDB?
-    // Enable the streams in the dynamoDB table, and attach the lambda funcions or event. When the data insert/updata/delete the lambda will trigger.
+    // Enable the streams in the dynamoDB table, and attach the lambda functions or event. When the data insert/updata/delete the lambda will trigger.
 //-------------------------------------------------------
 
 // How to implement ttl in table?
@@ -154,13 +154,11 @@
 
 // How to do multi-region replication in serverless apps?
     // Use the dynamoDB global tables.
-    // Add the replica regions from yaml or manuvall.
-    // If we add the data one region it will automatiicaly replicating other region.
+    // Add the replica regions from yaml or manually.
+    // If we add the data one region it will automatically replicating other region.
 
 // How do you optimize DynamoDB cost in serverless apps?
-    // Use On-Demand tabels for unpredictable traffic.
+    // Use On-Demand tables for unpredictable traffic.
     // Use TTL for delete expired data items.
     // Use Batch for read/write to reduce number of requests.
     // Enable to Autoscaling.
-
-

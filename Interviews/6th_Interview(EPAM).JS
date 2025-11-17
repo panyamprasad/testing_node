@@ -14,8 +14,8 @@
                 console.log('Payment');
                 }, 6);
             }else{
-                    setTimeout(() => {
-                    console.log('OrderDone');
+                setTimeout(() => {
+                console.log('OrderDone');
                 }, 3)
             }
         };
@@ -62,8 +62,8 @@
         test();
 
 //      Ans:
-//      1. I said 20... But it's printed undefind.
-//      2. Because the local variables (x=20) hide the global variable (x=10). That's way it's print the undefined before instalization.
+//      1. I said 20... But it's printed undefined.
+//      2. Because the local variables (x=20) hide the global variable (x=10). That's way it's print the undefined before installation.
 //      3. That’s why the function doesn’t use the global x = 10.
 //      4. It uses its own x, which is hoisted but not yet assigned — so it’s undefined.
 //      ----------------------------------------------------------------
@@ -123,7 +123,7 @@
                 }
             }
 //  --------------------------------------------------------------------------------------------------
-// ---> 5. I have one array.. I want to use map and multiple the each element.. but instend of using map I want to add customMap and do this logic inside the custom map and along with this it should support for remaing logics like addi sub, divi and concatination what we want. How you will do the logic for this.
+// ---> 5. I have one array.. I want to use map and multiple the each element.. but instead of using map I want to add customMap and do this logic inside the custom map and along with this it should support for remaining logics like adds sub, dive and concatination what we want. How you will do the logic for this.
 
 //    Ans: 
             Array.prototype.customMap = function (operation, value) {
@@ -161,9 +161,9 @@
             console.log(arr.customMap('concat', 'A')); // ["1A", "2A", "3A", "4A"]
 //----------------------------------------------------------------------------------
 
-// ---> If I have the one function, but I dind't pass any aruguments, but inside I have the setTimeout callback function inside I am print the name... How the name propertiy will be come? How should we execute this with out functin aruguments.
+// ---> If I have the one function, but I didn't pass any arguments, but inside I have the setTimeout callback function inside I am print the name... How the name property will be come? How should we execute this with out function arguments.
 // Ans:     Using call():
-//          1. It will invokes the lambda immediatly, we can pass the aruguments comma saparated values.
+//          1. It will invokes the lambda immediately, we can pass the arguments comma separated values.
             const person = { name: "Prasad" };
 
             function greet() {
@@ -176,10 +176,10 @@
             greet.call(person); // Hello Prasad
             //---------------------------------
 //          Using apply():
-//          1. It will work similar to call but pass the aruguments as an array.
-            function test2(geetinng){
+//          1. It will work similar to call but pass the arguments as an array.
+            function test2(greeting){
                 setTimeout(() => {
-                    console.log(geetinng + ' '+ this.name);
+                    console.log(greeting + ' '+ this.name);
                 })
             }
             test2.apply(person, ['Hello']);
@@ -193,7 +193,7 @@
 // Project Explanation:
 	// 🧩 Project Overview – “Victory Capital Management (VCM)”
 
-	// 	1. VCM is a financial platform for US-based users to manage mutual funds, Victory funds, and education-related loans.
+	// 	1. VCM is a financial platform for US-based users to manage mutual funds, Victory funds, and 529 education-related loans.
 	// 	2. The system is built using a microservices architecture, so each module (account creation, transaction, document upload, etc.) works independently.
 	// 	3. We used Node.js, JavaScript, AWS services (Lambda, API Gateway, DynamoDB, S3, SNS/SQS, Cognito) for backend development.
 

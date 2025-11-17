@@ -4,17 +4,17 @@
 // 			2. And It will avoid the conflicts during the pull request.
 		
 // 		git merge:
-// 			1. Merge combind the two branched history together. And it keeps the commit history as is. It will create a new merge commit.
+// 			1. Merge combined the two branched history together. And it keeps the commit history as is. It will create a new merge commit.
 // 		--------------------------------------------------	
-// ---> What is kubernets, why to use this, how it will work?
-// 		1. Kubernets is container orchestration tool, it will automatically manage, scale and deploys the containers across the multiple servers.
-// 		2. Manuvally running servers it's too hard.
-// 		3. Using kubernets, it will auto Scaling, load balancing, restart if any thing fail, and resource management.
-// 		4. Kubernets is like a manager that runs the containers in multiple servers, restart if anything will fail, and add the pods if traffic is increased.
+// ---> What is kubernetes, why to use this, how it will work?
+// 		1. Kubernetes is container orchestration tool, it will automatically manage, scale and deploys the containers across the multiple servers.
+// 		2. Manually running servers it's too hard.
+// 		3. Using kubernetes, it will auto Scaling, load balancing, restart if any thing fail, and resource management.
+// 		4. Kubernetes is like a manager that runs the containers in multiple servers, restart if anything will fail, and add the pods if traffic is increased.
 // 		--------------------------------------------------	
 // ---> What is dynamoDB.. Why use dynamoDB? How you store the data in dynamoDB?
 // 		1. DynamoDB is a NoSQL database service from aws. It is fast, serverless and fully managed.
-// 		2. Using this we can increase the performance, no need to maintain the servers, and it will work well with mutliple services like lambda, apiGateway
+// 		2. Using this we can increase the performance, no need to maintain the servers, and it will work well with multiple services like lambda, apiGateway
 // 		3. Using this we can store the data in tables but it is schema less.
 // 		4. We can store the records in JSON format.
 // 		5. Each record have the primary key like PartitionKey and sort key.
@@ -35,7 +35,7 @@
 // 		---------------------------------------------------
 // ---> How to access the obj keys inside this arrow function? if it is null how will do?
 // 		1. Using the optional chaining to safely access the object keys inside arrow without any error.
-// 		2. If the object key null or undefind we can assign defalut values check with nullish.
+// 		2. If the object key null or undefined we can assign default values check with nullish.
 // 		---------------------------------------------------
 // ---> Can we change the const value? No.. if array we can change? Yes.. then why what is difference?
 // 		1. No we can't change the const value. And we can't reassign the value.
@@ -52,11 +52,11 @@
 			console.log(obj);
 // 		--------------------------------------------------
 // ---> What is hoisting?
-// 		1. Hosisting is mechanisam, where the functions and varibales are moving the top of their scope during the compile time. Before the code execution.
-// 		2. Both varibles and functions are hoisting.
-// 		3. When we declared a varibale with 'var' we access it before instilization, and we get the undefind.
+// 		1. Hoisting is mechanism, where the functions and variables are moving the top of their scope during the compile time. Before the code execution.
+// 		2. Both variables and functions are hoisting.
+// 		3. When we declared a variable with 'var' we access it before instillation, and we get the undefined.
 // 		4. let and const we can access we get the refresh error.
-// 		5. But funcitons we can access before intilization because it will fully hoisting.
+// 		5. But functions we can access before initialization because it will fully hoisting.
 // 		Ex:
 			console.log(test); // it will work... Here hoisting
 			function test(){
@@ -71,24 +71,31 @@
 // ---> What is Closure?
 // ---> what is different between process.nextTick() and setImmediate()?
 // ---> What are phases in nodejs
-// ---> What is different between promises() and asyn/await?
+// ---> What is different between promises() and async/await?
 // ---> What is apiGateway?
+//		1. API gateway is single entry point to connect the backend services.
+//      2. It will create, publish, maintain, monitor and secure the apis.
+//      3. It will take the action from the client an routing the respective backend services. And take the response from the services and send back to the client.
+//      4. It will handle all the tasks like traffic management, authorization and access control, monitoring, and API version management.
+
 // 		------------------------------------------------------
-// ---> Explain the serverless architechture?
-// 		1. Serverless architechture means cloud-native approach.
-// 		2. Here we can write the code and funcitons and we can deploy it, but we can't worry about the managing the servers.
-// 		3. AWS cloud will takecare of these all thing.
-// 		4. It will automatically scaling, avilability and manage infrastruture.
-// 		5. For Example. If we upload a file to s3 using the lambda function, lambda will automatically resizes it and store it in s3. And update metadata into db, don't need to maintain servers.
-// 		6. The purpose of serverless it reduce the infra management, and we can pay how much we use.
+// ---> Explain the serverless architecture?
+// 		1. Serverless architecture means cloud-native approach.
+//		2. Here we can build and run applications and services without managing the servers.
+// 		3. Here we can write the code and functions and we can deploy it, but we can't worry about the managing the servers.
+// 		4. AWS cloud will takeover of these all thing.
+// 		5. It will automatically scaling, availability and manage infrastructure.
+// 		6. For Example. If we upload a file to s3 using the lambda function, lambda will automatically resizes it and store it in s3. And update metadata into db, don't need to maintain servers.
+// 		7. The purpose of serverless it reduce the infra management, and we can pay how much we use.
 // 		------------------------------------------------------
 	
 // ---> Explain the restful api work flow with node and how will implement this.
-// 		1. Basically in my previous projects we are using the serverless framework workflow.
-//		2. In serverless the RESTful APIs using API Gateway and lambda functions instend of Express framework.
-//		3. When user/client/postman if we trigger any endpoint like /users or /users/{id} it will mapped to different endpoints and different lambda funcitons.
-//		4. Once user send the request the api gateway identify the route and trigger the lambda funcitons and it will connect with respective services and collecte the response from them and send back to the client in json format.
-// 		5. This makes the architecture scalable, cost-efficient and event-driven because lambda trigger when needed.
+// 		1. In previous projects, we used a serverless framework workflow instead of a traditional Node.js + Express setup.
+//		2. In serverless, RESTful APIs are implemented using API Gateway and Lambda functions.
+//		3. When a client (like a browser, mobile app, or Postman) triggers an endpoint (e.g., /users or /users/{id}), the API Gateway maps the request to the appropriate Lambda function.
+//		4. The Lambda function executes the business logic, communicates with databases or other services, and returns a response.
+// 		5. The API Gateway sends the response back to the client in JSON format.
+//		6. This architecture is scalable, cost-efficient, and event-driven, because Lambda functions are triggered only when needed, and there’s no need to manage servers continuously.
 // 		------------------------------------------------------
 
 // ---> Coldstart how will overcome this.
@@ -105,7 +112,7 @@
 //		8. Finally, once the deployment is done, the team performs validation and monitoring to ensure everything is working as expected.
 //		------------------------------------------------------
 
-// ---> If any thing fail in deployments what will do the maintanence...?
+// ---> If any thing fail in deployments what will do the maintenance...?
 //      1. First, we check the CloudWatch logs to identify the root cause of the deployment failure and start the investigation.
 //      2. If we’re unable to fix the issue immediately or don’t find a quick solution, we rollback to the previous stable version to restore the application.
 //      3. Next, we reproduce the issue in a lower environment (like dev or QA) to analyze and fix the root cause

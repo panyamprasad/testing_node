@@ -2,7 +2,7 @@
     // Asynchronous pattern will held on three different patterns. 
         // 1. Callbacks
                 // Callback is the 1st async pattern in nodeJs. 
-                // But using callback, we have multiple callbacks will happend like callback inside another callback like nested callbacks will happen.
+                // But using callback, we have multiple callbacks will happen like callback inside another callback like nested callbacks will happen.
                 // So it is called callback hell.
                 // Due to this it becomes hard to read, hard to maintain and hard to debugging the code.
         // 2. Promises
@@ -18,6 +18,11 @@
     //-------------------------------------------------------------
 
         // How does Node.js achieve scalability on multi-core systems?
-            // Useing the Workers-thread and cluster nodeJs acheve the multi core systemss.
-            // Worker thread run the tasks parller inside a single thread nodeJs Process. It will useful for heavy tasks.
-            // Cluster creats multiple core processes and handle more incoming request.
+            // NodeJs is single threaded, so CPU heavy operations will block the event loop.
+            // To achieve this using Worker threads and Cluster module.
+            // Worker Threads: Worker threads allow us to run multiple threads in a single process. Each thread has its own event loop and memory space. We can use worker threads to offload CPU heavy operations from the main thread.
+            // Cluster Module: Cluster module allows us to create multiple processes using the cpu cors. So it can handle multiple requests simultaneously.
+            // By using these two methods we can achieve scalability on multi-core systems.
+        //-------------------------------------------------------------
+
+        

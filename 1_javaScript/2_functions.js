@@ -1,5 +1,5 @@
 // Functions:
-// Normal Fucntion
+// Normal Function
 function test(){
     return console.log("Hello world");
 }
@@ -7,11 +7,11 @@ function test(){
 test();
 
 // Arrow function
-const arrowTest = () => console.log("Hellow this is arrow function");
+const arrowTest = () => console.log("Hello this is arrow function");
 
 arrowTest();
 
-// What is difference between normal and arrow funciton?
+// What is difference between normal and arrow function?
 // 1. In normal functions this is dynamic, it means it depends on how the function is called.
 // 2. In Arrow function this is lexically bound, it means it depends on surrounding code where the function is defined.
 // 3. In Normal we have the own arguments object.
@@ -39,8 +39,8 @@ obj.arrowFunc(); // undefined
 const obj1 = {
     value : 100,
     function (){
-        const arrow= () => {
-            console.llog('Arrow Function : ', this.value);
+        const arrow = () => {
+            console.log('Arrow Function : ', this.value);
         }
         arrow();
     }

@@ -16,17 +16,17 @@
 // 				Make data retrieval faster and more efficient.
 //      ---------------------------------------------------------------------------------
 	
-//---> 2. What is Redis how will connect? how to stroe data in Redis? What is difference between Redis/DynamodDB?
-// 			1. Radis measn Remote Disctionary server.
-// 			2. Use this we can store the temporary data in the in the ram not in disk.
+//---> 2. What is Redis how will connect? how to store data in Redis? What is difference between Redis/DynamoDB?
+// 			1. Redis means Remote Dictionary Server.
+// 			2. Use this we can store the temporary data in the ram not in disk.
 // 			3. Basically we can use the Redis install the redis dependency and we can create the client and we connect to the redis. Use the set for store and get for fetch the data from redis.
-// 			4. For example: when we fetch the data from the db or else some another service, we can store the the response in the redis for a perticulay time period. 
-// 			5. If we tried again same service or same api call we can ge the data from redis inbetween the same time period. 
-// 			6. Instend of db calls we can use the redis.
-// 			7. Increase the performace and reduce the cost, and reduce the database load.
+// 			4. For example: when we fetch the data from the db or else some another service, we can store the response in the redis for a particular time period.
+// 			5. If we tried again same service or same api call we can get the data from redis in between the same time period.
+// 			6. Instead of db calls we can use the redis.
+// 			7. Increase the performance and reduce the cost, and reduce the database load.
 //      ---------------------------------------------------------------------------------
 
-//---> 3. What are microServices? How microServie work? How will connect with each other? And if one service fail how will connect with that service?
+//---> 3. What are microServices? How microService work? How will connect with each other? And if one service fail how will connect with that service?
 // 			1. Microservices is an architecture pattern used to develop large-scale applications by dividing them into smaller, independent services.
 // 			2. Using microservices, we can separate the project into multiple small services, each handling a specific feature or functionality.
 // 			3. Each service is independent — it can be developed, deployed, and scaled separately.
@@ -41,7 +41,7 @@
 // 			6. One service can communicate with another using APIs or event-driven mechanisms.
 // 			7. Communication between services happens through:
 // 					REST APIs / HTTP calls (synchronous)
-// 					Event-based communiction like SNS/SQS, Kafka, etc. (asynchronous)
+// 					Event-based communication like SNS/SQS, Kafka, etc. (asynchronous)
 // 			8. It’s better to use event-based communication, because if one service is down, it won’t affect other services.
 // 			9. In event-driven architecture, when one service publishes an event, another service listens to that event and performs its task.
 // 			Failure:

@@ -1,20 +1,20 @@
 // -- Event Driven Architecture --
-    // Event driven architecture means design pattern, here componenets and modules are communicate and respond through the events, instead of calling functions or methods directly. 
-    // It will making them faster, flexiable and scalable.
-    // In Event Driven Architecture, one componenet release an event, other componet listen that event and take the action.
+    // Event driven architecture means design pattern, here components and modules are communicate and respond through the events, instead of calling functions or methods directly. 
+    // It will making them faster, flexible and scalable.
+    // In Event Driven Architecture, one components release an event, other components listen that event and take the action.
     // For example, when a user clicks a button, submits a form, or receives a message, these actions can trigger events that other components can respond to.
 //-------------------------------------------------------------------------------------------------
 
 // Difference between EDA and Request-Response Architecture
-    // Request-Response Architecture: This is a traditional architecture, where a client sends a request to as server, until the server process this request and sedn the response back, the remaing events will be blocked.
-    // EDA: In EDA, components communicate through the events, one componenet release an event, the next component listedn this, and take the further action. It is asynchronous, it means the other events will not be blocked.
+    // Request-Response Architecture: This is a traditional architecture, where a client sends a request to as server, until the server process this request and send the response back, the remaining events will be blocked.
+    // EDA: In EDA, components communicate through the events, one components release an event, the next component listen this, and take the further action. It is asynchronous, it means the other events will not be blocked.
 //-------------------------------------------------------------------------------------------------
 
 // What are the benefits of EDA?
     // 1. Scalability: EDA allows systems, and components can be add or remove the events, without affecting the other components.
-    // 2. Flexibility: EDA allows systems to be more flexiable, as components can be added or removed without affecting the other components.
+    // 2. Flexibility: EDA allows systems to be more flexible, as components can be added or removed without affecting the other components.
     // 3. Asynchronous Processing: EDA allows systems to process events asynchronously, which can improve performance and reduce latency.
-    // 4. loosely coupled: It means, components are independent, they can be devloped and deployed independently.
+    // 4. loosely coupled: It means, components are independent, they can be developed and deployed independently.
 // -------------------------------------------------------------------------------------------------
 
 // What are the challenges of EDA?
@@ -51,11 +51,11 @@
 //-------------------------------------------------------------------------------------------------
 
 // How EDA is used in microservices architecture?
-    // 1. Basically Event driven architecture means system design patteran, used thie we communicate the components, modules throguht the event, instend of direct connecct with api.
-    // 2. MicroServices means we can build multiple services indeually, each and every service can connect throught the Rest api's. So it is tightly copuled, because if any service down it will impact other.
-    // 3. So to overcome this we can use EDA in microservices, we connect the services insted of api, we can use the events. It means if any service or module emit an event, the other services listen this and start the further actions.
-    // 4.For example if we have the orderservice, payment servie, and email service. these all communicate throught the evnt instend of REST API's.
-    // 5. If any user place an order, the order service emit this order and the remaing services listen this and do there process.
+    // 1. Basically Event driven architecture means system design pattern, used this we communicate the components, modules thought the event, instead of direct connect with api.
+    // 2. MicroServices means we can build multiple services indeually, each and every service can connect thought the Rest api's. So it is tightly coupled, because if any service down it will impact other.
+    // 3. So to overcome this we can use EDA in microservices, we connect the services instead of api, we can use the events. It means if any service or module emit an event, the other services listen this and start the further actions.
+    // 4.For example if we have the orderservice, payment service, and email service. these all communicate thought the event instead of REST API's.
+    // 5. If any user place an order, the order service emit this order and the remaining services listen this and do there process.
     // For Example: When a user places an order.
     // 1. Order Service: When a user places an order, the order service will create the order and emit an 'orderPlaced' event.
     // 2. Payment Service: The payment service will listen to the 'orderPlaced' event, and process the payment for the order.
@@ -71,13 +71,13 @@
     // 3. Payment Processing Applications: In payment processing applications, when a user makes a payment, the payment service can release a 'paymentProcessed' event, which can be listened by the order service to update the order status, and the notification service to send a receipt to the user.
 //-------------------------------------------------------------------------------------------------
 
-// In Microservices we are uisng the EDA, but in my case one of the service is failidng, how to handle this?
+// In Microservices we are using the EDA, but in my case one of the service is failing, how to handle this?
     // In EDA, we can handle the failure of a service using the following approaches:
     // 1. Retry Mechanism: We can implement a retry mechanism, where the event is retried a certain number of times before giving up. This can be done using libraries like 'retry' or 'promise-retry'. 
 
-    // 2. Dead Letter Queue: If retry is still fail after several attempts, We can use a dead letter queue, the faild event goes to the DLQ.This is pending issues box. Developer can check this and take the further action.
+    // 2. Dead Letter Queue: If retry is still fail after several attempts, We can use a dead letter queue, the failed event goes to the DLQ.This is pending issues box. Developer can check this and take the further action.
 
-    // 3. Rollback mechanisam: If a payment fails after an order is placed, we might need to undo the other actions. And we can restore the stock and send the payment failure notification to the user.
+    // 3. Rollback mechanism: If a payment fails after an order is placed, we might need to undo the other actions. And we can restore the stock and send the payment failure notification to the user.
     
     // 4. 
 //-------------------------------------------------------------------------------------------------
@@ -128,7 +128,7 @@
 //-------------------------------------------------------------------------------------------------
 
 // In microservices also we can handle DLQ and retry mechanism and we can close the chain, right?
-    // Yes we can handle this in microservices but we must code it manuvaly in every service.
-    // But use EDA the event broker handle this automaticaly, here there is no manuval process required.
+    // Yes we can handle this in microservices but we must code it manual in every service.
+    // But use EDA the event broker handle this automatically, here there is no manuval process required.
 
 //-------------------------------------------------------------------------------------------------

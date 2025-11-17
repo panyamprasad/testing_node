@@ -8,9 +8,9 @@
             // Coginto user pool means it will manage user directory for web and mobile applications.
             // It will handle user registration, Login, forgot Password, Email/phone verification and MFA.
         // Coginto Groups:
-            // Coginto groups are avilable inside the user pool.
+            // Coginto groups are available inside the user pool.
             // Used this organize users by roles or permissions (like admin, manager, hr).
-            // We can assign IAM permissiion to groups.
+            // We can assign IAM permission to groups.
     
     // Why use Cognito:
         // Aws managed everything, no need to build our own login system.
@@ -27,7 +27,7 @@
 
     // -----------------------------------------------------------------------------------
 
-    // Interveiw Questions:
+    // Interview Questions:
     
     // What is amazon coginto?
         // 1. Coginto is aws service.
