@@ -1,44 +1,45 @@
 // Scope:
+
 // Scope defines the accessibility of variables, functions and objects in the code.
 // there are three types of scoops are there.
 // 1. global scope : global scope is we can access the variable from any where from the code.
 // 2. function Scope : function scope is we can access the variable inside the function only.
-// 3. Block Scope : blocked scope is we can access the variable inside the block. It means if we declear a varibale as let or const we can access inside the block only.
+// 3. Block Scope : blocked scope is we can access the variable inside the block. It means if we declear a variable as let or const we can access inside the block only.
 
 // Example:
-var a = 100; // global scopevar a = 100;
-function test(){
-    if(a == 100){
+var a = 100; // global scope var a = 100;
+function test() {
+    if (a == 100) {
         let b = 200;
-        console.log(a+b);
+        console.log(a + b);
     }
 } test();
 
 // Example 2:
-function test2(){
+function test2() {
     let a = 100
     var b = 200;
-    console.log(a-b)
+    console.log(a - b)
 } test2();
 
 // Lexical Scope:
 // Lexical scope means inner function can access the variable from the outer function but outer function can't access the variable from the inner function.
 // Example:
-function outer(){
+function outer() {
     let a = 500;
-    function inner(){
+    function inner() {
         let b = 100;
         console.log(a + b);
     }
     inner();
-}outer();
+} outer();
 
 // Closers:
 // Closer means if a function is accessing the variable from the outer function even after completing the outer function execution,it's called closer.
 // Example:
-function outer(){
+function outer() {
     let count = 0;
-    function inner(){
+    function inner() {
         count++;
         console.log(count);
     }
@@ -59,7 +60,7 @@ out();
 // Using apply method we can pass the arguments with array format.
 // Example:
 const obj1 = { name: 'John', age: 25 };
-const obj2 = { name: 'Jane', age: 30 }; 
+const obj2 = { name: 'Jane', age: 30 };
 function greet(greeting, punctuation) {
     console.log(greeting + ', ' + this.name + punctuation);
 }

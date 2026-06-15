@@ -6,7 +6,7 @@
 // 2. object destructuring
 // Example:
 // 1. Array Destructuring
-const array = [1,2,3,4,5];
+const array = [1, 2, 3, 4, 5];
 const [a, b, ...rest] = array;
 console.log(a); // 1
 console.log(b); // 2
@@ -17,7 +17,7 @@ const obj = {
     age: "38",
     city: "Bangalore"
 };
-const {name, age} = obj;
+const { name, age } = obj;
 console.log(name); // Prasad
 console.log(age); // 38
 
@@ -35,25 +35,25 @@ console.log(age); // 38
 // Rest Operator is used to collect the array and object variables.
 // Example:
 // 1. Speard Operator
-const array1 = [1,2,3];
-const array2 = [4,5,6];
-const combinedArray = [ ...array1, ...array2 ];
+const array1 = [1, 2, 3]; 4
+const array2 = [4, 5, 6];
+const combinedArray = [...array1, ...array2];
 console.log(combinedArray); // [1,2,3,4,5,6]
 const obj1 = { a: 1, b: 2 };
 const obj2 = { c: 3, d: 4 };
 const combinedObj = { ...obj1, ...obj2 };
 console.log(combinedObj); // { a: 1, b: 2, c: 3, d: 4 }
 // 2. Rest Operator
-function sum (...args){
+function sum(...args) {
     return args.reduce((a, b) => a + b, 0);
 };
-console.log(sum(1,2,3,4,5)); // 15
+console.log(sum(1, 2, 3, 4, 5)); // 15
 // ------------------------------------------------------------------------------
 // -------------- Default Parameters -----------------
 // Default Parameters is used to set the default value to the function parameters.
 // It will help to avoid the undefined value.
 // Example:
-function greet(name = "Guest"){
+function greet(name = "Guest") {
     return `Hello, ${name}!`;
 }
 console.log(greet()); // Hello, Guest!
@@ -95,4 +95,3 @@ console.log(bar); // 0
 const baz = undefined ?? "Hello";
 console.log(baz); // Hello
 // ------------------------------------------------------------------------------
-    

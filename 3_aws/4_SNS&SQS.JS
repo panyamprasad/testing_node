@@ -32,13 +32,13 @@
 // 	---------------------------------------------------------------------------------
 // ---> 4. How Subscribe the lambda to SNS Topic?
 // 		1. There are two ways we can subscribe the lambda.
-// 		2. From SNS topic we can add the "Create Subscription" and we can add the lambda function. Once the message or event came to the sns automatically lambda will trigger, there is no manuval trigger.
-// 		3. Another way from yaml configuration, we should provide the sns arn in the events senctiion. It will automatically configuration there is no manuvall creation. Once we deploy the code this configuration will be adding to sns.
-// 		Ex: When the orderLambda publish the order, notificationLambda subscribe the order and send the notfication to the use.
+// 		2. From SNS topic we can add the "Create Subscription" and we can add the lambda function. Once the message or event came to the sns automatically lambda will trigger, there is no manual trigger.
+// 		3. Another way from yaml configuration, we should provide the sns arn in the events section. It will automatically configuration there is no manual creation. Once we deploy the code this configuration will be adding to sns.
+// 		Ex: When the orderLambda publish the order, notificationLambda subscribe the order and send the notification to the use.
 		
 // 		🔁 What happens if the Lambda fails after being triggered by SNS?
-// 			1. If the lambda fails, sns automatically use the retry mechanisam. Don't need to write the our own logic.
-// 			2. After several retries still it's failing, it will move to the DLQ. DLQ is capture the failed event and messages for furthere procedure.
+// 			1. If the lambda fails, sns automatically use the retry mechanism. Don't need to write the our own logic.
+// 			2. After several retries still it's failing, it will move to the DLQ. DLQ is capture the failed event and messages for further procedure.
 // 			3. If we didn't configure the DLQ, we can loose the event or message, we can't recover it and just watch the cloudwatch logs.
 // 	-----------------------------------------------------------------------------------
 // ---> 5. When to use SQS, why to Use?

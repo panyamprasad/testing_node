@@ -54,17 +54,17 @@ console.log('End');
 // We can use try/catch blcok to handle the error.
 // Example:
 
-function main(){
-async function getData(){
-    try{
-        const response = await fetch('https://jsonplaceholder.typicode.com/users');
-        const data = await response.json();
-        console.log('Data : ', data);
-    }catch(error){
-        console.log('Error : ', error);
+function main() {
+    async function getData() {
+        try {
+            const response = await fetch('https://jsonplaceholder.typicode.com/users');
+            const data = await response.json();
+            console.log('Data : ', data);
+        } catch (error) {
+            console.log('Error : ', error);
+        }
     }
- }
- getData();
+    getData();
 }
 main();
 
@@ -81,8 +81,8 @@ main();
 // 3. Arrow function
 // Example:
 // 1. Normal function declaration
-async function foo() {}
+async function foo() { }
 // 2. Function expression
-const bar = async function() {};
+const bar = async function () { };
 // 3. Arrow function
-const baz = async () => {};
+const baz = async () => { };
