@@ -24,6 +24,14 @@
 //     2. Basically we can define the command to run our application, copy the files, dependencies and other configurations.
 //     -------------------------------------------------------------------------------
 
+//---> 3. Docker local testing, steps to run the docker image locally?
+//     Run this commands in terminal:
+//     1. cd ims-api-platform
+//     2. docker compose -f docker/docker-compose-ims-api-customers-portfolios-v1.yaml up --build
+
+
+//     -------------------------------------------------------------------------------
+
 //---> Explain your Jenkins pipeline?
 //     1. When we push the code to git repository, the Jenkins pipeline will trigger automatically.
 //     2. The Jenkins pipeline install the required dependencies, packages, and prepare the environment for the application.
