@@ -56,3 +56,16 @@
 // ------------------------------------------------------------
 
 // 🟡 10. What is a stored procedure in MySQL?
+// Stored procedure means set of SQL statements stored in the database, this we can reuse whenever we needed.
+// Uses: Reusability: Same logic we can use many places.
+//       Performance: Faster because it runs inside DB.
+//       Maintainability: Logic stays in one place.
+//  Ex:
+CREATE PROCEDURE GetCustomers(IN custId INT)
+BEGIN
+SELECT * FROM customers WHERE customer_Id = custId;
+END;
+// -------------------------------------------------------------
+
+
+
