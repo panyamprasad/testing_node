@@ -34,7 +34,7 @@
 //        --> It can execute multiple times during the component lifecycle (unlike ngOnInit, which executes only once).
 //        --> It is commonly used to reload data, apply filters, update UI information, or perform calculations whenever the incoming input value changes.
 // ---------------------------------------------------------
-git c
+
 //     3. ngAfterViewInit
 //     4. ngOnDestroy *
 // ---------------------------------------------------------
