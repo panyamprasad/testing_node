@@ -1,7 +1,7 @@
-// 1. This is Prasad, I have total 8.5 years of experience as a software developer, mainly working on javaScript, typeScript and nodeJs. And also have the experience in flutter for mobile app development.
-// 2. Throughout my career, I've been involved in designing and developing backend services, building RESTFul api's, and integrating the third-party api's like salesforce, and pershing etc. And I have the hands-on experience in databases like sql.
+// 1. This is Prasad, I have total 9 years of experience as a software developer, mainly working on javaScript, typeScript and nodeJs. And also have the experience in angular for front end & flutter for mobile app development.
+// 2. Throughout my career, I've been involved in designing and developing backend services, building RESTFul api's, and integrating the third-party api's like salesforce, and pershing etc. And I have the hands-on experience in databases like mySql.
 // 3. And I always write clean, maintainable and readable code.
-// 4. In my recent role, mainly I focus on the refactoring the old code, and writing the unit testcases for improve the sonarQue qualitygate pass for deployment, and helping team members to solve the issues and epic discussions. And I enjoy problem solving, collaborating with my team.
+// 4. In my recent role, I am using the NestJs framework to develop the restful api's. Mainly I have working on two services like portfolio & contact center api's. And I started working on the refactoring the old code, and writing the unit testcases for improve the sonarQue qualityGate pass for deployment, and helping team members to solve the issues and epic discussions. And I enjoy problem solving, collaborating with my team.
 // 5. And I am participating the production release to ensure and quickly addressing the issues if any thing occur.
 // 6. Going forward, I am looking for opportunities where I can take ownership of end-to-end solutions and contribute the challenging projects.
 

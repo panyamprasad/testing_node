@@ -126,5 +126,11 @@ export class HttpExceptionFilter implements ExceptionFilter {
         });
     }
 }
+//   ----------------------------------------------------------------------------------------------------
 
 // ✅ Q10: How to implement authentication and authorization in NestJS?
+//      1. Authentication & Authorization are generally implemented using Guards in NestJs.
+//      2. Authentication verify the user Identity using the JWT token through the JWTAuthGuard.
+//      3. Once the user verify success, authorization checks whether the use have the respected permissions.
+//      4. Authorization will check using the RolesGuard.
+//   ----------------------------------------------------------------------------------------------------
