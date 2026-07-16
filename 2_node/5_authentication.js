@@ -53,7 +53,7 @@
             // Every request client should send this token along with request body in headers.
             // Server should verify the user and give the response for the request.
             // Uses:
-                // Used for microServices, API'S and React & Amgular.
+                // Used for microServices, API'S and React & Angular.
             
     // 4. OAuth 2.0 Authentication:
             // It is a authorization framework, Using this we can access the third-party application form the service provider without user username & password.
