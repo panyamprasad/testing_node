@@ -35,8 +35,28 @@
 //        --> It is commonly used to reload data, apply filters, update UI information, or perform calculations whenever the incoming input value changes.
 // ---------------------------------------------------------
 
-//     3. ngAfterViewInit
+//     3. ngAfterViewInit *
+//        --> ngAfterViewInit() is one of the Angular Lifecycle Hooks.
+//        --> It executes once after the component view and child views are completely initialized.
+//        --> It is used when we need to access DOM elements, ViewChild references, or child components.
+//        --> Common use cases of this
+//              - Setting focus on input fields, 
+//              - Initializing charts, 
+//              - Working with third-party libraries, and performing UI-related operations.
+//        --> It executes only once after the view is rendered.
+// ---------------------------------------------------------
+
 //     4. ngOnDestroy *
+//        --> ngOnDestroy is one of the Angular Lifecycle Hooks.
+//        --> This will execute when the component is destroyed or removed from the page.
+//        --> Basically will use this for clean up process.
+//        --> For Examples component will start will several thinks like
+//              -- Api Subscriptions
+//              -- Timers
+//              -- Event listeners etc...
+//        --> So when we change component should we close or destroy these all things,
+//            so due to this will handle the memory leak and application performance.
+//        --> And will reduce the unnecessary API processing.
 // ---------------------------------------------------------
 
 // solpa solpa baratha...
