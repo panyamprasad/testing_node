@@ -57,14 +57,14 @@
 //                  1. It is used to change the appearance or behavior of the DOM elements. 
 //                  2. It can change the style, class, or attribute of the DOM elements dynamically.
 //                  3. There are three different types of attribute directives in angular:
-//                      a. ngClass: 
+//                     -> ngClass: 
 //                          1. It is attribute directive, it will changes the look or behavior of the HTML element. 
 //                          2. Used this we can set a CSS class dynamically on an HTML element based on typeScript expression.
-//                      b. ngStyle: 
+//                     -> ngStyle: 
 //                          1. ngStyle directive is used to set a css style dynamically on the HTML element based on the TS expression.
 //                          2. ngStyle is the Attribute directive, it will change the look and behavior of an HTML element.
 //                          3. Used this we can set many inline styles of an HTML element based on expression.
-//                      c. ngModel: It is also attribute directive, used this we can add or remove css classes to HTML element dynamically, based on typeScript expression.
+//                     -> ngModel: It is also attribute directive, used this we can add or remove css classes to HTML element dynamically, based on typeScript expression.
 // --------------------------------------------------------------
 
 //---> Custom Attribute Directives:

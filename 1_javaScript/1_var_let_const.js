@@ -4,7 +4,7 @@
 // We can access this variable inside and outside of the function and we can reassign the value
 console.log(a);
 var a = 10;
-function test(){
+function test() {
     console.log('Before assigned value', a); // undefined because of hoisting concept. 
     var a = 20;
     console.log('Reassigned a to:', a);
@@ -18,9 +18,8 @@ console.log('Outside function a is:', a);
 // Hoisting is applicable if we print the variable before its initialization will get the reference error
 // We can declare the variable inside the function or outside the function but we can't access out side declaration inside the functions.
 // We can reassign the value
-console.log(a);
-function test(){
-    console.log('Before assigned value', a);
+function test() {
+    console.log('Before assigned value', a); // Here we get error because we can' access before initialization.
     let a = 20;
     console.log('Reassigned a to:', a);
 }
@@ -31,28 +30,28 @@ test();
 // Hoisting is applicable if we print the variable before its initialization will get the reference error
 // We can't access outside declaration variable inside the function it's similar to let.
 // We can't reassign the value
-function test(){
+function test() {
     const a = 100;
     console.log('Reassigned a to:', a);
-    a = 300;
+    a = 300; //Here will get the error because we can't reassign the Const..
     console.log('Reassigned a to:', a);
 }
 test()
 //--------------------------------------------------------
 // Var: 
-    // 1. Var is function Scoped.
-    // 2. Reassign and redeclaration is possible.
-    // 3. Hoisting is possible, but without initialization it will give Undefined error.
-    // 4. We can access the variable outside the function.
+// 1. Var is function Scoped.
+// 2. Reassign and redeclaration is possible.
+// 3. Hoisting is possible, but without initialization it will give Undefined error.
+// 4. We can access the variable outside the function.
 
 // Let:
-    // 1. it is Blocked Scoped.
-    // 2. Reassign is possible, but we can't redeclaration.
-    // 3. Hoisting is possible, but without initialization it will give reference error.
-    // 4. We can't access the variable out side the function.
+// 1. it is Blocked Scoped.
+// 2. Reassign is possible, but we can't redeclaration.
+// 3. Hoisting is possible, but without initialization it will give reference error.
+// 4. We can't access the variable out side the function.
 
 // Const:
-    // 1. const is work as similar to let.
-    // 2. But we can't reassign and redeclaration.
-    // 3. We can't access out side the function because it is blocked scope.
-    
+// 1. const is work as similar to let.
+// 2. But we can't reassign and redeclaration.
+// 3. We can't access out side the function because it is blocked scope.
+
