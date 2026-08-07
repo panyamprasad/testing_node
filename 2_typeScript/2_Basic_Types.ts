@@ -34,7 +34,7 @@ let employees: string[] = ['prasad', 'panyam', 'babu']
 //                  Ex:
 let user: [string, number, boolean] = ['prasad', 28, true]
 //
-// ----------------------------------------------------------------------
+//---------------------------------------------------------------------------
 //
 // ---> 4. enum:
 //          1. Using enum we can declare the constants.
@@ -42,7 +42,7 @@ let user: [string, number, boolean] = ['prasad', 28, true]
 //          3. Enums or fixed values with meaningful names.
 enum Role { ADMIN, MANAGER, HR, DEVELOPER }
 //
-// ----------------------------------------------------------------------
+//----------------------------------------------------------------------------
 //
 // ---> 5. What is difference between ANY & UNKNOWN?
 //          1. ANY:
@@ -71,5 +71,29 @@ if (typeof val === "string") {
 //          4. But using UNKNOWN type checking is required.
 //          5. So UNKNOWN is better than ANY.
 // 
-// never
-// void
+// ------------------------------------------------------------------------
+//
+// ---> 6. What is Difference between Interface & Type?
+//          1. Both Interface & Type are using for define the data structures in TypeScript.
+//          2. Using Interface we can declare the object contracts and it will support merging.
+//          3. But Type is more flexible compare to Interface.
+//          4. Using this define objects, Union Types, Tuples, Primitives.
+//          5. So in most object based senarios will use both Interface and Type.
+//          6. But Type preferred most advanced features.
+//          7. Interface will use Object contracts and class implementations. 
+
+// ---> 7. Union:
+//          1. Using Union we can assign the multiple data types to a variable. 
+let value1: string | number;
+//
+// ---> 8. Intersection:
+//          1. Using Intersection we can combined the multiple Types.
+type EmployeeType = {
+    name: 'Prasad'
+}
+
+type Manager = {
+    role: 'test'
+}
+
+type Lead = EmployeeType & Manager;
