@@ -12,7 +12,7 @@
 
 // 3. What are the S3 storage classes?
     // S3 provide different storage classes based on the purpose we can use it.
-    // Standard -- For everyday use we can use this.
+    // Standard -- For everyday we can use this.
                 // It is very cost compare to remaining.
                 // And it is very fast
                 // Data is store in multiple places for safety purpose.
@@ -50,7 +50,7 @@
     // IAM Policies: Provide the permissions user or roles to access the data.
     // Bucket Policies: Apply the rules to the bucket.
     // ACL (Access Control Lists): Grant read/write access to the users.
-    // Presigned Url: This are temporary url use this to read and write the files.
+    // PreDesigned Url: This are temporary url use this to read and write the files.
 
 // 5. Explain S3 Versioning?
     // Versioning means backup. If any file delete or update we can store the previous file or delete file in backup.
