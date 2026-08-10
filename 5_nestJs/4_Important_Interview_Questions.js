@@ -1,3 +1,10 @@
+// ---> Top 5 Questions Asked in Almost Every NestJS Interview
+//          1. What is NestJS?
+//          2. What is Dependency Injection?
+//          3. Difference between Controller and Service?
+//          4. What are Pipes, Guards, and Interceptors?
+//          5. Explain the NestJS Request Lifecycle.
+
 // ✅ Q1: NestJS vs Express?
 //          Both NestJS and Express are popular frameworks for building backend applications in Node.js. But they have different approaches and use cases.
 //  Express:
@@ -133,4 +140,28 @@ export class HttpExceptionFilter implements ExceptionFilter {
 //      2. Authentication verify the user Identity using the JWT token through the JWTAuthGuard.
 //      3. Once the user verify success, authorization checks whether the use have the respected permissions.
 //      4. Authorization will check using the RolesGuard.
+//   ----------------------------------------------------------------------------------------------------
+
+// ✅ Q11: What is the difference between Monorepo and Microservice architecture in NestJS?
+//      1. Monorepo: All apps/services in a single repo with shared code.
+//      2. Microservice: Independent services communicating via events/messages.
+//      3. NestJS supports both.
+//   ----------------------------------------------------------------------------------------------------
+
+// ✅ Q12: What are the Decorators in NestJs?
+//      1. Decorators are special functions, It will add Metadata in Classes, methods, Parameters or properties.
+//      2. Using this we can find the:
+//          1. Which class is a Controller.
+//          2. Which class is a Service
+//          3. Which method handles the Get/Post/ Put requests.
+//          4. Which properties contains request body.
+//          5. Which route needs authorization.
+//      3. Without Decorators, NestJs didn't understand how the application is structured.
+//      4. There are different types of decorators are there.
+//          1. @Controller()
+//          2. @Injectable()
+//          3. @Get/ @Post/ @Put/ @Delete
+//          4. @Body()
+//          5. @Param()
+//          6. @Query()
 //   ----------------------------------------------------------------------------------------------------

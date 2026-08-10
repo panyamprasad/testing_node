@@ -1,13 +1,12 @@
-let a = {
-        a:1,
-        b:2,
-        c:{
-            d:2
-        }
-    }; 
-    let b = a 
-    b.a = 3 
-    b.c.d = 3; 
-    console.log(b.a) 
-    console.log(a.a) 
-    console.log(a.c.d)
+function removeDupliates(arr){
+    const unique = {};
+
+    for(let val of arr){
+        unique[val] = unique[val] ? unique[val] + 1 : 1;
+    }
+
+    return [...new Set(arr)].sort((a,b) => unique[b] - unique[a])
+}
+
+
+console.log(removeDupliates([1,2,1,2,3,2,3,4,3,4,5,4,5]))

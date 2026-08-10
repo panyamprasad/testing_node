@@ -1,7 +1,7 @@
 // Var examples
 // Var is function scoped
 // Hoisting is applicable if we print the variable before its declarations will get the undefined
-// We can access this variable inside and outside of the function and we can reassign the value
+// We can access this variable outside of the function and we can reassign the value
 console.log(a);
 var a = 10;
 function test() {
@@ -55,3 +55,21 @@ test()
 // 2. But we can't reassign and redeclaration.
 // 3. We can't access out side the function because it is blocked scope.
 
+// --------------------------------
+for (var i = 0; i < 3; i++) {
+    setTimeout(() => {
+        console.log(i);
+    }, 1000);
+}
+
+for (let i = 0; i < 3; i++) {
+    setTimeout(() => {
+        console.log(i);
+    }, 1000);
+}
+
+// What is Output of this?
+// 1. The output of 1st loop is 3 3 3 will come. Why because Using Var the loop will share only one variable, by that time the loop will execute, so same value will print.
+// 2. Coming to the let, javaScript will create new block for every iteration. So Each callback capture new value. So it will print 0 1 2.
+
+//--> The difference is because var is function-scoped and shared across iterations, while let is block-scoped and creates a new block for each loop iteration.

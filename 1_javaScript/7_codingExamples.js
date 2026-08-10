@@ -139,6 +139,7 @@ function removeDuplicate() {
             return true;
         })
     }
+    console.log('Completed Outer scope');
 }
 
 const removeDup = removeDuplicate();

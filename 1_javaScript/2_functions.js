@@ -1,6 +1,6 @@
 // Functions:
 // Normal Function
-function test(){
+function test() {
     return console.log("Hello world");
 }
 
@@ -22,12 +22,12 @@ arrowTest();
 //Example:
 const obj = {
     value: 100,
-    normalFunc: function() {
+    normalFunc: function () {
         console.log(this.value);
     },
     arrowFunc: () => {
-            console.log(this.value);
-        }
+        console.log(this.value);
+    }
 };
 obj.normalFunc(); // 100
 obj.arrowFunc(); // undefined
@@ -37,8 +37,8 @@ obj.arrowFunc(); // undefined
 // It will take the this from the parent scopt.
 // Example:
 const obj1 = {
-    value : 100,
-    function (){
+    value: 100,
+    function() {
         const arrow = () => {
             console.log('Arrow Function : ', this.value);
         }
