@@ -21,22 +21,23 @@
         // 1. Http
         // 2. Rest api
         // 3. Websocket api
-    // After 2020, http api is more popular and using new projects. 
+    // After 2020, http api is more popular and using new projects.
 //-----------------------------------------------------------------------------
 
 // 3. What is difference between REST API/ Http API / WebSocket api?
     // Rest API:
-        // Rest api is fully featured like (authentication, caching, mapping templates)
+        // Rest Api is fully featured and supports all the features of API Gateway. It have the authentication, authorization, caching, throttling, and monitoring capabilities.
         // But it is slower and more expensive.
         // Best for the complex api's with many rules and security.
     
     // HTTP API:
         // It is faster and cheaper compare to Rest api.
-        // Support basic features like auth, jwt, cors like
+        // Support basic features like auth, jwt, cors like.
         // Best for simple and new api's.
     
     // Websocket api:
-        // Used for real time, 2 way communication like chat app will use this.
+        // It will support for the bi-directional communication between client and server.
+        // It is best for real-time applications like chat, gaming, and live updates.
 //-----------------------------------------------------------------------------------
 
 // How does API Gateway integrate with Lambda?
@@ -76,7 +77,7 @@
 //-----------------------------------------------------------------------------------
 
 // What is caching in API Gateway?
-    // We can enable the caching in api gateway, it will story the response in cache for temporary use. To avoid the repeated api calls and improve the performance.
+    // We can enable the caching in api gateway, it will store the response in cache for temporary use. To avoid the repeated api calls and improve the performance.
 //-----------------------------------------------------------------------------------
 
 // What are the stage url's?
@@ -149,6 +150,8 @@
 
         // How will genarate the pre-signed url?
             // To genarate pre-signed url we can install the aws-sdk and use this we can genarate the url.
+            // And we need AWS credentials to access the S3 bucket. And we can set the expiry time for this url.
+            // For Large files we can use multipart upload, each upload will get id and genarate the url for each part.
 
         // What is pre-signed url?
             // Pre-signed url is the temporary, and secure url, It will gives the user permission like upload and download the file to s3 bucket without exposing the aws credentials.
@@ -186,4 +189,19 @@
     // 4. Most of the time will figure out like undefined or timeout issues are coming.
 
 //---------------------------------------------------------------------
-            
+
+//---> 1. What is an API Gateway?
+//      -> API Gateway is single entry point to the backend services.
+//      -> Using this we can create, manage and publish the api's.
+//      -> If Client send a request Gateway verify the request, and process the further and check the route and assign to respective function.
+//      -> Collect the response from the lambda assign to the client.
+
+//---> 2. Why do we need API Gateway?
+//      -> Single entry point
+//      -> Authentication & Authorization
+//      -> Rate limiting
+//      -> Request Routing, monitoring the logging etc.
+
+//---> 3. What is Rate limiting?
+//      -> Rate limiting is how many request a client can send within a time period.
+//      -> Ex: Per min 100 request. if it cross throw an error 429  too many request.

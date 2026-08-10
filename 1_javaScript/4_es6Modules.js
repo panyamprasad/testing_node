@@ -30,11 +30,11 @@ console.log(age); // 38
 //------------------------------------------------------------------------------
 
 // -------------- Sperd Operator and Rest Operator ----------------
-// Speard Operator and Rest Operator both are same but they are used in different ways.
-// Sperad Operator is used to copy the values from two or more array and object variables.
+// Sperd Operator and Rest Operator both are same but they are used in different ways.
+// Sperd Operator is used to copy the values from two or more array and object variables.
 // Rest Operator is used to collect the array and object variables.
 // Example:
-// 1. Speard Operator
+// 1. Sperd Operator
 const array1 = [1, 2, 3]; 4
 const array2 = [4, 5, 6];
 const combinedArray = [...array1, ...array2];

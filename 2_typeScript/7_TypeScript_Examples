@@ -1,0 +1,45 @@
+//--> 1. Create a Interface and Use It.
+interface Employee {
+    id: number;
+    name: string;
+    email: string;
+}
+
+function employeeDetails(emp: Employee): void {
+    console.log(
+        `${emp.id} - ${emp.name} - ${emp.email}`
+    );
+}
+const employee: Employee = {
+    id: 1001,
+    name: 'Prasad',
+    email: 'helloprasad88@gmail.com'
+}
+
+employeeDetails(employee);
+//--------------------------------------------------
+
+//--> 2. Write a Generic function?
+function getValue<T>(value: T): T {
+    return value;
+}
+
+console.log(getValue("Praad"));
+console.log(getValue(500));
+//--------------------------------------------------
+
+//--> 3. Union Types Example
+function getUser(id: number | string): void {
+    return;
+}
+getUser(1001);
+getUser('Prasad');
+//--------------------------------------------------
+
+//--> 4. Async/Await Coding Question?
+async function getUsers() {
+    const response = await fetch('https://jsonplaceholder.typicode.com/users');
+    const data = await response.json();
+
+    return data;
+}
