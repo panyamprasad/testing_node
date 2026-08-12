@@ -10,11 +10,11 @@
                 // Makes code cleaner using .then and .catch().
                 // But still long chain become hard to read the code.
         // 3. Async/Await
-                // To avoid the above problames the async/await is came to handle the async operations like sync way.
+                // To avoid the above problems the async/await is came to handle the async operations like sync way.
                 // It is easy to handle the code in try/catch block way.
         
         //-- OneLiner:
-            // Callback is came first but cause the callback hell. Avoid this introduced Promises with chaining process, even the hard to read the code. So async/awiait is the process to handle the async operations like sync way, it is easy to handle the code use the try/catch block.
+            // Callback is came first but cause the callback hell. Avoid this introduced Promises with chaining process, even the hard to read the code. So async/await is the process to handle the async operations like sync way, it is easy to handle the code use the try/catch block.
     //-------------------------------------------------------------
 
         // How does Node.js achieve scalability on multi-core systems?

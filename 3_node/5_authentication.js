@@ -33,10 +33,10 @@
     test();
 //-------------------------------------------------------------
 // Types of Authentications:
-    // 1. Basic Authenticaiton:
+    // 1. Basic Authentication:
             // Basic authentication sends userName and Password encoded in base64 on every request.
             // It is simple but not secure.
-            // Only for simple api's, not for producation public api's.
+            // Only for simple api's, not for production public api's.
 
     // 2. Session Based Authentication:
             // When user login the server creates a sessionID and stores the user details in db or memory.
@@ -61,30 +61,68 @@
             // The use login in google, facebook, github etc.
 
 // ------------------------------------------------------------------
-    // Common Interview Questions:
+// Common Interview Questions:
 
-    // Difference between authentication & authorizations?
-    // Ans:
-            // Authentication: Authentication verify the user identity.
-            // Authorizations: Authorization means permissions, based on role should we provide the access.
-    
-    //  What is difference between Session / JWT tokens?
-    // Ans:
-            // Session token: When user login, server store the user data in db and creates the sessionID. And every request should we send this sessionId or cookie, server verify the id and find the user.
-            // JWT token: After login the server creates the signed token with user data, it includes user ID or role. Every request should send this token in headers and server identify the user and give the response.
-    
-    // What is Oauth 2.0?
-    // Ans:
-            // OAuth 2.0 is using to get the access for third-party providers like google, github. No need to send the userName and password. Application get the access token from the providers.
-    
-    // What is general approach to securing the login system?
-        // HTTPS
-        // Password security (bcrypt hashing)
-        // JWT/Session
-        // Input Validation
-        // Helmet
-    
-    // How do you secure JWT tokens in Node.js?
-        // Always sending the JWT's over https to keep them safe.
-        // Always use the strong secret key's from environment variables.
-        // Verify the token on every request and use the refresh tokens or blacklisting for logout.
+//---> How are you using the authentication and token storage, and how you are use the refresh token and expire time?
+//      1. When a user logs the server verify the user details and generate the JWT token with user details.
+//      2. It will provide to client and client store this in safe place and secure storage.
+//      3. And send this in each and every request from Header section.
+//      3. So server verify the token and give the necessary permissions and response.
+//      4. So similar along with access token server sent refresh token also.
+//      5. The access token usually expire with in 15 to 20 min time period.
+//      6. But refresh token will take max 7 to 30 days time for expire.
+//      7. When the access token expire the client use the refresh token and get the new access token.
+//      8. Due to this the session will continue.
+// ------------------------------------------------------------------
+
+//---> What is the OAuth2?
+//      1. OAuth2 is authorization framework, it will allow user to log in using trusted provider.
+//      2. Like Google, Microsoft, Azure etc. Instead of create and manage passwords in every application.
+// ------------------------------------------------------------------
+
+//---> How do you implement OAuth2 in NestJS?
+//      1. First we register application with an identity provider such as Google, Azure, Cognito or AuthO.
+//      2. We configure the Passport strategy in NestJs.
+//      3. When user click the login, they are redirect the Identity provider.
+//      4. After successful authentication, provider return the authorization code.
+//      5. Using this exchanged for tokens.
+//      6. NestJs retrieves the user details, optionally genarate the JWT.
+//      7. And use JWT guards to protect APIs.
+// ------------------------------------------------------------------
+
+//---> Why use Oauth2 instead of JWT?
+//      1. JWT only token format.
+//      2. OAuth2 provide complete secure login process using trusted identity like google, azure etc.
+//      3. It will provide the single sign-on and MFA support.
+// ------------------------------------------------------------------
+
+//---> Difference between authentication & authorizations?
+//      1. Authentication: Authentication verify the user identity.
+//      2. Authorizations: Authorization means permissions, based on role should we provide the access.
+// ------------------------------------------------------------------
+
+//---> What is difference between Session / JWT tokens?
+//      1. Session token: When user login, server store the user data in db and creates the sessionID. 
+//      2. And every request should we send this sessionId or cookie, server verify the id and find the user.
+//      3. JWT token: After login the server creates the signed token with user data, it includes user ID or role. 
+//      4. Every request should send this token in headers and server identify the user and give the response.
+// ------------------------------------------------------------------
+
+//---> What is Oauth 2.0?
+//      1. OAuth 2.0 is using to get the access for third-party providers like google, github. 
+//      2. No need to send the userName and password. Application get the access token from the providers.
+// ------------------------------------------------------------------
+
+//---> What is general approach to securing the login system?
+//      1. HTTPS
+//      2. Password security (bcrypt hashing)
+//      3. JWT/Session
+//      4. Input Validation
+//      5. Helmet
+// ------------------------------------------------------------------
+
+//---> How do you secure JWT tokens in Node.js?
+//      1. Always sending the JWT's over https to keep them safe.
+//      2. Always use the strong secret key's from environment variables.
+//      3. Verify the token on every request and use the refresh tokens or blacklisting for logout.
+// ------------------------------------------------------------------

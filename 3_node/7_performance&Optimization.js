@@ -4,7 +4,7 @@
     // 1. Always use the async methods to keep the event loop free and responsive.
     // 2. Always use the cluster. It will allows the multiple node processes and handle more requests.
     // 3. Use the catching. It store the frequently used data into the memory or Radis, so the response will spread up.
-    // 4. Use the streams. Stream is loading the data, the data will come piece by piece instend of loading total data at once.
+    // 4. Use the streams. Stream is loading the data, the data will come piece by piece instead of loading total data at once.
     // 5. Avoid th unnecessary middleware in express. Load only what we need.
 
 // Common Interview questions and answers:
@@ -30,3 +30,16 @@
     // 3. The functions will connect to a serverless database (dynamoDb or firebase) to store the data.
     // 4. I will use JWT or Cognito token for security purpose.
     // 5. And I will add logging, error handling for monitoring to track the performance and issues.
+
+//----------------------------------------------------------------------------------------------------------------
+
+// What is the Work Threads? What is Cluster?
+//  Work Threads: (Handle Heavy Work)
+//          1. Work thread are allows us to run CPU intensive tasks in separate threads.
+//          2. So the main event loop will work without blocking.
+//          3. Work threads use in PDF Generation, image processing and large data calculations.
+
+//  Cluster: (Handle More Requests)
+//          1. Cluster allow us to create multiple Node.Js processes to use all CPU cores.
+//          2. And it will handle the more requests.
+//          3. Basically use this for high-traffic APIs and web servers.

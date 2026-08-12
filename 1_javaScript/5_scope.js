@@ -34,7 +34,13 @@ function outer() {
     inner();
 } outer();
 
-// Closers:
+//---> Closers:
+//      1. Closer is a function, it will remembers the variables from it's outer scope, even the Outer scope execution is complete.
+//      2. Using the closer innerfunction can the access the variables from it's outer scope.
+//      3. Mainly use of Closer is data privacy, asynchronous callbacks.
+//      4. Disadvantage is memory leak. So carefully we have to use this.
+//      5. Always clean up unused references, subscriptions and timers.
+//
 // Closer means if a function is accessing the variable from the outer function even after completing the outer function execution,it's called closer.
 // Example:
 function outer() {

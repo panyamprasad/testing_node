@@ -48,3 +48,45 @@ const obj1 = {
 obj1.function(); // Arrow Function : 100
 
 // ------------------------------------------------------------------------------
+
+// ---> When to use Normal Functions & Arrow functions?
+//  ✅ Normal Function → Object methods, class methods, this, arguments, hoisting.
+
+//  ✅ Arrow Function → map(), filter(), reduce(), subscribe(), setTimeout(), callbacks, and when you want the parent scope's this.
+
+//      Normal Functions:
+//          1. If we want to own this, we can use the Normal functions.
+//          2. If we need arguments we use the normal functions.
+//          3. We want to define objects, classes will use normal functions.
+//          4. And the normal functions are support hoisting.
+//          Ex:
+            const employee = {
+                name: 'Prasad',
+
+                displayName: function() {
+                    console.log(this.name);
+                }
+            };
+            employee.displayName();
+
+//      Arrow Functions:
+//          1. Arrow functions are using for shorter syntax.
+//          2. This will come parent scope.
+//          3. Use this we can write callbacks, filter, setTimeout ans subscribe functions.
+
+            Ex:1 
+                    const add = (a, b) => a+b;
+
+            Ex:2
+                    const obj1 = {
+                        val : 100,
+                        function(){
+                            const arrow = () => {
+                                console.log(this.val);
+                            }
+                            arrow();
+                        }
+                    }
+                    obj1.function();
+
+            
