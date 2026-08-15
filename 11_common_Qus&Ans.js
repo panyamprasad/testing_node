@@ -482,6 +482,7 @@ if ('AWS') {
         //          2. Instead of write the same code in multiple functions, we can keep it one place and reuse them.
         //          3. Due to this we reduce the duplication, and increase the performance.
         //          4. And deployment package size also reduce.
+        //
     }
     //      
     if ('API_Gateway') {
@@ -490,19 +491,18 @@ if ('AWS') {
         //          2. Using gateway we can create, modify and publish the api's.
         //          3. Using gateway we can validate the request, check the permissions, if everything is correct it will allow
         //              backend service otherwise throw error.
-        //          4. Using Gateway we can handle the cashing also in gateway level, instead of repeated api calls will use
-        //              caching and get the data.
+        //          4. Cashing also in gateway level, instead of repeated api calls will use caching and get the data.
         //          5. It will handle the Rate limit. Rate limit means per sec how many requests user can perform. If it's cross
         //              throw the to many request error.
         //          6. Using this we do the backend integration also.
         //
         //      2. How API Gateway will works with Lambda?
-        //          1. Basically we gateway receive the request from client or user, gateway verify the request.
+        //          1. When gateway receive the request from client or user, gateway verify the request.
         //          2. If user is verify and have the valid permissions, gateway process the request to routing.
         //          3. Based on the request method it will route the specific lambda function what we configure.
         //          4. Once lambda execution is done get the data from db or other services it will provide the response
         //             back to gateway.
-        //          5. Gateway verify the request and give back to user or client.
+        //          5. Gateway verify the response and give back to user or client.
         //
         //      3. Types of API's?
         //          - There are total 3 types of API's are there.
@@ -575,19 +575,36 @@ if ('AWS') {
     //
     else {
         //      6. Scenario-Based Questions (Very Important)?
-        //          1. How would you build a file upload System?
+        //
+        //          1. Your API was responding in 200ms earlier, now it takes 5 seconds. What will you do?
+        //              1. First I will check the Cloud watch logs and metrics.
+        //              2. Then I will check the issue is in 
+        //                      - lambda execution, 
+        //                      - database quires,
+        //                      - External Api calls,
+        //                      - Cold start
+        //              3. Then I will find the root cause and fix the issue and recheck again.
+        //          -------------------------------------------------------
+        //
+        //          2. Yesterday API received 1,000 requests/hour. Today it receives 100,000 requests/hour. What will you do?
+        //              1. First I will check the cloud watch logs and metrics.
+        //              2. Then i will verify the lambda is throttling, due to more requests.
+        //              3. If needed, I will increase the concurrency and use SQS for buffer request.
+        //          -------------------------------------------------------
+        //
+        //          2. How would you build a file upload System?
         //              Answer: API Gateway → Lambda → Generate Pre-Signed URL → S3.
         //
-        //          2. How would process 1million orders asynchronously?
+        //          3. How would process 1million orders asynchronously?
         //              Answer: API Gateway → Lambda → SQS → Worker Lambda → DynamoDB.
         //
-        //          3. How would you send notifications to multiple systems?
+        //          4. How would you send notifications to multiple systems?
         //              Answer: SNS Topic → Multiple subscribers (Email, Lambda, SQS).
         //
-        //          4. How would you prevent lambda timeout issues?
+        //          5. How would you prevent lambda timeout issues?
         //              Answer: Use SQS, Step Functions, optimize code, increase memory.
         //
-        //          5. How would you secure a serverless API?
+        //          6. How would you secure a serverless API?
         //              Answer: API Gateway + Cognito/JWT + IAM + WAF
     }
 }
@@ -596,7 +613,7 @@ if ('AWS') {
 if ('Project Overview') {
     // Project overview:
     //      1. IMS api platform is a NestJS-based microservices platform, it will provides APIs for various insurance & Money services.
-    //      2. It contains different types of services or there like Portfolios, Customer Forms, Documents, Pay by Voucher, preference etc.
+    //      2. It contains different types of services like Portfolios, Customer Forms, Documents, Pay by Voucher, preference etc.
     //      3. We use a monoRepo architecture, with npm Workspaces and TurboRepo to manage multiple service's 
     //          and shared libraries in single repo.
     //      4. The services are developed using NestJS, Node.js, and TypeScript, and we use the Jest framework for unit testing.
@@ -753,8 +770,8 @@ if ('System_Design') {
 
 if ('Third_party_Integration') {
     // 1. Have you worked on third-party integrations?
-    //      1. Yes, In my current IMS project, we integrated external Tesco services in NestJs HttpService.
-    //      2. We communicate with third-party REST APIs over HTTPS.
+    //      1. Yes, In my current IMS project, we integrated external Tesco services using the external tesco url.
+    //      2. NestJs HttpService is commonly used to communicate with external system.
     //      3. Will send the Bearer access tokens and custom headers, will retrieve the address information.
     //      4. And will handle the error responses, log requests using correlation id's.
     //      5. And transform the request before sending to the consumers.
