@@ -680,9 +680,74 @@ if ('MicroServices') {
 
 if ('System_Design') {
 
-    // File Upload Service
-    // Inventory Management
-    // Notification System
+    // URL Shortener
+    // --------------------------------------------------------
+    //
+    //--->  Notification Service:
+    //
+    //      1. First, I would understand the what types of notifications the system need to send, such as Email, SMS, mobile Push notifications.
+    //      2. Then will create notification api, using this other applications can send notification request.
+    //      3. Instead of sending notifications directly, will place the requests into the Queue. It will help the system can handle
+    //          large traffic, and if any service temporarily down we can't loose the request.
+    //      4. And will maintain the notification templates instead of hardcode, once we got the request, based on type will 
+    //          get the template and process it.
+    //      4. Then separate work services process the queued messages and send them through the appropriate channel, 
+    //          such as email, sms or push notifications.
+    //      5. And will store the notification history in database, so we can track whether the notification was success or failure.
+    //      6. If any notification fails will use the retry mechanism, after several retries still it's failing.
+    //      7. Will use the DLQ, will store failed event, for further investigation.
+    //      8. Also we provide the user preferences so user can select which notification they need.
+    //      9. To avoid duplicate notification, will check each request process only once.
+    //      10. Finally will monitor the system, to track failures, status and overall performance.
+    //
+    // --------------------------------------------------------
+    //
+    //---> Payment System
+    //
+    //      1. First, I would understand the requirement like users to make payment, payment status and handling failures and refunds.
+    //      2. When user clicks the pay button, the payment request is sent to Payment service.
+    //      3. Payment service validate the requests and send it to payment provider or bank for processing.
+    //      4. Once the payment is completed, will store the payment status in database and send notification to user,
+    //          whether it's success or failure.
+    //      5. To handle the high traffic, will use the queue so payment processing will go smoothly, and we can't loose failed
+    //          requests.
+    //      6. And will handle the duplicate payments using the unique Transaction Id for every payment.
+    //      7. If any external payment provider failed temporarily, will handle the retry mechanism, and maintain the proper logs
+    //          for investigation and tracking purpose.
+    //      8. Finally will monitor payment success rates, failures and response times.
+    //
+    // --------------------------------------------------------
+    //
+    //---> Order Management System
+    //
+    //      1. First, I would understand the requirement, the system should do the create order, track order, Update order status
+    //          cancel order, Notify order.
+    //      2. When user placed an order, 1st will check the inventory, the product is available or not, if yes will process,
+    //          else will stop the order.
+    //      3. If stock exist will process the payment, if payment success will place the order else not place order.
+    //      4. After payment success will save the order details in db for tracking purpose.
+    //      5. And will send notification to user.
+    //      6. Based on the order status will update the status like : PLACE - PACKED - SHIPPED - OUT OF DELIVERY - DELIVERED.
+    //      7. If customer cancel the order based on requirement will cancel, refund the amount and notify the user.
+    //      8. And will handle the failures such as payments issues, notification issues.
+    //
+    // --------------------------------------------------------
+    //
+    // E-commerce Platform
+    //      1. In E-commerce platform, will use the both synchronous & Event driven communication, because here Inventory &
+    //          payment processing is both are synchronous.
+    //      2. Without these we can process the order.
+    //      3. When user click the Place-Order, we have to check the inventory, if stock available will process the payment.
+    //      4. Once payment is done will create the order, and store the data in db.
+    //      5. After order creation instead of sending notification directly, will use Event driven, will publish the event.
+    //      6. So order service publish and event to SNS, SNS can copies event to all queues. Like
+    //          - Payment Queue
+    //          - Notification Queue
+    //      7. Each service process independently. If anything fails do the retry and process them.
+    //
+    // --------------------------------------------------------
+    //
+    // File Upload Service (S3)
 }
 //----------------------------------------------------------------------------------------------------------------------------
 
