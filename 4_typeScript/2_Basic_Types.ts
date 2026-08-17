@@ -1,51 +1,99 @@
-// 🟢 1. Introduction & Setup
+// 🟢 2. Basic Types
 
-//---> 1. What is TypeScript
-//          1. TypeScript is the superSet of JavaScript.
-//          2. Using typeScript we can add the static typing.
-//          3. Using static typing we can find the errors at compile time only.
-//          4. So Typescript helps catch errors during development time.
-//          5. Ex:
-let age: number = 50;
-// -----------------------------
+// ---> 1. string, number, boolean
+//          1. string: Using this we can declare string values like name.. And declare this inside the braces.
+//          2. number: Using this we can declared only number values.. like age, amount like that.
+//          3. Boolean: Boolean means true or false using this we can check conditions.
 //
-//---> 2. JavaScript vs TypeScript
-//          1. JavaScript:
-//              A. JavaScript is the scripting language, used for web development.
-//              B. It is dynamically typed.
-//              C. Using JS, Errors are found at run time.
-//              D. No need to define the DataType.
-//              E. Easy to learn and it is better for small projects.
-//              Why:
-//                  - Simple & Quick to write.
-//                  - Best for small applications
-//                  - Supports all the browsers.
+// ----------------------------------------------------------------------
 //
-//          2. TypeScript:
-//              A. TypeScript is superset of JavaScript, developed by Microsoft.
-//              B. It is Statically typed.
-//              C. Found the errors at development time.
-//              D. It will support for type definitions.
-//              E. Better for enterprise applications.
-//              Why:
-//                  - It will catch the error at development time.
-//                  - Get the best suggestions in IDEs like VSCode
-//                  - Best for large codebases and easier to modify.
+// ---> 2. null, undefined
+//          1. Null: Used when the developer intentionally indicate 'no value' it means null.
+//                  let user = null;
 //
-//          3. So JavaScript = Flexibility... TypeScript = Safety + Scalability.
-// -----------------------------
+//          2. Undefined: After variable declaration, if we can't assign any value it will give undefined.
+//                  let name;
+//                   console.log(name); -- output: undefined
+// ----------------------------------------------------------------------
 //
-//---> 3. Compilation (tsc)
-//          1. TSC is the typeScript compiler file.
-//          2. It will check TS code and check the type safety and errors.
-//          3. And it will convert the TS file to JS file.
-//          4. Because we can't run the ts file directly in browser and NodeJs.
-//          5. Using the below command we can install the typeScript.
-//              - npm install -g typescript
-//-----------------------------
+// ---> 3. array, tuple:
+//          1. Array:
+//                  1. Array stores multiple values with same data type.
+//                  2. There is no fixed length of size, dynamically it will take.
+//                  3. Easily we can iterate the data.
+//                  4. Collection of similar data.
+//                  Ex:
+let employees: string[] = ['prasad', 'panyam', 'babu']
 //
-//---> 4. What is tsconfig.json?
-//          1. tsconfig.json file is the configuration file for the TypeScript compiler.
-//          2. Inside this file we can define the how TS file should be compile into JS.
-//          3. And inside this file we can declare what files should include, JS versions, rules everything will declare.
-//          4. And where to put Output also will declare.
+//          2. Tuple:
+//                  1. Using tuple we can store the multiple types of data.
+//                  2. When we now the exact size and format of data will use the Tuple.
+//                  3. And order is mandatory using tuple. If we miss the order throw the error.
+//                  4. We have declare type like [string, boolean, number]
+//                  5. So when we have fixed size, different type and position will go with this.
+//                  Ex:
+let user: [string, number, boolean] = ['prasad', 28, true]
+//
+//---------------------------------------------------------------------------
+//
+// ---> 4. enum:
+//          1. Using enum we can declare the constants.
+//          2. Like Role Names, Departments, Insurance types like that.
+//          3. Enums or fixed values with meaningful names.
+enum Role { ADMIN, MANAGER, HR, DEVELOPER }
+//
+//----------------------------------------------------------------------------
+//
+// ---> 5. What is difference between ANY & UNKNOWN?
+//          1. ANY:
+//              1. Any means will not check the data type. We can assign any value.
+//              2. But using any will miss the type safety. And it will risky
+//              3. Why it's risky means if will assign a value as number... 
+//              4. After that somewhere if will convert same value as uppercase that time will get error at run time.
+let value: any = "Hello";
+
+value.toUpperCase(); // ✅ No Error
+
+value = 100;
+value.toUpperCase(); // ✅ Compiles but crashes at runtime
+//
+//          2. Unknown:
+//              1. Compare to ANY unknown is safer.
+//              2. When use Unknown we have to check the type.   
+//              3. Recommended for unknown data like API response, userData etc.
+let val: unknown = "Hello";
+
+if (typeof val === "string") {
+    console.log(val.toUpperCase());
+}
+//  
+//          3. Both ANY & UNKNOWN can store any type of value. The difference is that ANY disables the type checking.
+//          4. But using UNKNOWN type checking is required.
+//          5. So UNKNOWN is better than ANY.
+// 
+// ------------------------------------------------------------------------
+//
+// ---> 6. What is Difference between Interface & Type?
+//          1. Both Interface & Type are using for define the data structures in TypeScript.
+//          2. Using Interface we can declare the object contracts and it will support merging.
+//          3. But Type is more flexible compare to Interface.
+//          4. Using this define objects, Union Types, Tuples, Primitives.
+//          5. So in most object based senarios will use both Interface and Type.
+//          6. But Type preferred most advanced features.
+//          7. Interface will use Object contracts and class implementations. 
+
+// ---> 7. Union:
+//          1. Using Union we can assign the multiple data types to a variable. 
+let value1: string | number;
+//
+// ---> 8. Intersection:
+//          1. Using Intersection we can combined the multiple Types.
+type EmployeeType = {
+    name: 'Prasad'
+}
+
+type Manager = {
+    role: 'test'
+}
+
+type Lead = EmployeeType & Manager;
