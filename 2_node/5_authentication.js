@@ -56,9 +56,10 @@
                 // Used for microServices, API'S and React & Angular.
             
     // 4. OAuth 2.0 Authentication:
-            // It is a authorization framework, Using this we can access the third-party application form the service provider without user username & password.
+            // OAuth 2.0 is the authorization framework, 
+            // It will allow users to login in Trusted providers like Google, Azure, microsoft like that.
+            // Using this we can access the third-party application without sharing username & password.
             // Instead of sharing the user details we can get the permission for the application access and their resources.
-            // The use login in google, facebook, github etc.
 
 // ------------------------------------------------------------------
     // Common Interview Questions:

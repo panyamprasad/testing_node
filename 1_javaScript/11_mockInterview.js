@@ -22,13 +22,12 @@
 
 // -------------------------
 
-// 3. What is the difference between call, apply, and bind in JavaScript?
+//---> 3. What is the difference between call, apply, and bind in JavaScript?
 
-// Ans:
-// CAll , apply, bind this three are the methods in javaScript.
-// In call we can use this pass the comma separated arguments it will execute immediately.
-// Using apply we can pass the array values as a arguments, it will also execute immediately.
-// Bind will not execute immediately and we didn't pass any arguments.
+//      1. CAll, apply, bind are three different methods in javaScript.\
+//      2. Using the CALL we can invoke the function and we can execute immediately, will pass variables common separated.
+//      3. Using the APPLY we can invoke the function and execute immediately, will pass variables array format.
+//      4. Using the Bind we can't invoke function, will create new function, it will execute later.
 
 // ------------------------=
 

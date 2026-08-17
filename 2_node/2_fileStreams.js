@@ -3,12 +3,12 @@
 //      1. Node js have the in build function as fs module(file system).
 //      2. The file system allows us to read, write, update, delete and rename the files, in both synchronously and asynchronously.
 //  Example:
-        const fs = require('fs'); // import fs from 'fs'; --ES6
-        const { threadCpuUsage } = require('process');
-        fs.readFile('C:/Users/prasad/OneDrive/Desktop/VCM/JavaScript/eventLoop.txt', 'utf8', (err, res) => {
-            if(err) throw err;
-            console.log("File data : ",+ res.length);
-        });
+const fs = require('fs'); // import fs from 'fs'; --ES6
+const { threadCpuUsage } = require('process');
+fs.readFile('C:/Users/prasad/OneDrive/Desktop/VCM/JavaScript/eventLoop.txt', 'utf8', (err, res) => {
+    if (err) throw err;
+    console.log("File data : ", + res.length);
+});
 
 // --- Stream ---
 //      1. Stream is nothing but way to handle the file. 
@@ -20,16 +20,16 @@
 //          3. Duplex --> Both read and write
 //          4. Transform --> Modify the data.
 //      Example:
-            // const fs = require('fs');
-            const fileStream = fs.createReadStream('C:/Users/prasad/OneDrive/Desktop/VCM/JavaScript/eventLoop.txt', 'utf-8');
+// const fs = require('fs');
+const fileStream = fs.createReadStream('C:/Users/prasad/OneDrive/Desktop/VCM/JavaScript/eventLoop.txt', 'utf-8');
 
-            fileStream.on('data', (chunk) => {
-                console.log("Reading data : ", chunk.length);
-            });
+fileStream.on('data', (chunk) => {
+    console.log("Reading data : ", chunk.length);
+});
 
-            fileStream.on('end', () =>{
-                console.log("Completed....")
-            })
+fileStream.on('end', () => {
+    console.log("Completed....")
+})
 
 // -- What is Backpressure in Node.js? --
 //      1. Backpressure is a flow control mechanism in NodeJs Streams.
@@ -56,20 +56,20 @@
 //          2. It hold the binary data when reading/writing the file.
 //          3. Once it's done it will process.
 //          Example:
-                const buffer = Buffer.from("Hello");
-                console.log(buffer);
+const buffer = Buffer.from("Hello");
+console.log(buffer);
 
 //      Stream:
 //          1. Stream is like a pipeline.
 //          2. It will read the file piece by piece instead of waiting for full file.
 //          3. It will work for large files like video/audio etc.
 //          Example:
-            // const fs = require('fs');
-            const stream = fs.createReadStream('C:/Users/prasad/OneDrive/Desktop/VCM/JavaScript/eventLoop.txt', 'utf-8');
+// const fs = require('fs');
+const stream = fs.createReadStream('C:/Users/prasad/OneDrive/Desktop/VCM/JavaScript/eventLoop.txt', 'utf-8');
 
-            stream.on('data', chunk => {
-                console.log('Stram data : ' ,chunk.length);
-            })
+stream.on('data', chunk => {
+    console.log('Stram data : ', chunk.length);
+})
 //---------------------------------------------------------------------------
 
 //  1. Streams are used to process data in chunk-by-chunk instead of load full data at once in memory.
@@ -80,7 +80,7 @@
 //      - For Large file should never read whole file into memory. Using steams we can write the data in db in batches.
 //          1. At the first we have to store the file in S3.
 //          2. Because we no need to store in application server and Using s3 we can do the lambda trigger.
-//          3. After that use stream we should read the file from s3.
+//          3. After that use stream we can read the file from s3.
 //          4. Then will use the csv parser read the data row by row.
 //          5. And convert the each row into a dynamoDB item.
 //          6. And use the BatchWrite in batches of up to 25 items. Until the file is complete.
@@ -91,7 +91,8 @@
 //          3. So the file is too large, will split the file in multiple parts using steam.
 //          4. Then every split file will push to SQS.
 //          4. Then lambda scales automatically, and execute all the split files parallel.
-//          5. Then using the streams we can process the csv records,and store the data in dynamoDb using batch writes.
+//          5. Then using the streams and csv parser will read records row by row,
+//          6. And will store the data in dynamoDb using batch write.
 //          6. If any thing fail,will use the retry mechanism, after several retries still fails will use DLQ.
 //          7. Then will use the cloud logs and will fix the issue.
 

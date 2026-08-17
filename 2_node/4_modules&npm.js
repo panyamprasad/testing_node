@@ -2,7 +2,6 @@
 // Modules:
     // A module is a reusable piece of code, that we can export and import anywhere in the project.
     // There are two types of modules are in nodeJs.
-// What are the different types of modules in Node.js?
     // There are two types of modules are in nodeJs.
     // 1. Core Modules: Core modules are the modules that are build in modules in nodeJs. We can use them without installing any additional packages.. Example: http, fs, path, url, util, events etc.
     // 2. User Modules: User modules are created by user. We can create our own modules and use them in our application where we need.

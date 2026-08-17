@@ -68,8 +68,8 @@ if ('JavaScript') {
     //      3. Call/Apply/Bind with example
     //          - call, apply, Bind these three are JavaScript methods, based on our requirement will use.
     //          - call:
-    //                  1. Using this we execute the function immediately.
-    //                  2. Accept the arguments as comma separated.
+    //                  1. Using this we can Invoke the function and execute immediately.
+    //                  2. We can pass the arguments as comma separated.
     //                  Ex:
     const person = { name: 'prasad' };
 
@@ -80,8 +80,8 @@ if ('JavaScript') {
     }
     test.call(person);
     //          - apply:
-    //                  1. Using this we execute the function immediately.
-    //                  2. Accept the arguments as an array.
+    //                  1. Using this we can invoke the function and execute immediately.
+    //                  2. Pass the arguments as an array format.
     //                  EX:
     const person1 = { name: "Prasad" };
     function test2(greeting) {
@@ -91,7 +91,9 @@ if ('JavaScript') {
     }
     test2.apply(person1, ['Hello']);
     //          - Bind:
-    //                  1. It will return the new function, it will not execute immediately.
+    //                  1. Using this we can't invoke the function,
+    //                  2. We create the new function.
+    //                  3. It will not execute immediately.
     //      ---------------------------------------------------------------------------
     //
     //      4. Promises
@@ -321,6 +323,12 @@ if ('NodeJs') {
     //                      5. Using this we can exchanged the tokens.
     //                      6. And NestJs retrieves the user details and optionally it will genarate the JWT.
     //                      7. Then we can protect the API's using the auth Guards.
+    //          
+    //              - What is HttpOnly Cookie?
+    //                  1. HttpOnly is a security flag.
+    //                  2. When cookie marked as httpOnly, it can't access thought the JavScript.
+    //                  3. It only sent automatically by the browser to server.
+    //                  4. Used to store sessionID's, access Tokens, refresh Tokens and protect the sensitive information.
     //      ---------------------------------------------------------------------------
     //
     //      6. Performance Optimization questions?
@@ -375,6 +383,7 @@ if ('NodeJs') {
             console.log("Error:", error);
         }
     }
+    //      ---------------------------------------------------------------------------
     //
     //              ErrorHandling:
     //                  1. In NodeJs Error handling will do in 5 ways.
@@ -383,6 +392,14 @@ if ('NodeJs') {
     //                          3. Promise.all()
     //                          4. Promise.allSettled()
     //                          5. Custom Error classes
+    //                  2. Error Handling will do in two ways
+    //                      1. Route Level
+    //                      2. Application Level
+    //                  3. Coming to the route level means function level will use the try catch block 
+    //                      if any issues came will catch the errors.
+    //                  4. Application Level will use the global Error handling, and catch the errors.
+    //                      Catch the errors and send the structured format errors.
+    //                      Ex: Internal Server Error will send 'Message Error & Status Code'
     //
 }
 //----------------------------------------------------------------------------------------------------------------------------
@@ -543,7 +560,7 @@ if ('AWS') {
     //
     if ('DynamoDB') {
         //      1. What is DynamoDB?
-        //          1. MySql is the NoSql database service in aws cloud.
+        //          1. DynamoDB is the NoSql database service in aws cloud.
         //          2. Using this we can store the data in key-value pair like object structure.
         //          3. It is fast, scalable and no server maintenance.
         //          4. It will handle the large amount of traffic automatically.
@@ -553,24 +570,107 @@ if ('AWS') {
         //          2. It should be unique.
         //          3. For record finding purpose we can use this Partition key.
         //      
-        //      3. What is Sort Key? What GSI? What LSI?
-        //      4. What is DynamoDB streams?
-        //      5. Difference between Scan & Query?
-        //      6. What is TTL? (Time to Leave)
+        //      3. What is Sort Key?
+        //          1. Sort key is nothing but using this for sorting purpose.
+        //          2. It is optional.
+        //          3. Basically sort key like createdData, OrderId.
+        //
+        //      4. What is the Index?
+        //          1. Index is nothing but how to read the data from the dynamoDB.
+        //          2. Basically will the Partition Key and sort Key will fetch the data from dB.
+        //          3. But sometime we have to get the data with different Partition Key and Sort Key.
+        //          4. That time will use the Index, using Index instead or scan full table will get the data.
+        //           
+        //      5. What GSI? What LSI?
+        //          1. In index we have two types of index are there.
+        //              1. Global Secondary Index: Using this we can use the different Partition Key and sort Key.
+        //              2. Local Secondary Index: Same PartitionKey but different Sort Key.
+        //          2. Most of the time will use th GSI to fetch the data.
+        //          3. In exiting tables we can add the GSI, but LSI will add when will create the table.
+        //          4. Per table the max GSI is 20, but LSI we can add max 5.
+        //    
+        //      5. What is DynamoDB streams?
+        //          1. DynamoDB streams are using for verification purpose, I means tracking purpose.
+        //          2. If any actions happen like insert, update, delete we use the streams will track the records.
+        //          3. And we can capture the event we can trigger actions like sending notifications, sync data like that.
+        //
+        //      6. Difference between Scan & Query?
+        //          1. Scan & Query is two different ways to fetch the data from the dynamoDB table.
+        //          2. Using scan we can scan the full table and will fetch the data.
+        //          3. It will be take some time to read data, due to the some performance issues will come.
+        //          4. Bus using Query will get the data without scanning full table.
+        //          5. It will give fast performance.
+        //
+        //      7. What is TTL? (Time to Leave)
+        //          1. TTL is nothing but it is Time to Leave.
+        //          2. Basically will use this for remove the records in specific timeout.
+        //          3. When we creating record itself will declare the time, after this time will delete the record.
+        //          4. Using this for OTP, authentication tokens, temp notifications like senarios will use.
     }
     //
     if ('Amazon_S3') {
         //      1. What is S3?
+        //          1. S3 means Simple Storage Service in AWS Cloud. 
+        //          2. Use this we can store, retrieve the data at any time anywhere.
+        //          2. Using this we can store the any type of data like files, audios, videos etc.
+        //          3. It will very secure and even if anything fail in aws, we can't loose the data.
+        //
         //      2. What is Bucket?
+        //          1. Bucket means folder, each back we have maintain unique name.
+        //          2. Inside bucket we can store multiple object, objects are nothing but file names.
+        //          
         //      3. What is Pre-Signed URL?
+        //          1. Pre-signed Url is temporary url, using this we can upload the files or data in s3.
+        //          2. Using aws credentials, bucket Name, experience time will genarate the URL.
+        //          3. Without AWS credentials exposing will fetch the data form s3.
+        //          4. Event private objects also we can read using pre-signed url.
+        //
         //      4. Storage Classes?
+        //          1. In S3 we have different types of Storage classes are there. Based on our use will use it.
+        //              1. Standard:
+        //                      1. Coming to Standard class for daily use we can prefer this.
+        //                      2. It will more cost compare to remaining.
+        //
+        //                      3. Using this for profile images, frequently used documents will store here.
+        //              2. Standard AI:
+        //                      1. Coming to standard AI, store files those not used daily.
+        //                      2. When we required we need quick access.
+        //                      3. Used of backup files, motherly reports.
+        //
+        //              3. Intelligent Tiering
+        //                      1. S3 automatically move the files form frequently to unFrequently.
+        //
+        //              4. Glacier:
+        //                      1. It will cheap, Old files will store, take 5 min time if we required
+        //              5. Glacier Archive:
+        //                      1. This files are not required. But keep store it for backup purpose.
     }
     //
     if ('SNS_SQS') {
         //      1. What is SNS? And Uses?
+        //          1. SNS means simple notification service.
+        //          2. Using this we can send the notifications from one publisher to multiple subscribers.
+        //          3. Subscribers means lambda, sms, email, SQS etc.
+        //          4. If any publisher send an event/message/topic, it will distribute to multiple subscribers.
+        //          
         //      2. What is SQS? And Uses?
-        //      3. Difference between SNS & SQS?
+        //          1. SQS means Simple Queue Service.
+        //          2. It will pull message/event to keep store it safely until the subscriber pull the messages.
+        //          3. Once the subscriber pull it automatically it will delete form Queue.
+        //          4. Instead of loosing the event or message we can keep it in queue for further processing.
+        //
         //      4. What is DLQ? And Why use DLQ?
+        //          1. DLQ means Dead Letter Queue.
+        //          2. Using this will store the failure event/notifications instead of loosing them.
+        //          3. Use this will do the further investigation.
+        //      
+        //      5. How Lambda publish an event to SNS?
+        //          1. Before publish we have to create topic in SNS, and take the ARN for the Topic.
+        //          2. We have to give the Publish permission to Lambda.
+        //          3. And we have to maintain the ARN topic in environment variables instead of hardcode.
+        //          4. Then use the publish method, we can publish the event/message or notification to the topic.
+        //          5. Once the message push to SNS, sns automatically distribute the subscribers what we configured.
+        //
     }
     //
     else {
@@ -704,8 +804,8 @@ if ('System_Design') {
     //
     //      1. First, I would understand the what types of notifications the system need to send, such as Email, SMS, mobile Push notifications.
     //      2. Then will create notification api, using this other applications can send notification request.
-    //      3. Instead of sending notifications directly, will place the requests into the Queue. It will help the system can handle
-    //          large traffic, and if any service temporarily down we can't loose the request.
+    //      3. Instead of sending notifications directly, will place the requests into the Queue. 
+    //          It will help the system can handle large traffic, and if any service temporarily down we can't loose the request.
     //      4. And will maintain the notification templates instead of hardcode, once we got the request, based on type will 
     //          get the template and process it.
     //      4. Then separate work services process the queued messages and send them through the appropriate channel, 

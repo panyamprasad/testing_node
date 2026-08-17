@@ -69,6 +69,11 @@ const params = {
 //          6. So we have to verify these all, most of the time permission issue will happen.
 //
 //---> 7. In lambda level how will store the data and after that how will push to s3?
+//          1. Basically the lambda memory size is 10gb.
+//          2. So we haven't load large files such as 20gb csv file into lambda memory.
+//          3. Instead of that will store the file in s3, and use the lambda to process it in chunks.
+//          4. So this will allows us to handle the large files without using lambda memory.
+//
 //---> 8. Write a nodeJs function that takes an array of numbers and returns a new array with prime numbers with double.
 function primeNumbers(arr) {
     return arr

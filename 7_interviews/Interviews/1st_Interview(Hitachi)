@@ -23,7 +23,7 @@
 
 // 		Upload the file to S3:
 // 			1. You can use the AWS SDK for JavaScript (aws-sdk or @aws-sdk/client-s3 in v3) to upload files.
-		
+
 // 		Using pre-signed URLs (optional):
 // 			1. Instead of directly uploading from your backend, you can generate a pre-signed URL.
 // 			2. This URL lets clients securely upload files directly to S3 without exposing your AWS credentials.
@@ -46,21 +46,26 @@
 // 		A Closure allows an innerfunction to access the variables from it's outerscope, even the outerscope function scope execution is completed. This is possible because javascript keeps a reference outerscope in memory.
 //
 // 		For Example: We have the accountOpening function with minimum balance, after function execution is done, but it will return inner functions like deposit, withDraw, balanceEnquiry still have the access to get balance through the Closure. That's way the balance is stays in the memory.
+//
+// Real Usecase:
+//				1. Private variables
+//				2. Caching
+//				3. Event handling
 
 // ---> 4. How to remove the duplicates from array using the closer?
-			function removeDuplicate(){
-				let seen = new Set();
-				
-				return function(arr){
-					let unique = [];
-					for(let value of arr){
-						if(!seen.has(value)){
-							seen.add(value);
-							unique.push(value);
-						}
-					}
-					return unique;
-				};
+function removeDuplicate() {
+	let seen = new Set();
+
+	return function (arr) {
+		let unique = [];
+		for (let value of arr) {
+			if (!seen.has(value)) {
+				seen.add(value);
+				unique.push(value);
 			}
-			const uniquevalue = removeDuplicate();
-			console.log(uniquevalue([1,1,2,2,3,3,4,4,5,5]))
+		}
+		return unique;
+	};
+}
+const uniquevalue = removeDuplicate();
+console.log(uniquevalue([1, 1, 2, 2, 3, 3, 4, 4, 5, 5]))

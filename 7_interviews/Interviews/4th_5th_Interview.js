@@ -33,10 +33,29 @@
 				return a+b;
 			}
 // 		---------------------------------------------------
+//
 // ---> How to access the obj keys inside this arrow function? if it is null how will do?
-// 		1. Using the optional chaining to safely access the object keys inside arrow without any error.
-// 		2. If the object key null or undefined we can assign default values check with nullish.
+// 		1. Using the optional chaining we can safely access the object keys inside arrow without any error.
+// 		2. If the object key null or undefined we can use the nullish coalescing operator(??) 
+// 			assign default values check with nullish.
+
+//		Without Optional chaining:
+		const user = null;
+		const getName = () => user.name;
+		console.log(getName()); 
+		output: TypeError: Cannot read properties of null
+	
+//		With Optional chaining:
+		const getUser = () => user?.name; 
+		console.log(getUser());
+		output: null & undefined
+	
+//		With Optional && coalescing chaining:
+		const getUser = () => user?.name ?? 'Guest User'; 
+		console.log(getUser());
+		output: Guest User
 // 		---------------------------------------------------
+//
 // ---> Can we change the const value? No.. if array we can change? Yes.. then why what is difference?
 // 		1. No we can't change the const value. And we can't reassign the value.
 // 		2. But we can modify it's internal data if it's an obj or array, because the reference stays same.
@@ -85,17 +104,20 @@
 // 		3. Here we can write the code and functions and we can deploy it, but we can't worry about the managing the servers.
 // 		4. AWS cloud will takeover of these all thing.
 // 		5. It will automatically scaling, availability and manage infrastructure.
-// 		6. For Example. If we upload a file to s3 using the lambda function, lambda will automatically resizes it and store it in s3. And update metadata into db, don't need to maintain servers.
+// 		6. For Example. If we upload a file to s3 using the lambda function, lambda will automatically resizes it and store 
+// 			it in s3. And update metadata into db, don't need to maintain servers.
 // 		7. The purpose of serverless it reduce the infra management, and we can pay how much we use.
 // 		------------------------------------------------------
 	
 // ---> Explain the restful api work flow with node and how will implement this.
-// 		1. In previous projects, we used a serverless framework workflow instead of a traditional Node.js + Express setup.
+// 		1. In previous projects, we used a serverless framework workflow.
 //		2. In serverless, RESTful APIs are implemented using API Gateway and Lambda functions.
-//		3. When a client (like a browser, mobile app, or Postman) triggers an endpoint (e.g., /users or /users/{id}), the API Gateway maps the request to the appropriate Lambda function.
-//		4. The Lambda function executes the business logic, communicates with databases or other services, and returns a response.
+//		3. When a client (like a browser, mobile app, or Postman) triggers an endpoint (e.g., /users or /users/{id}), 
+// 			the API Gateway take the request verify the request, check all permissions. Once validation is done.
+//		4. It will pass to Lambda, lambda execute the business logic and get the data from db or any external api's
+//			return the response back to gateway.
 // 		5. The API Gateway sends the response back to the client in JSON format.
-//		6. This architecture is scalable, cost-efficient, and event-driven, because Lambda functions are triggered only when needed, and there’s no need to manage servers continuously.
+//		6. Like this the restful api work flow will happen.
 // 		------------------------------------------------------
 
 // ---> Coldstart how will overcome this.

@@ -34,7 +34,7 @@
 // 				3️⃣ Then one setTimeout (macrotask)
 
 // 				And your question:  “If the Promises take 10 seconds, will the setTimeout wait until all promises finish?”
-// 				- In event loop always finishes all microTasks then finish the macroTasks, even the if we have the setTimeout '0' also.
+// 				- In event loop always finishes all microTasks then finish the macroTasks, even if we have the setTimeout '0' also.
 				
 // 		5. In this way it will blocking the code?
 // 			- Yes if the event loop doing the heavy synchronous work, they will block the event loop.
@@ -51,8 +51,12 @@
 		
 // ---> 4. Error handling : How will handle the overall application level error handling, and how to handle the 400,401,402,403 errors?
 // 		    1. In nodeJs we can handle errors in two levels.
-// 		    2. Route level: This level we can use the try-catch in async functions. If something is went wrong we can send the error to the next middleware.
-// 		    3. Application Level: This level we can use the Express middleware and we can handle the errors. Here we can catch the errors and send the structured response to the client.
+// 		    2. Route level: 
+//              - This level we can use the try-catch in async functions. 
+//              - If something is went wrong we can send the error to the next middleware.
+// 		    3. Application Level: 
+//              - This level we can use the global exception handler and we catch the application level errors. 
+//              - Here we can catch the errors and send the structured response to the client.
 		
 // 		For Ex:
 // 			400(Bad Request): If we get any wrong input from client it will throw this error.

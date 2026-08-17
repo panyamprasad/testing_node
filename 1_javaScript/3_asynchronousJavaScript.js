@@ -1,9 +1,12 @@
-// Event Loop in JavaScript
-// JavaScript is single-threaded, It means it will execute one task at a time.
-// JavaScript is synchronous, It means it will execute the code line by line.
-// But JavaScript is also asynchronous, it means some taks will be executed background and it will be executed when the main thread is free.
-// for eaxample: setTimeout, promises, aync/await etc. Once main thread is free these tasks will be executed. Until then it will be wait in the callback queue.
-// Event loop is a mechanisum that will check the call stack and callback queue. If call stack is empty it will execute callback queue.
+// ---> Event Loop in JavaScript
+//          1. JavaScript is single-threaded, It means it will execute one task at a time.
+//          2. JavaScript is synchronous, It means it will execute the code line by line.
+//          3. But JavaScript is also asynchronous, it means some time will be executed background and 
+//             it will be executed when the main thread is free.
+//          4. for example: setTimeout, promises, async/await etc. 
+//             Once main thread is free these tasks will be executed. Until then it will be wait in the callback queue.
+//          5. Event loop is a mechanism that will check the call stack and callback queue. 
+//             If call stack is empty it will execute callback queue.
 Example:
 console.log('Start');
 setTimeout(() => {
@@ -27,33 +30,32 @@ console.log('End');
 // Note: setTimeout and setImmediate are similar but they have some differences. setTimeout will execute after the specified time and setImmediate will execute after the current event loop cycle.
 
 // ------------------------------------------------------------------------------
-
-// ------  Promises ------
-// Promises are used to handle the asynchronous operations in JavaScript. 
-// It have three states: Pending, Fulfilling, Rejected.
-// We carn create Promises using the Promise operator.
-
+//
+//---> Promises
+//      1. Promises are used to handle the asynchronous operations in JavaScript. 
+//      2. It have three states: Pending, Fulfilling, Rejected.
+//      3. We can create Promises using the Promise operator.
 // Example : Chaining the promises
-// function getData(){
-//     return new Promise((resolve, reject) => {
-//         setTimeout (() => {
-//             resolve(' Data Revieved')
-//         }, 1000);
-//     });
-// }
-// getData().then(() => {
-//     console.log('Processing the data');
-//     return 'Data Processed';
-// })
-// ------------------------------------------------------------------------------
-// ------ Async/Await ------
+function getData() {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve(' Data Revieved')
+        }, 1000);
+    });
+}
+getData().then(() => {
+    console.log('Processing the data');
+    return 'Data Processed';
+})
+//------------------------------------------------------------------------------
+//
+//---> Async/Await
+//      1. Async/Await is just cleaner way to use promises.
+//      2. Instead of using .then() and . catch() we can use  async/await to handle the promises.
+//      3. Await tell the JavaScript to wait until the promise is done, and it will execute the next line of code.
+//      4. We can use try/catch block to handle the error.
 
-// Async/Await is just cleaner way to use promises.
-// Instend of useing .then() and . catch() we can use  sync/await to handle the promises.
-// Await tell the JavaScript to wait untile the promise is done, and it will execute the next line of code.
-// We can use try/catch blcok to handle the error.
 // Example:
-
 function main() {
     async function getData() {
         try {
@@ -68,17 +70,18 @@ function main() {
 }
 main();
 
-// Difference between Promises and Async/Await:
-// 1. Promises are used to handle the asynchronous operations in javaScript. But in async/await is just clearner way to handle the promises.
-// In Promises we use .then(), .catch() to handle the success and error. In ayan/await will use the try catch block.
-//  In promises the code will execute in a non-blocking way. In asyn/await the code will execute in blocking way.
+//---> Difference between Promises and Async/Await:
+//      1. Promises are used to handle the asynchronous operations in javaScript. 
+//      2. But in async/await is just cleaner way to handle the promises.
+//      3. In Promises we use .then(), .catch() to handle the success and error. In async/await will use the try catch block.
+//      4. In promises the code will execute in a non-blocking way. In async/await the code will execute in blocking way.
 
-// ------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 // ------ Async Function Declaration ------
-// There are two ways to declare the async function.
-// 1. Normal function declaration
-// 2. Function expression
-// 3. Arrow function
+//      1. There are two ways to declare the async function.
+//          1. Normal function declaration
+//          2. Function expression
+//          3. Arrow function
 // Example:
 // 1. Normal function declaration
 async function foo() { }
