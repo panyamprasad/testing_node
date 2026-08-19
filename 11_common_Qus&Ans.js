@@ -160,7 +160,7 @@ if ('TypeScript') {
     //      3. Any & Unknown
     //              1. Any & Unknown are the two different data types in typeScript.
     //              2. When we declare a variable as any & unknown we can assign a any value.
-    //              3. But Using Any we type checking is not mandatory, and it will not safe.
+    //              3. But Using Any type checking is not mandatory, and it will not safe.
     //              4. Because if we assign a number, In another place if we try to convert it as uppercase it will throw error.
     //              5. Coming to the Unknown, type checking is mandatory, otherwise it will throw error.
     //              6. Compare to ANY, Unknown is better.
