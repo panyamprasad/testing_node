@@ -712,19 +712,19 @@ if ('AWS') {
 
 if ('Project Overview') {
     // Project overview:
-    //      1. IMS api platform is a NestJS-based microservices platform, it will provides APIs for various insurance & Money services.
-    //      2. It contains different types of services like Portfolios, Customer Forms, Documents, Pay by Voucher, preference etc.
-    //      3. We use a monoRepo architecture, with npm Workspaces and TurboRepo to manage multiple service's 
-    //          and shared libraries in single repo.
-    //      4. The services are developed using NestJS, Node.js, and TypeScript, and we use the Jest framework for unit testing.
-    //      5. For deployment, we use GitHub for source code management and Jenkins for CI/CD automation.
-    //      6. Once the code is pushed to GitHub, Jenkins triggers the pipeline and executes all the required steps 
-    //          such as dependency installation, code validation, and unit test execution.
-    //      7. After all validation, the build artifact is generated and published to Nexus Repository Manager.
-    //      8. Then terraform will read the artifact file and store it in s3.
-    //      9. Terraform use the artifact file and extract all required files, updates the AWS cloud infrastructure.
-    //      10. In this way, the IMS platform is developed, tested, and deployed through an automated CI/CD process, 
-    //          ensuring consistent and reliable releases.
+         1. IMS api platform is a NestJS-based microservices platform, it will provides APIs for various insurance & Money services.
+         2. It contains different types of services like Portfolios, Customer Forms, Documents, Pay by Voucher, preference etc.
+         3. We use a monoRepo architecture, with npm Workspaces and TurboRepo to manage multiple service's 
+             and shared libraries in single repo.
+         4. The services are developed using NestJS, Node.js, and TypeScript, and we use the Jest framework for unit testing.
+         5. For deployment, we use GitHub for source code management and Jenkins for CI/CD automation.
+         6. Once the code is pushed to GitHub, Jenkins triggers the pipeline and executes all the required steps 
+             such as dependency installation, code validation, and unit test execution.
+         7. After all validation, the build artifact is generated and published to Nexus Repository Manager.
+         8. Then terraform will read the artifact file and store it in s3.
+         9. Terraform use the artifact file and extract all required files, updates the AWS cloud infrastructure.
+         10. In this way, the IMS platform is developed, tested, and deployed through an automated CI/CD process, 
+             ensuring consistent and reliable releases.
     //
     // Architecture:
     //      1. We are using the microservice architecture with a monoRepo setUp.
