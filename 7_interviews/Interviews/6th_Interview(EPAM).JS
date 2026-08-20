@@ -73,17 +73,18 @@
                 name: 'prasad'
             };
 //      Ans:
-//          1. We can't reassign the const value. But we can modify the obj properties because object is the mutable.
-//          2. Inside the object we can add nee attribute, we can delete the attribute and we can update attribute value like beow.
+//          1. const locks the reference, not the value inside the object or array. 
+//          2. That's why we can update properties and elements, but we cannot assign a completely new object or array.
+//          3. Inside the object we can add nee attribute, we can delete the attribute and we can update attribute value like below.
                 obj.age = 28;            // ✅ add new property
                 obj.name = 'Ravi';       // ✅ modify existing property
                 delete obj.age;          // ✅ delete property
 
                 console.log(obj); // { name: 'Ravi' }
-//          3. ❌ You cannot reassign the whole object:
+//          4. ❌ You cannot reassign the whole object:
                 obj = { city: 'Hyderabad' }; // ❌ TypeError: Assignment to constant variable
 
-//          4. array also we can do the change and add and delete the attributes but can't reassign the entire array.
+//          5. array also we can do the change and add and delete the attributes but can't reassign the entire array.
                 const arr = [1,2,3];
                 arr.push(4);       // ✅ Add new element
                 arr[0] = 10;       // ✅ Update existing element

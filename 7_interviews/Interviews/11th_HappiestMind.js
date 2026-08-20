@@ -79,7 +79,11 @@ console.log("End");
 
 // 6. What is limitations of Lambda?
 // 7. What architecture is best suitable for NodeJS?
-// 8. What is difference between ProvisioningConcurrency and advanceConcurrency
+//      1. For small applications I can prepared layard architecture, using controller, services.
+//      2. For Enterprise applications I use NestJS Moduler architecture, with proper separation.
+//      3. But for large scale applications will prefer MicroServices along with Event Driven Architecture.
+//
+// 8. What is difference between ProvisioningConcurrency and advanceConcurrency?
 // 9. How to handle the multiple requests in single lambda? It means 1 millions request came the how?
 //      1. First will check the cloud watch logs
 //      2. Then check will get the throttling issue, and lambda cross the concurrency limit.

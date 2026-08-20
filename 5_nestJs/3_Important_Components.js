@@ -23,6 +23,14 @@
 //              Request → /users/10
 //              "10"(string)
 //              Pipe converts → 10(number)
+//      4. Different types of Pipes:
+//          1. Transformation Pipe: Used to transform data from one type to another type.
+//          2. Validation Pipe: 
+//          2. ParseBoolPipe: 
+//          3. ParseFloatPipe:
+//          4. ParseUUIDPipe:
+//          5. ParseArrayPipe:
+//          6. ParseENUM Pipe:
 
 // 4. Interceptors
 //      1. Interceptor is used to execute logic before and after a controller method. Mainly it will used for logging, response transformation, and performance monitoring.

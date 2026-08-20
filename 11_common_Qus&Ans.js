@@ -147,7 +147,7 @@ if ('TypeScript') {
     //              4. Type declaration allows in typeScript.
     //              5. It is better for enterprise applications.
     //
-    //      2. TypeScript/JavaScript
+    //      2. TypeScript/JavaScript ⭐
     //              1. JavaScript is scripting language, using this develop web applications.
     //              2. It is dynamic typing. Will found error at compile time.
     //              3. Type declaration not possible.
@@ -174,7 +174,7 @@ if ('TypeScript') {
     //              5. If we want to object contract and class implementation will prefer Interface.
     //              6. If we want Advanced features will go with type.
     //
-    //      5. What are Generics
+    //      5. What are Generics ⭐
     //              1. Generics are one of the important feature in Typescript.
     //              2. Using this we can create the reusable and type-safe functions, classes, interfaces and type.
     //              3. Instead of create the separate code for each type, we can use the same code with different type placeholder.
@@ -202,7 +202,7 @@ if ('TypeScript') {
 
     type Lead = Employee & Department;
 
-    //      7. What are decorators
+    //      7. What are decorators ⭐
     //              1. Decorators are special functions, using this we can declare the classes, 
     //                  functions, methods, parameters and properties.
     //              2. Using decorators we can find the controller, services.
@@ -221,6 +221,18 @@ if ('TypeScript') {
     //              1. Type Inference means typeScript automatically understand the data type based on the value assigned.
     //              2. So we don't need to specify the datatype. It is called type inference.
     //              3. Less code, cleaner code purpose will use this.
+    //
+    //      9. What is different between array & Tuple?
+    //          Array:
+    //              1. Using Array we can store the multiple values with same data type.
+    //              2. Using Array we don't have fixed size.
+    //              3. We can easily iterate the array values.
+    //
+    //          Tuple:
+    //              1. Using tuple we can store the multiple types of data.
+    //              2. Using Tuple we must know the size and order.
+    //              3. If we miss the order it will throw the error.
+    //              4. So if we have fixed size, order then will go with tuple.
 }
 //----------------------------------------------------------------------------------------------------------------------------
 
@@ -385,21 +397,58 @@ if ('NodeJs') {
     }
     //      ---------------------------------------------------------------------------
     //
-    //              ErrorHandling:
-    //                  1. In NodeJs Error handling will do in 5 ways.
-    //                          1. try/catch block
-    //                          2. Using Promises: Best when using Promises chaining
-    //                          3. Promise.all()
-    //                          4. Promise.allSettled()
-    //                          5. Custom Error classes
-    //                  2. Error Handling will do in two ways
-    //                      1. Route Level
-    //                      2. Application Level
-    //                  3. Coming to the route level means function level will use the try catch block 
-    //                      if any issues came will catch the errors.
-    //                  4. Application Level will use the global Error handling, and catch the errors.
-    //                      Catch the errors and send the structured format errors.
-    //                      Ex: Internal Server Error will send 'Message Error & Status Code'
+    if ('ErrorHandling') {
+        //      1. In NodeJs Error Handling will do in Two ways.
+        //              1. Route-Level Error Handling.
+        //              1. Application Level Error Handling.
+        //
+        //      2. Coming Route-Level Error Handling:
+        //              1. Here we can handle the error within a specific route, controller and service.
+        //              2. Using try-catch block we can handle the errors.
+        //              3. We can easily implement this, and if we required will do the custom error handling.
+        //              4. But repetitive code will be there, we have to write tye-catch many places
+        //
+        //      3. Coming Application Level Error Handling:
+        //              1. Instead of handling the errors in every route and service we can use centralized mechanism.
+        //              2. Using this we can catch the all unhandled exception across the application.
+        //              3. Basically using this in NestJs:
+        //                  - Global Exception Filters
+        //                  - Global Interceptors
+        //                  - Middleware
+        //              4. Using this we can handling centralized errors.
+        //              5. Entire application same error format. Less code.
+        //      
+        //      4. Even we use a Global Exception, sometimes we have to handle some route level exception handling 
+        //          for some business scenarios.
+        //      5. Most of the time will use both.
+        //
+        //      6. In pure nodeJS and javaScript we can handle exception using try/catch in route level.
+        //      7. Application level will use 
+        //          - process.on('uncaughtException) for synchronous,
+        //          - process.on('unhandledRejection) for asynchronous.
+
+        @Catch()
+        export class GlobalExceptionFilter implements ExceptionFilter {
+            catch(exception: any, host: ArgumentsHost) {
+                const response = host.switchToHttp().getResponse();
+
+                let status = 500;
+                let message = 'Internal Server Error';
+
+                // Handle 4xx errors
+                if (exception instanceof HttpException) {
+                    status = exception.getStatus();
+                    message = exception.message;
+                }
+
+                response.status(status).json({
+                    success: false,
+                    statusCode: status,
+                    message,
+                });
+            }
+        }
+    }
     //
 }
 //----------------------------------------------------------------------------------------------------------------------------
@@ -712,19 +761,19 @@ if ('AWS') {
 
 if ('Project Overview') {
     // Project overview:
-         1. IMS api platform is a NestJS-based microservices platform, it will provides APIs for various insurance & Money services.
-         2. It contains different types of services like Portfolios, Customer Forms, Documents, Pay by Voucher, preference etc.
-         3. We use a monoRepo architecture, with npm Workspaces and TurboRepo to manage multiple service's 
-             and shared libraries in single repo.
-         4. The services are developed using NestJS, Node.js, and TypeScript, and we use the Jest framework for unit testing.
-         5. For deployment, we use GitHub for source code management and Jenkins for CI/CD automation.
-         6. Once the code is pushed to GitHub, Jenkins triggers the pipeline and executes all the required steps 
-             such as dependency installation, code validation, and unit test execution.
-         7. After all validation, the build artifact is generated and published to Nexus Repository Manager.
-         8. Then terraform will read the artifact file and store it in s3.
-         9. Terraform use the artifact file and extract all required files, updates the AWS cloud infrastructure.
-         10. In this way, the IMS platform is developed, tested, and deployed through an automated CI/CD process, 
-             ensuring consistent and reliable releases.
+    //      1. IMS api platform is a NestJS-based microservices platform, it will provides APIs for various insurance & Money services.
+    //      2. It contains different types of services like Portfolios, Customer Forms, Documents, Pay by Voucher, preference etc.
+    //      3. We use a monoRepo architecture, with npm Workspaces and TurboRepo to manage multiple service's 
+    //      and shared libraries in single repo.
+    //      4. The services are developed using NestJS, Node.js, and TypeScript, and we use the Jest framework for unit testing.
+    //      5. For deployment, we use GitHub for source code management and Jenkins for CI/CD automation.
+    //      6. Once the code is pushed to GitHub, Jenkins triggers the pipeline and executes all the required steps 
+    //      such as dependency installation, code validation, and unit test execution.
+    //      7. After all validation, the build artifact is generated and published to Nexus Repository Manager.
+    //      8. Then terraform will read the artifact file and store it in s3.
+    //      9. Terraform use the artifact file and extract all required files, updates the AWS cloud infrastructure.
+    //      10. In this way, the IMS platform is developed, tested, and deployed through an automated CI/CD process, 
+    //      ensuring consistent and reliable releases.
     //
     // Architecture:
     //      1. We are using the microservice architecture with a monoRepo setUp.
@@ -753,6 +802,38 @@ if ('Project Overview') {
     // Challenges faced
     // Migration from Tesco Bank to Tesco IMS
 }
+//----------------------------------------------------------------------------------------------------------------------------
+
+if('Serverless_Architecture'){
+    //---> What is AWS Serverless? Advantages? DisAdvantages?
+    //      1. AWS Serverless means cloud native architecture.
+    //      2. Using this we don't need to manage any servers, we just focus on development and business logic.
+    //      3. Remaining everything AWS will handle, like servers, Scaling, Operating system, infrastructure.
+    //      4. Common Serverless Services are:
+    //              1. AWS Lambda
+    //              2. AWS Gateway
+    //              3. DynamoDB
+    //              4. SQS
+    //              5. SNS
+    //           
+    //      4. Normally in traditional applications we have to takeover everything, like servers, memory, scaling everything.
+    //      5. But in Serverless we don't bother about these all things.
+    //      6. Cloud service handle everything.
+    //
+    //  Advantages:
+    //      1. No Server maintenance.
+    //      2. Pay per Use: How much we use that much we can pay, there is no coast for idle time.
+    //      3. Automatic Scaling: It will automatic scaling based on Traffic.
+    //      4. Faster development.
+    //      5. High Availability.
+    //      6. Event Driven Architecture: Easily Integrate SNS, SQS, S3 etc
+    //
+    //  DisAdvantages:
+    //      1. Cold Start
+    //      2. Execution Time
+    //      3. Debugging
+}
+
 //----------------------------------------------------------------------------------------------------------------------------
 
 if ('MicroServices') {

@@ -34,7 +34,7 @@
 			}
 // 		---------------------------------------------------
 //
-// ---> How to access the obj keys inside this arrow function? if it is null how will do?
+// ---> How to access the obj keys inside the arrow function? if it is null how will do?
 // 		1. Using the optional chaining we can safely access the object keys inside arrow without any error.
 // 		2. If the object key null or undefined we can use the nullish coalescing operator(??) 
 // 			assign default values check with nullish.

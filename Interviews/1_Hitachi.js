@@ -121,3 +121,13 @@ function testing(arr) {
     return result;
 }
 console.log(testing([1, 2, [3, 4], 5]))
+
+// 1. What are mandatory fields to fetch the data from DynamoDB using GSI?
+//      1. TableName, IndexName, GSI Partition Key value.
+
+// 2. What are the ES6 Modules?
+//      1. Arrow functions
+//      2. Destructuring
+//      3. Optional Chaining
+//      4. Nullish, default
+//      5. Rest & Spread operator.
