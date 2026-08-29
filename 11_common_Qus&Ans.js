@@ -862,16 +862,16 @@ if ('Project Overview') {
     //      1. IMS api platform is a NestJS-based microservices platform, it will provides APIs for various insurance & Money services.
     //      2. It contains different types of services like Portfolios, Customer Forms, Documents, Pay by Voucher, preference etc.
     //      3. We use a monoRepo architecture, with npm Workspaces and TurboRepo to manage multiple service's 
-    //      and shared libraries in single repo.
+    //          and shared libraries in single repo.
     //      4. The services are developed using NestJS, Node.js, and TypeScript, and we use the Jest framework for unit testing.
     //      5. For deployment, we use GitHub for source code management and Jenkins for CI/CD automation.
     //      6. Once the code is pushed to GitHub, Jenkins triggers the pipeline and executes all the required steps 
-    //      such as dependency installation, code validation, and unit test execution.
+    //          such as dependency installation, code validation, and unit test execution.
     //      7. After all validation, the build artifact is generated and published to Nexus Repository Manager.
     //      8. Then terraform will read the artifact file and store it in s3.
     //      9. Terraform use the artifact file and extract all required files, updates the AWS cloud infrastructure.
     //      10. In this way, the IMS platform is developed, tested, and deployed through an automated CI/CD process, 
-    //      ensuring consistent and reliable releases.
+    //          ensuring consistent and reliable releases.
     //
     // Architecture:
     //      1. We are using the microservice architecture with a monoRepo setUp.
@@ -1133,3 +1133,52 @@ if('API_Standards'){
     //  10. Always maintain the proper documentation for API and Swagger.
 
 }
+//----------------------------------------------------------------------------------------------------------------------------
+
+if('Challenging_Task'){
+	// 1. In my previous organization, while working on the VCM application, 
+    //    I faced a challenging production issue related to our NAO application flow.
+
+	// 2. In the NAO flow, the customer first submits the application and uploads the required KYC documents. 
+    //    Once the application is submitted, it is sent to Salesforce for approval. After Salesforce approves the application, 
+    //    the request comes back to our service, and we then send it to Pershing for account creation. 
+    //    Pershing creates the account and returns an Account ID. Once we receive the Account ID, 
+    //    the NAO application flow is considered complete.
+
+	// 3. The production issue we faced was that, for a small number of customers, duplicate accounts were being created in Pershing. 
+    //    It was not happening consistently, so it was difficult to reproduce and investigate. 
+    //    This became an L1 production issue for our team.
+
+	// 4. Initially, we checked the CloudWatch logs and tried to understand the complete request flow. 
+    //    However, because the issue was intermittent, we could not identify the root cause from the logs immediately. 
+    //    We also tried to reproduce the issue in our local environment and SIT, but we were unable to reproduce it.
+
+	// 5. So, we took one affected customer’s Client ID and started tracing the request in the production logs step by step, 
+    //    starting from the application submission and following the complete flow.
+
+	// 6. After several rounds of investigation, we identified that the issue was related to the document upload process.
+
+	// 7. For some customers, especially when they uploaded very large documents, the document upload operation was 
+    //    taking a long time and eventually timing out. At that time, the UI did not have proper file-size validation.
+
+	// 8. When the upload timed out, the request was retried. After multiple retries, the message was eventually moved to the DLQ. 
+    //    The important issue was that each retry was triggering the account-creation flow again, 
+    //    which resulted in multiple account-creation requests being sent to Pershing. 
+    //    This was the reason duplicate accounts were created for some customers.
+
+	// 9. Once we identified the root cause, we analyzed the business flow and found that document upload was not mandatory 
+    //    for completing the account-creation step. 
+    //    The documents could be uploaded and stored after the account was successfully created.
+
+	// 10. So, as a temporary solution, we changed the flow to skip the document-upload step when it was causing a timeout 
+    //     and allowed the remaining account-creation process to continue. Once we received the account confirmation 
+    //     and Account ID from Pershing, we processed and stored the documents separately.
+
+	// 11. This resolved the duplicate-account issue and allowed us to complete the account-creation flow without being blocked 
+    //     by document-upload failures.
+	
+	// 12. After that we discussed with business, checking the file-size both frontend and Backend. 
+    //     And showing the alert to User if they upload large files.
+
+}
+	
