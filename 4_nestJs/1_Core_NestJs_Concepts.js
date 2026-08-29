@@ -58,5 +58,4 @@ export class UserService {
 //              3. Controller handles the request and maintain the routing.
 //              4. Service handles the all business related logic.
 //              5. So NestJs is use large application.
-
 // 

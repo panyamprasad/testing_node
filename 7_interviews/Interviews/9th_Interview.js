@@ -62,4 +62,5 @@
 // 			400(Bad Request): If we get any wrong input from client it will throw this error.
 // 			401(Unauthorized): Used this when the user is not logged in or the token is missing.
 // 			403(Forbidden): Used when the user logged in but doesn't have the permissions.
+//          404(NotFound):
 // 			500 (Internal Server error): Something went wrong in the code level.

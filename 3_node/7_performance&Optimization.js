@@ -30,3 +30,5 @@
     // 3. The functions will connect to a serverless database (dynamoDb or firebase) to store the data.
     // 4. I will use JWT or Cognito token for security purpose.
     // 5. And I will add logging, error handling for monitoring to track the performance and issues.
+
+//

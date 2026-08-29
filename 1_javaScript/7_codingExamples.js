@@ -138,7 +138,7 @@ function removeDuplicate() {
             }
         }
         return result;
-    };
+    };  
 }
 
 const removeDup = removeDuplicate();
@@ -233,21 +233,45 @@ async function getUsers(){
 //          2. Will check all required field are available or not before it reached controller.
 //          3. If any thing miss will throw the 400 bad request error.
 
-const validateRequest = (req, res, next) => {
-    if (!req.body.email) {
-        console.log('Email is not available');
+const validateUserId = (req, res, next) => {
+    const {id} = req.params;
+
+    if (!id) {
+        console.log('UserId is not Valid');
 
         return res.status(400).json({
-            message: 'Email is required',
+            message: 'Invalid UserId',
             status: 400
         });
     }
     next();
 }
 
-app.post('/users', validateRequest, (req, res) => {
+app.post('/users/:id', validateUserId, getUsers, (req, res) => {
     res.status(200).json({
-        message: "userCreated"
+        data: res
     });
 });
+
+const getUsers = async() => {
+    try{
+        const response = await fetch('');
+        const data = response.json();
+        return{
+            statusCode: 200,
+            body: JSON.stringify({
+                res: data,
+                mess: 'SUCCESS'
+            })
+        }
+    }catch(err){
+        return{
+            statusCode: 500,
+            body: JSON.stringify({
+                res: err,
+                mess: 'FAILURE'
+            })
+        }
+    }
+}
 

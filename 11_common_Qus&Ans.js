@@ -262,7 +262,7 @@ if ('NodeJs') {
     //              11. process.nexttick: In this phase it will execute the code if any code we have to execute 
     //                                after the current task.
     //          - So event loop is never ending topic, until the main loop terminated.
-    //          - Even event loop also blocking some time. If we have the more asynchronous calls it will block.
+    //          - Even event loop also blocking some time. If we have the more synchronous calls it will block.
     //      ---------------------------------------------------------------------------
     //          
     //      3. What are streams? Buffer? Difference between Stream & Buffer?
@@ -325,7 +325,7 @@ if ('NodeJs') {
     //
     //              - OAuth2:
     //                  1. OAuth2 is the authentication framework.
-    //                  2. It will allows users to login in trusted providers.
+    //                  2. It will allows users to login through out the trusted providers.
     //                  3. Like Google, microsoft, Azure etc. Instead of create and manage passwords in every application.
     //                  - Generate the OAuth2:
     //                      1. First we have to register the application as Identity provider. Like Google/Microsoft/Azure etc.
@@ -395,6 +395,32 @@ if ('NodeJs') {
             console.log("Error:", error);
         }
     }
+    //      ---------------------------------------------------------------------------
+    //
+    //      9. What causes Event Loop Blocking?
+    //          1. Basically the event loop will block compare to asynchronous more synchronous calls it will happen.
+    //          2. Like huge loop conditions, large JSON parsing, Encryption etc.
+    //          3. To overcome this problem we have to use workThreads, SQS, background jobs we have to use.
+    //
+    //      10. How to Scale the NodeJs APIs?
+    //          1. I will use the Cluster to handle the multiple requests using the all CPU Cores.
+    //          2. For CPU Intensive tasks I will use the work threads like file processing, pdf generation like that.
+    //          3. For large microservices I will prefer for Event driven architecture with SNS & SQS.
+    //          4. Like the we can scale the NodeJs APIs.
+    //
+    //      11. API security best practices?
+    //          1. For APi security will provide the multiple layers of protections. Like.
+    //          2. Always use the authentication & authorization to provide the access to trusted users.
+    //          3. And we have todo the input validation.
+    //          4. Provide proper CORS configuration and provide the access to trusted domains.
+    //          5. Use the HTTPS so data will be encrypted during the transmission.
+    //          6. Additionally we have to use the logging, monitoring and secure handling.
+    //
+    //      12. How Node.js handles 10,000 concurrent requests.
+    //          1. Node.js uses the event loop and Input operations to handle thousands of requests.
+    //          2. And the Database queries and external api calls are not block the code symatancily it will execute the
+    //              remaining functionality, once the execution complete, the callback function execute and sent response.
+    //          3. Like this nodeJs execute the 10,000 if requests.
     //      ---------------------------------------------------------------------------
     //
     if ('ErrorHandling') {
@@ -549,6 +575,69 @@ if ('AWS') {
         //          3. Due to this we reduce the duplication, and increase the performance.
         //          4. And deployment package size also reduce.
         //
+        //      6. Lambda Lifecycle?
+        //          1. In Lambda lifeCycle there are three different phases are there.
+        //              - Init
+        //              - Invoke
+        //              - Shutdown
+        //          2. When the lambda trigger first time, it will create the container, environment and start execution,
+        //             so the first startup is delay, it's called Init.
+        //          3. Once Lambda ir ready, when request came it will start execution immediately, it's called Invoke.
+        //          4. If lambda is not used long time, container, memory and environment everything will delete. 
+        //             Again it will start initial stage, it's called Shutdown.
+        //
+        //      7. Environment Variables?
+        //          1. Environment variables are key-value pairs.
+        //          2. Instead of hardcode this, we can keep it in environment file, during the execution dynamically take this.
+        //          3. Basically it contains:
+        //              1. DataBase URL's.
+        //              2. External API url's.
+        //              3. Bucket names
+        //              4. API Endpoints etc.
+        //
+
+        // Lambda Example:
+        const handler = async () => {
+            try {
+                console.log('Hello World');
+
+                return {
+                    statusCode: 200,    
+                    body: JSON.stringify('HelloWorld')
+                }
+            } catch (err) {
+                return {
+                    statusCode: 500,
+                    body: JSON.stringify({
+                        message: err
+                    })
+                }
+            }
+        };
+        handler();
+
+        //--> What is Async?
+        //      1. When we use the async the function will wait for something like DynamoDB data, api response or fileReading.
+        //      2. Without async await will not work it will give error.
+
+        //--> What is Event?
+        //      1. Event means request body or data.
+        //      2. When someone trigger the lambda they will pass the event.
+
+        //--> What is Handler?
+        //      1. Handler is starting point of lambda.
+        //      2. AWS invoke this handler whenever lambda trigger
+
+        //--> What is console.log()?
+        //      1. Use this print something in logs. Using this for local validation.
+        //      2. If anything we want to debug in cloud will use this and check the logs in cloudWatch.
+
+        //--> How do you call DynamoDB from Lambda?
+        //      1. Lambda cannot connect dynamoDB directly.
+        //      2. We should use the AWS SDK inside the lambda Function.
+        //      3. In AWS SDK we have the dynamoDB libraries we can import it, create the dynamoDB client.
+        //      4. Then we can perform the operations like create, update, delete the data.
+        //      5. Lambda send the request to DB, and db process the request and give the response back to lambda.
     }
     //      
     if ('API_Gateway') {
@@ -602,9 +691,18 @@ if ('AWS') {
         //          1. Api Versioning is nothing but it will avoid the existing customers.
         //          2. When we release the new changes in existing api, instead of modify existing api, will create new.
         //          Ex:
-        /api/v1 / userService
-            / api / v2 / userService
+        //              /api/v1/userService
+        //              /api/v2/userService
         //
+        //      7. Throttling vs Rate Limiting?
+        //          1. Rate Limit: 
+        //                  1. Rate Limit means fixed limit, how many requests user can make with in a time period.
+        //                  2. It crossed it will throw too many request error.
+        //                  3. For Ex Max 100 request, if we got 101 it will reject.
+        //
+        //          2. Throttling:
+        //                  1. Instead of rejecting the request it will put on hold.
+        //                  2. I mean Requests are delayed or queued instead of immediately rejected. 
     }
     //
     if ('DynamoDB') {
@@ -794,7 +892,7 @@ if ('Project Overview') {
     //          scripts: It contains automation and utility scripts.
     //      5. Like this the Monorepo setup will be there.
     //
-    // NestJS services
+    // NestJS services      
     // API flow
     // AWS deployment
     // SNS/SQS usage
@@ -804,7 +902,7 @@ if ('Project Overview') {
 }
 //----------------------------------------------------------------------------------------------------------------------------
 
-if('Serverless_Architecture'){
+if ('Serverless_Architecture') {
     //---> What is AWS Serverless? Advantages? DisAdvantages?
     //      1. AWS Serverless means cloud native architecture.
     //      2. Using this we don't need to manage any servers, we just focus on development and business logic.
@@ -873,6 +971,9 @@ if ('MicroServices') {
     // 		        6. If Inventory fails, then:
     // 			        1. We call Payment Service’s refund API to give money back
     // 			        2. We call Order Service’s cancel API to cancel the order
+    //
+    //
+    // 2. How do you handle Distributed Transactions?
 }
 //----------------------------------------------------------------------------------------------------------------------------
 
@@ -983,5 +1084,52 @@ if ('Third_party_Integration') {
     //              1. Closed state: Normal mode will get the result
     //              2. Open state: Something is fail.
     //              3. Half Open state: Wait for sometime will get the response.
+
+    //---> My UnderStanding way:
+    //      1. Before Integration we have to get the details from the client or Vendor. like
+    //          1. API Documentation
+    //          2. Base URL
+    //          3. Authentication details like
+    //              * API Key
+    //              * OAuth2.0
+    //              * ClientID & Secret ID
+    //          4. Request & Response Format
+    //          5. And if we want transfer any file, we need to know the file transfer Mechanism
+    //      2. Once we get these all details we can start the integration.
+    //      3. Basically in Node.JS we can communicate external services through the REST API's.
+    //      4. Using API KEY or OAuth token we can connect the services.
+    //      5. Using API Key we can pass it under headers we can connect.
+    //      6. Using OAuth, we can pass the clientID & SecretID along with baseURL we can get the token.
+    //      7. Use this generated token we can communicate the third party services we can do the operations like
+    //          Create | Updata | Delete like that.
+    //      8. In my previous project I have used the HTTPService and done the integration and fetch the data from vendor.
 }
 //----------------------------------------------------------------------------------------------------------------------------
+
+if('API_Standards'){
+    // API Standards are set of Guidelines used to design secure and scalable apis.
+    // There are different types of standards should we follow.
+    //  1. Always used Resource based URL's. I mean use Nouns, not Verbs.
+    //     ✅ /v1/customers/123
+    //     ❌ /v1/getCustomer/123
+    //
+    //  2. Use the HTTP Methods: Like GET / POST / PUT / DELETE
+    //  3. Always maintain the versioning: I mean APIs should be versioned like /v1/customer
+    //  4. Follow the standard status code:
+    //      1. 200 - oK
+    //      2. 201 - Created
+    //      3. 204 - No Content
+    //      4. 400 - Bad Request
+    //      5. 401 - Unauthorized
+    //      6. 403 - Forbidden
+    //      7. 404 - Not Found
+    //      8. 500 - Internal Server Error
+    //
+    //  5. Request & Response Format: Usually use JSON.
+    //  6. Coming to Security always send the request using HTTPS, because it will encrypted before transformation.
+    //  7. Use the Authentication Token, should pass this in Header along with body.
+    //  8. Always do the input validation, parameter validation.
+    //  9. Provide the proper CORS configuration so it will allows trusted domains.
+    //  10. Always maintain the proper documentation for API and Swagger.
+
+}

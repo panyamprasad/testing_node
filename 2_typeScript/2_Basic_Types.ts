@@ -72,7 +72,6 @@ if (typeof val === "string") {
 //          5. So UNKNOWN is better than ANY.
 // 
 // ------------------------------------------------------------------------
-//
 // ---> 6. What is Difference between Interface & Type?
 //          1. Both Interface & Type are using for define the data structures in TypeScript.
 //          2. Using Interface we can declare the object contracts and it will support merging.
@@ -81,19 +80,16 @@ if (typeof val === "string") {
 //          5. So in most object based senarios will use both Interface and Type.
 //          6. But Type preferred most advanced features.
 //          7. Interface will use Object contracts and class implementations. 
-
-// ---> 7. Union:
-//          1. Using Union we can assign the multiple data types to a variable. 
+// ------------------------------------------------------------------------
+//
+// ---> 7. Union: 1. Using Union we can assign the multiple data types to a variable. 
 let value1: string | number;
 //
-// ---> 8. Intersection:
-//          1. Using Intersection we can combined the multiple Types.
+// ---> 8. Intersection: 1. Using Intersection we can combined the multiple Types.
 type EmployeeType = {
     name: 'Prasad'
 }
-
 type Manager = {
     role: 'test'
 }
-
 type Lead = EmployeeType & Manager;

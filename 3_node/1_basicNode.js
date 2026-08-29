@@ -39,11 +39,12 @@
         });
     //------------------------------------------------------------------------------
     // Explain phases of the Node.js event loop.
-        // Node js event loop is a machanism that handles the asynchronous operations in Node js.
+        // Node js event loop is a mechanism that handles the asynchronous operations in Node js.
         // In Event loop there are multiple phases are there.
         // 1. Timers: In this phase the callback functions of setTimeout, setInterval are executed. Basically this functions are executed after the specified time.
-        // 2. I/O callbacks: In this phase the I/O operations are executed. Like reading file, writing file, network operations etc.
-        // 3. Poll: In this phase the event loop get the new I/O events and execute the callback functions.
+        // 2. Pending callbacks: In this phase it will execute te pending or delayed input callbacks from previous operations.
+        // 3. Poll: In this phase it will handle the completed input operations like  Database Queries, External Api calls
+        //          File read & write once the execution is done it will process next.
         // 4. Check: In this phase it will execute the setImmediate functions.
         // 5. Close: In this phase the close event callback functions are executed.
         // 6. MicroTasks: In this phase promises, async/await callback functions are executed.

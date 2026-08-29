@@ -48,6 +48,19 @@ function getUser(): User | PromiseLike<User> {
 //---> merging:
 //          1. Merging is nothing but combination of multiple interfaces with same name into single interface.
 //          2. This feature is available only in Interface.
+interface User1 {
+    id: number;
+}
+interface User1 {
+    name: string;
+}
+
+const user11: User1 = {
+    id: 1,
+    name: "Prasad"
+};
+
+console.log(user11);
 //------------------------------------------------------------------------
 //
 // 🟡 6. Classes & OOP
@@ -63,17 +76,40 @@ function getUser(): User | PromiseLike<User> {
 //---> | (OR) : Using this Combination of multiple data types. If we want to declare a variable with multiple data types
 //          will use Union. 
 //          Ex: A user can login with email Or mobileNumber
-             type loginId = string | number;
+type loginId = string | number;
 //
 //---> & (AND) : Intersection will use in type. Using intersection will combine multiple types to another type.
 //          Ex: 
-                type Employee = {
-                    id: number,
-                    name: string
-                }
-                type Manager = {
-                    department: string
-                }
-                type TeamLead = Employee & Manager
+type Employee = {
+    id: number,
+    name: string
+}
+type Manager = {
+    department: string
+}
+type TeamLead = Employee & Manager
 
 //------------------------------------------------------------------------
+//
+//---> 🟡 7. What are the Utility Types?
+//          1. Utility types are Ready-Made typeScript helpers.
+//          2. It will help us to create new types using existing types, without writing everything again.
+//          3. There are different types of Utility types are there.
+//          4. Partial, Required, ReadOnly, Pick, Omit, Record
+interface User {
+    id: number;
+    name: string;
+    email: string;
+    password: string;
+}
+``
+// 1. partial: It will mark as all or optional
+type UpdateUser = Partial<User>;
+
+// 2. Required: It will mark as all or mandatory
+type completeUser = Required<User>;
+// 3. ReadOnly: Cannot modify values after creation.
+// 4. Pick: Select only required properties.
+type UserInfo = Pick<User, "id" | "name">;
+// 5. Omit : Remove some properties
+type UserResponse = Omit<User, "password">;

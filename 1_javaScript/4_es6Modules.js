@@ -63,11 +63,7 @@ console.log(greet("Prasad")); // Hello, Prasad!
 // Template Literals is used to create the string in more readable way.
 // It will help to avoid the concatenation.
 // Example: 
-const name1 = "Prasad";
-const age1 = 38;
-const city1 = "Bangalore";
-const message = `My name is ${name1}, I am ${age1} years old and I live in ${city1}.`;
-console.log(message); // My name is Prasad, I am 38 years old and I
+ // My name is Prasad, I am 38 years old and I
 // live in Bangalore.
 // ------------------------------------------------------------------------------
 // -------------- Optional Chaining -----------------
@@ -95,3 +91,5 @@ console.log(bar); // 0
 const baz = undefined ?? "Hello";
 console.log(baz); // Hello
 // ------------------------------------------------------------------------------
+
+

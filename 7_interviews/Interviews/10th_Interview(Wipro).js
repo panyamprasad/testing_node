@@ -99,14 +99,12 @@
 //  Step 2: Create the route for /users
 //      📄 routes/userRoutes.js
         import express from 'express';
-        import {users} from './users'; // this will come from above file
+        import {getUserDetails} from './users'; // this will come from above file
 
         const route = express.Router();
-
-        route.get('./users', users);
+        route.get('./users', getUserDetails);
 
 // 🪜 Step 3: Create middleware for logging
-
 //     📄 middleware/logger.js
         export const logger = (req, res, next) => {
             console.log(`${req.method} ${req.url}`);
@@ -121,10 +119,8 @@
 
         const app = express();
         const PORT = 3000;
-
         // 1. Use logger middleware
         app.use(logger);
-
         // 2. Use user routes
         app.use('/', userRoutes);
 9

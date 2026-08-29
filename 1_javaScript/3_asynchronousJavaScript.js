@@ -89,3 +89,61 @@ async function foo() { }
 const bar = async function () { };
 // 3. Arrow function
 const baz = async () => { };
+//
+//------------------------------------------------------------------------------
+//
+// Callback Example:
+function getUser(callback) {
+    setTimeout(() => {
+        callback({
+            id: 1,
+            name: 'prasad'
+        })
+    }, 2000);
+}
+
+getUser((user) => {
+    console.log('User : ' + user);
+});
+
+// Promises Example:
+function getUser() {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve({
+                id: 1,
+                name: 'prasad'
+            })
+        }, 2000)
+    });
+}
+
+getUser()
+    .then(user => {
+        console.log('User : ' + user);
+    })
+    .catch(err => {
+        console.log(err);
+    })
+
+//async await Example:
+function getUser() {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve({
+                id: 1,
+                name: 'Prasad'
+            })
+        }, 2000)
+    });
+}
+
+async function getUserDetails() {
+    try {
+        const data = await getUser();
+        console.log('User : ' + data);
+    } catch (err) {
+        console.log(err);
+    }
+}
+getUserDetails();

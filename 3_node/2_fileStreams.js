@@ -64,7 +64,7 @@ console.log(buffer);
 //          2. It will read the file piece by piece instead of waiting for full file.
 //          3. It will work for large files like video/audio etc.
 //          Example:
-// const fs = require('fs');
+//              const fs = require('fs');
 const stream = fs.createReadStream('C:/Users/prasad/OneDrive/Desktop/VCM/JavaScript/eventLoop.txt', 'utf-8');
 
 stream.on('data', chunk => {

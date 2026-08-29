@@ -162,3 +162,42 @@
     // Use TTL for delete expired data items.
     // Use Batch for read/write to reduce number of requests.
     // Enable to Autoscaling.
+
+
+// Table Creation:
+const params1 = {
+    TableName: 'NotificationTable',
+
+    KeySchema :[
+        {
+            attributeName: 'NotificationId',
+            KeyType: 'HASH'
+        }
+    ],
+    AttributeDefinitions:[
+        {
+            attributeName: 'NotificationMedium',
+            attributeType: 'S'
+        },
+        {
+            attributeName: 'UserId',
+            attributeType: 'S'
+        },
+        {
+            attributeName: 'NotificationMedium',
+            attributeType: 'S'
+        }
+    ],
+    GlobalSecondaryIndexes:[
+        [
+            {
+                IndexName: 'UserId'
+            },
+            {
+                attributeName: 'UserIdIndex',
+                atributeType: 's'
+            }
+        ]
+        
+    ]
+}

@@ -1,0 +1,80 @@
+AWSTemplateFormatVersion: '2010-09-09'
+
+Description: Customer API Example
+
+# =====================
+# PARAMETERS
+# =====================
+Parameters:
+
+  Environment:
+    Type: String
+    Default: DEV
+
+# =====================
+# RESOURCES
+# =====================
+Resources:
+
+  # API Gateway
+  CustomerApi:
+    Type: AWS::ApiGateway::RestApi
+    Properties:
+      Name: CustomerAPI
+
+  # Resource /customers
+  CustomersResource:
+    Type: AWS::ApiGateway::Resource
+    Properties:
+      ParentId: !GetAtt CustomerApi.RootResourceId
+      PathPart: customers
+      RestApiId: !Ref CustomerApi
+
+  # Lambda
+  CustomerLambda:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: CustomerLambda
+      Runtime: nodejs20.x
+      Handler: index.handler
+      Role: arn:aws:iam::123456789012:role/LambdaExecutionRole
+
+      Code:
+        ZipFile: |
+          exports.handler = async(event) => {
+            return {
+              statusCode: 200,
+              body: JSON.stringify("Success")
+            };
+          };
+
+  # GET /customers
+  GetCustomersMethod:
+    Type: AWS::ApiGateway::Method
+    Properties:
+      HttpMethod: GET
+      RestApiId: !Ref CustomerApi
+      ResourceId: !Ref CustomersResource
+      AuthorizationType: NONE
+
+  # POST /customers
+  CreateCustomerMethod:
+    Type: AWS::ApiGateway::Method
+    Properties:
+      HttpMethod: POST
+      RestApiId: !Ref CustomerApi
+      ResourceId: !Ref CustomersResource
+      AuthorizationType: NONE
+
+# =====================
+# OUTPUTS
+# =====================
+Outputs:
+
+  ApiId:
+    Description: API Gateway Id
+    Value: !Ref CustomerApi
+
+  LambdaName:
+    Description: Lambda Name
+    Value: !Ref CustomerLambda

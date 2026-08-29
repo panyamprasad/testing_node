@@ -26,12 +26,16 @@
 // 		4. In Arrow don't have the own this. It will coming from it's parent scope.
 //		5. Mostly used in callbacks, array operations, and small utility functions.
 // 		EX:
-		const add = (a,b) => a+b;
+		const add = (a,b) => {
+			return a+b;
+		}
+		console.log(add(10,5));
 		
 		// Normal: 
 			function add(a,b){
 				return a+b;
 			}
+			console.log(add(10,5));
 // 		---------------------------------------------------
 //
 // ---> How to access the obj keys inside the arrow function? if it is null how will do?

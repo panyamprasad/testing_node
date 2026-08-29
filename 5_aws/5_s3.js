@@ -102,3 +102,13 @@
     // Use the right storage class based on usage.
     // Maintain the lifeStyle rules to automatically move the old file to cheaper storage and delete it after a period.
 
+//--> 9. During file upload, if the bucket changes from Bucket-A to Bucket-B:
+//      1. Today, the application uploads files to Bucket-A.
+//      2. Tomorrow, if we want to use Bucket-B, we should update the bucket configuration before starting new uploads.
+//      3. The correct approach is to update the application configuration so that all new uploads go directly to Bucket-B.
+//      4. If the application is still using the old bucket configuration (for example, due to cache or stale configuration) and the upload fails, then we can use retry logic.
+
+//      5. During retry, the application fetches the latest bucket details from a central configuration source (such as Parameter Store, App Config, Config Service, etc.) and retries the upload using the new bucket.
+
+//      6. Retry logic is a backup/recovery mechanism. It is not the primary method for bucket migration.
+

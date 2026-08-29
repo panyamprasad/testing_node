@@ -56,8 +56,14 @@
                 // Used for microServices, API'S and React & Angular.
             
     // 4. OAuth 2.0 Authentication:
-            // OAuth 2.0 is the authorization framework, 
-            // It will allow users to login in Trusted providers like Google, Azure, microsoft like that.
+            // OAuth 2.0 is the authorization framework,
+            // It will used in two senarios:
+        // External API Integration - Salesforce Integration, Pershing like that
+            // Here first we have to genarate the accessToken using this Client Credentials.
+            // Then we use the token we can access the external api services.
+            
+        // User Login through the trusted providers. Like Azure, microsoft or google.
+            // It will allow users to login from Trusted providers like Google, Azure, microsoft like that.
             // Using this we can access the third-party application without sharing username & password.
             // Instead of sharing the user details we can get the permission for the application access and their resources.
 
@@ -69,15 +75,21 @@
             // Authentication: Authentication verify the user identity.
             // Authorizations: Authorization means permissions, based on role should we provide the access.
     
+    //-------------------------------------------------------------
+
     //  What is difference between Session / JWT tokens?
     // Ans:
             // Session token: When user login, server store the user data in db and creates the sessionID. And every request should we send this sessionId or cookie, server verify the id and find the user.
             // JWT token: After login the server creates the signed token with user data, it includes user ID or role. Every request should send this token in headers and server identify the user and give the response.
     
+    //-------------------------------------------------------------
+    
     // What is Oauth 2.0?
     // Ans:
             // OAuth 2.0 is using to get the access for third-party providers like google, github. No need to send the userName and password. Application get the access token from the providers.
     
+    //-------------------------------------------------------------
+
     // What is general approach to securing the login system?
         // HTTPS
         // Password security (bcrypt hashing)
@@ -85,7 +97,25 @@
         // Input Validation
         // Helmet
     
+    //-------------------------------------------------------------
+
     // How do you secure JWT tokens in Node.js?
         // Always sending the JWT's over https to keep them safe.
         // Always use the strong secret key's from environment variables.
         // Verify the token on every request and use the refresh tokens or blacklisting for logout.
+
+    //-------------------------------------------------------------
+
+    // API Security Best Partices?
+        // For API Security, will follow different types of security layers.
+        // First We have to use the HTTPs for sending the data. Because it will encrypted the data during the transmission.
+        // Second we have to use the JWT authentication and authorization, because it will allow only trusted users.
+        // Next always do the proper CORS configuration, because it will allows only trusted domains.
+        // Next we have to do the input validation.
+        // Like this we can do the api Security.
+
+    //-------------------------------------------------------------
+
+    // What is different between HTTP & HTTPS?
+        // Using HTTPs it will send the data as plain text format, everyone can access the user data or sensitive data. Like Username & Password.
+        // But Using HTTPS it will encrypted the data during the transmission. So HTTPS is more secure because attackers can't access the data≥

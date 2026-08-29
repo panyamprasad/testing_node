@@ -48,3 +48,49 @@ const obj1 = {
 obj1.function(); // Arrow Function : 100
 
 // ------------------------------------------------------------------------------
+
+// Normal Function:
+//      1. In normal function have the own this.
+//      2. It have the own arguments.
+//      3. And it will good for object methods and constructor.
+//      4. Better for traditional way of writing functions.
+//Ex:
+async function getUserDetails(){
+    try{
+        const response = await fetch('https://jsonplaceholder.typicode.com/users');
+        const data = await response.json();
+        return {
+            statusCode: 200,
+            body: JSON.stringify({
+                res: data
+            })
+        }
+    }catch(err){
+        console.log(err);
+    }
+}
+getUserDetails();
+
+// Arrow Functions:
+//      1. Arrow functions are ES6 Module feature.
+//      2. It doesn't have own this.
+//      3. And it doesn't have the own arguments.
+//      4. Better for callback functions, promises and async operations.
+//      5. It will not support for constructor.
+//      6. Use this we can write shorter syntax.
+const userData = async () => {
+    try{
+        const response = await fetch('https://jsonplaceholder.typicode.com/users');
+        const data = await response.json();
+        console.log(data);
+        return data;
+    }catch(err){
+        return{
+            statusCode: 500,
+            body: JSON.stringify({
+                message: err
+            })
+        }
+    }
+}
+userData();

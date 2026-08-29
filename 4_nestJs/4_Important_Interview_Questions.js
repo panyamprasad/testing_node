@@ -39,8 +39,18 @@
 //     4. It also helps in maintaining a clear contract between the client and server, making it easier to understand and maintain the codebase.
 //     Ex:
 export class CreateUserDto {
+    @IsOptional()
+    @IsString()
+    @MinLenght(1)
+    @MaxLenght(30)
     name: string;
+
+    @IsOptional()
+    @IsString()
+    @MaxLenght(30)
+    @matches('')
     email: string;
+    
     password: string;
 }
 //   ----------------------------------------------------------------------------------------------------
@@ -111,6 +121,7 @@ export class UserService {
 //      5. This allows for centralized error handling and consistent responses across the application.
 //      Ex:
 import { ExceptionFilter, Catch, ArgumentsHost, HttpException } from '@nestjs/common';
+import { isString, matches } from 'lodash';
 @Catch(HttpException)
 export class HttpExceptionFilter implements ExceptionFilter {
     catch(exception: HttpException, host: ArgumentsHost) {
@@ -134,3 +145,54 @@ export class HttpExceptionFilter implements ExceptionFilter {
 //      3. Once the user verify success, authorization checks whether the use have the respected permissions.
 //      4. Authorization will check using the RolesGuard.
 //   ----------------------------------------------------------------------------------------------------
+
+// Example Codes:
+// --------------
+//
+// Middleware:
+
+// NestJs:
+export class LoggingMiddleware implements NestMiddleware {
+  use(req: any, res: any, next: () => void) {
+    console.log(req.url);
+    next();
+  }
+}
+
+// Express:
+app.use((req, res, next) => {
+    console.log(req.url);
+
+    next();
+})
+//--------------------------------------
+
+// Global Exception:
+
+// DTO:
+export class customerRequest{
+    @isNotEmpty()
+    @isString()
+    @MaxLength(30)
+    @MinLength(4)
+    firstName: string;
+
+    @isNotEmpty()
+    @isString()
+    @MaxLength(30)
+    @MinLength(4)
+    lastName: string;
+
+    @isOptional()
+    @isString()
+    @matches('format')
+    email?: string;
+}
+
+// DI using Constructor:
+
+constructor(
+    private readonly logger: Logger,
+){}
+
+this.logger
