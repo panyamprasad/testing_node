@@ -114,11 +114,13 @@ export class UserService {
 //   ----------------------------------------------------------------------------------------------------
 
 // ✅ Q9: How to handle errors in NestJS?
-//      1. In NestJS, errors can be handled using exception filters, which allow us to catch and handle exceptions thrown during the request lifecycle.
-//      2. Exception filters can be used to catch specific types of exceptions and return custom responses to the client.
-//      3. We can create custom exception filters by implementing the `ExceptionFilter` interface and using the `@Catch()` decorator to specify which exceptions to catch.
-//      4. Exception filters can be applied globally, at the controller level, or at the method level, depending on the scope of error handling needed.
-//      5. This allows for centralized error handling and consistent responses across the application.
+//      1. In Nestjs, exceptions are usually handled using built-in HTTP Exceptions such as.
+//      2. BadRequestException, UnauthorizedException, ForBiddenException and NotfoundException.
+//      3. These all are we can use in root level error handling.
+//      4. For Centralized error handling, we create the GlobalException Handler it will implemented by ExceptionFilter.
+//      5. using this we can catch the Unhandled exceptions and return error responses.
+//      6. And we also use the DTO'S, class validator it will automatically throw the errors for invalid requests.
+//
 //      Ex:
 import { ExceptionFilter, Catch, ArgumentsHost, HttpException } from '@nestjs/common';
 import { isString, matches } from 'lodash';

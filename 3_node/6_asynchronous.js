@@ -10,24 +10,26 @@
                 // Makes code cleaner using .then and .catch().
                 // But still long chain become hard to read the code.
         // 3. Async/Await
-                // To avoid the above problames the async/await is came to handle the async operations like sync way.
+                // To avoid the above problems the async/await is came to handle the async operations like sync way.
                 // It is easy to handle the code in try/catch block way.
         
         //-- OneLiner:
-            // Callback is came first but cause the callback hell. Avoid this introduced Promises with chaining process, even the hard to read the code. So async/awiait is the process to handle the async operations like sync way, it is easy to handle the code use the try/catch block.
-    //-------------------------------------------------------------
+            // Callback is came first but cause the callback hell. Avoid this introduced Promises with chaining process, even the hard to read the code. So async/await is the process to handle the async operations like sync way, it is easy to handle the code use the try/catch block.
+//-------------------------------------------------------------
 
 //---> How does Node.js achieve scalability on multi-core systems?
 //      1. NodeJs is single threaded, so CPU heavy operations will block the event loop.
 //      2. To achieve this using Worker threads and Cluster module.
 //              1. Cluster Module: 
-//                      1. Cluster module allows us to create multiple processes using the cpu cors. 
+//                      1. Cluster module allows us to create multiple processes using the cpu cors.
 //                      2. Due to this it can handle multiple requests simultaneously.
 //              2. Worker Threads:     
-//                      1. Using work thread we can handle heavy cpu intensive tasks like file processing, pdf generation, heavy calculations like that.
-//                      2. Using single cpu process it can do this.
-//                      2. Each thread has its own event loop and memory space.
- //              
+//                      1. Using work thread we can handle heavy cpu intensive tasks like file processing, pdf generation, 
+//                         heavy calculations like that.
+//                      2. Using single cpu process and created the additional threads.
+//                      3. Each thread has its own event loop and memory space.
+//                      4. So Work-threads communicate with the main thread once the process it complete.
+//
         // By using these two methods we can achieve scalability on multi-core systems.
 //-------------------------------------------------------------
 

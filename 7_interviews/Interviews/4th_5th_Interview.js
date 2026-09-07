@@ -1,10 +1,15 @@
 // ---> What is git rebase and git merge ?
-// 		git rebase:
+// 		- git rebase:
 // 			1. Before commit or merge we have to take the latest changes from the main branch it will clean the commit history.
 // 			2. And It will avoid the conflicts during the pull request.
 		
-// 		git merge:
-// 			1. Merge combined the two branched history together. And it keeps the commit history as is. It will create a new merge commit.
+// 		- git merge:
+// 			1. Merge combined the two branched history together. And it keeps the commit history as is. 
+// 			2. It will create a new merge commit.
+//
+//		- git stash:
+//			1. Using Git Stash we can save our local changes temporarily, before taking latest changes.
+//			2. Once pull the latest code will do stash apply then will get our changes.
 // 		--------------------------------------------------	
 // ---> What is kubernetes, why to use this, how it will work?
 // 		1. Kubernetes is container orchestration tool, it will automatically manage, scale and deploys the containers across the multiple servers.

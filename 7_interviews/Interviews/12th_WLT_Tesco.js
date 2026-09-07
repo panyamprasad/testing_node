@@ -11,7 +11,7 @@ const validateRequest = (req, res, next) => {
         console.log('Email is not available');
 
         return res.status(400).json({
-            message: 'Email is required',
+            message: 'Email is required', 
             status: 400
         });
     }

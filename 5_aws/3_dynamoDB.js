@@ -2,202 +2,229 @@
 
 // 🟡 1. What is DynamoDB?
 
-        // Amazon DynamoDB is a fully managed NoSQL database provided by Amazon Web Services.
-        // It is fast, scalable, and serverless — so you don’t have to manage servers, upgrades, or backups manually.
-        // It can handle large amounts of traffic automatically.
+// Amazon DynamoDB is a fully managed NoSQL database provided by Amazon Web Services.
+// It is fast, scalable, and serverless — so you don’t have to manage servers, upgrades, or backups manually.
+// It can handle large amounts of traffic automatically.
 
-    // 🟢 Why do we use it?
-        // Because it gives very fast performance (single-digit millisecond response time).
-        // It scales automatically when the traffic increases.
-        // No need to worry about infrastructure — AWS manages it.
+// 🟢 Why do we use it?
+// Because it gives very fast performance (single-digit millisecond response time).
+// It scales automatically when the traffic increases.
+// No need to worry about infrastructure — AWS manages it.
 
-    // 🧾 Example:
-        // Suppose we want to build any e-commerce or social network applications.
-        // We need to store profile, orders and products.
-        // During the storing and time, dynamoDb automatically scaling and store the data.
-        // Performance wise it will fast.
+// 🧾 Example:
+// Suppose we want to build any e-commerce or social network applications.
+// We need to store profile, orders and products.
+// During the storing and time, dynamoDb automatically scaling and store the data.
+// Performance wise it will fast.
 //------------------------------------------------------------
 
 // 🟡 2. Explain Partition key and Sort key?
 
-    // Partition Key:
-        // Partition key is nothing but it is primary key.
-        // Partition key main key it will uses to decide where to store the data.
-        // It must be unique.
-    
-    // Sort Key:
-        // It is optional, basically will use this for sorting purpose. 
-        // It will allow us to create multiple items under the same partition key.
-        // Basically sortKeys are like cratedData, orderId like that.
-    
-    // Ex:
-        // For example we build e-commerce order table is there. One user order multiple orders. So here userId is unique as partition key, but orderId and created date is different so these are the sort keys.
-        // So we can easily filter the items using the userId, createdDate or orderId.
+// Partition Key:
+// Partition key is nothing but it is primary key.
+// Partition key main key it will uses to decide where to store the data.
+// It must be unique.
+
+// Sort Key:
+// It is optional, basically will use this for sorting purpose. 
+// It will allow us to create multiple items under the same partition key.
+// Basically sortKeys are like cratedData, orderId like that.
+
+// Ex:
+// For example we build e-commerce order table is there. One user order multiple orders. So here userId is unique as partition key, but orderId and created date is different so these are the sort keys.
+// So we can easily filter the items using the userId, createdDate or orderId.
 //------------------------------------------------------------
 
 //  3. What is the Index?
-    // Index in the one of the way to access the data from this dynamoDB.
-    // Normally will use the Partition key and sort key to fetch the data from db.
-    // Some times we want to search a different attributes. That's way the index will help us.
-    // It will help us query data in another way without scanning full table.
+// Index in the one of the way to access the data from this dynamoDB.
+// Normally will use the Partition key and sort key to fetch the data from db.
+// Some times we want to search a different attributes. That's way the index will help us.
+// It will help us query data in another way without scanning full table.
 
-    // Uses:
-        // Speed up queries and get the data with other fields.
-        // To avoid full table scans, which are slow and expensive.
-        // When we want search or filter a column that is not a primary key.
-    
-    // There are two types of index are there.
-        // Global secondary index : 
-                // If both Partition key and sort key are different we can use the global secondary index.
-                // We can use this we can filter the data in complete different way.
-                // Ex: Basically in Orders table : 
-                    // Primary Key → userId (Partition Key) + orderDate (Sort Key)
-                // But we change the both we fetch the data like below:
-                    // Partition Key → orderStatus
-                    // Sort Key → orderId
-                    const params = {
-                        TableName: "Orders",
-                        IndexName: "OrderStatusIndex",  // GSI name
-                        KeyConditionExpression: "orderStatus = :status",
-                        ExpressionAttributeValues: {
-                            ":status": { S: "Delivered" }
-                        }
-                    };
+// Uses:
+// Speed up queries and get the data with other fields.
+// To avoid full table scans, which are slow and expensive.
+// When we want search or filter a column that is not a primary key.
 
-        // Local secondary index : 
-                // If Partition key is same but use the different sort key we use the Local secondary index.
-                // It will useful when we need data with different sortby and same partition key.
+// There are two types of index are there.
+// Global secondary index : 
+// If both Partition key and sort key are different we can use the global secondary index.
+// We can use this we can filter the data in complete different way.
+// Ex: Basically in Orders table : 
+// Primary Key → userId (Partition Key) + orderDate (Sort Key)
+// But we change the both we fetch the data like below:
+// Partition Key → orderStatus
+// Sort Key → orderId
+const params = {
+    TableName: "Orders",
+    IndexName: "OrderStatusIndex",  // GSI name
+    KeyConditionExpression: "orderStatus = :status",
+    ExpressionAttributeValues: {
+        ":status": { S: "Delivered" }
+    }
+};
+
+// Local secondary index : 
+// If Partition key is same but use the different sort key we use the Local secondary index.
+// It will useful when we need data with different sortby and same partition key.
 //----------------------------------------------------------------------
 
 // 4. Explain DynamoDB architecture and key concepts?
-    // 1. DynamoDB is fully managed , no-sql, serverless and key-value database. it will use the distributed architecture and give the fast performance.
-    // 2. Data store in tables, items and attributes. Each item can identified with Partition key and sorting with sort key.
-    // 3. And it have the index to filter and get the data from different Partition and sort key.
-    // 4. It have the two types of Index GSI and LSI. Based on the request will use this.
-    // 5. And It can have the streams, real time processing. Because of this it will give the high performance without managing the servers.
+// 1. DynamoDB is fully managed , no-sql, serverless and key-value database. it will use the distributed architecture and give the fast performance.
+// 2. Data store in tables, items and attributes. Each item can identified with Partition key and sorting with sort key.
+// 3. And it have the index to filter and get the data from different Partition and sort key.
+// 4. It have the two types of Index GSI and LSI. Based on the request will use this.
+// 5. And It can have the streams, real time processing. Because of this it will give the high performance without managing the servers.
 //-----------------------------------------------------------
 
 // 5. What is RCU & WCU in Amazon DynamoDB?
-    // RCU means Read capacity Unit
-    // WCU means write capacity Unit.
-    // Using this we can find the speed limits on how much fast your table can read and write the data.
-    // Use this we can control the cost
-    // And Handle the traffic control
+// RCU means Read capacity Unit
+// WCU means write capacity Unit.
+// Using this we can find the speed limits on how much fast your table can read and write the data.
+// Use this we can control the cost
+// And Handle the traffic control
 //----------------------------------------------------------------------
 
 // 6. What is DynamoDB Streams?
-    // 1. Streams are change tracker, in the dynamoDB.
-    // 2. When something happened in the data like insert, update, delete use this streams we can capture the event.
-    // 3. Use the capture event we can trigger the actions like sending notifications, update another table or sync the data.
-    // Use:
-            // Tracking purpose who changed the data.
-            // Sync the data between the regions or tables
-            // Trigger the events.
-            // Event driven architectures.
+// 1. Streams are change tracker, in the dynamoDB.
+// 2. When something happened in the data like insert, update, delete use this streams we can capture the event.
+// 3. Use the capture event we can trigger the actions like sending notifications, update another table or sync the data.
+// Use:
+// Tracking purpose who changed the data.
+// Sync the data between the regions or tables
+// Trigger the events.
+// Event driven architectures.
 //----------------------------------------------------------------------
 
 // 7. What is TTL (Time to Live) in DynamoDB?
-    // TTL (Time to Live): TTL means it will delete the records automatically form the db. 
-    // We have to set the time for each item, when it reach that time record automatically delete.
+// TTL (Time to Live): TTL means it will delete the records automatically form the db. 
+// We have to set the time for each item, when it reach that time record automatically delete.
 
-    // Use:
-        // Always maintain the table clean and maintainable.
-        // To save the storage data.
+// Use:
+// Always maintain the table clean and maintainable.
+// To save the storage data.
 
-    // We have to add the numeric attribute like expiretime.
-    // We have to enable to TTL for the table and we have to tell db which attribute to use.
-    // Basically use this for 
-                    // OTP/Tokes
-                    // Temporary notifications
-                    // session Handling
+// We have to add the numeric attribute like expiretime.
+// We have to enable to TTL for the table and we have to tell db which attribute to use.
+// Basically use this for 
+// OTP/Tokes
+// Temporary notifications
+// session Handling
 //-----------------------------------------------------------------------
 
 // 8. Explain Global Tables (Multi-region replication)?
-    // Global tables are allow us to replicate the dynamoDB tables across multiple regions automatically.
-    // Event change set like inert, update, create and delete can be update one regions it will automatically change other regions.
-    // There is no manual replication required AWS Handle everything.
+// Global tables are allow us to replicate the dynamoDB tables across multiple regions automatically.
+// Event change set like inert, update, create and delete can be update one regions it will automatically change other regions.
+// There is no manual replication required AWS Handle everything.
 
-    // Advantages:
-        // Users can connect nearest regions.
-        // If one region fails, the traffic will move to another region.
-        // For Disaster recovery. If any regional failures.
-        // Distribute read/write traffic accors the multiple regions to handle the heavy load.
+// Advantages:
+// Users can connect nearest regions.
+// If one region fails, the traffic will move to another region.
+// For Disaster recovery. If any regional failures.
+// Distribute read/write traffic accors the multiple regions to handle the heavy load.
 //-----------------------------------------------------------------------
 
 // 9. Common DynamoDB Real-Time Use Cases?
-    // 1. Store data and login sessions with fast access.
-    // 2. Auto expire session using the TTL.
-    // 3. Triggers workflows automatically.
-    // 4. MilliSeconds api response.
+// 1. Store data and login sessions with fast access.
+// 2. Auto expire session using the TTL.
+// 3. Triggers workflows automatically.
+// 4. MilliSeconds api response.
 //-----------------------------------------------------------------------
 
 // How to configure the dynamoDB in serverless application?
-    // Basically will use the serverless yaml or cloudformation we can configure the dynamoDB tables.
-    // Instead of manually creation we use this we can create tables, stream, replication and other details we can configure automatically when we upload this files.
+// Basically will use the serverless yaml or cloudformation we can configure the dynamoDB tables.
+// Instead of manually creation we use this we can create tables, stream, replication and other details we can configure automatically when we upload this files.
 //-----------------------------------------------------------------------
 
 // How do you handle dynamoDB error in lambda?
-    // Using the try/catch block.   
-    // Implementing the retry mechanism to fix this issues.
+// Using the try/catch block.   
+// Implementing the retry mechanism to fix this issues.
 //-----------------------------------------------------------------------
 
 // How do you trigger lambda form dynamoDB?
-    // Enable the streams in the dynamoDB table, and attach the lambda functions or event. When the data insert/updata/delete the lambda will trigger.
+// Enable the streams in the dynamoDB table, and attach the lambda functions or event. When the data insert/updata/delete the lambda will trigger.
 //-------------------------------------------------------
 
 // How to implement ttl in table?
-    // Enable the ttl in dynamoDB table.
-    // Add the value when we inserting the data.
-    // Once the value is expire the record will delete automatically.
-    // Ex: if we add the attribute expireTime.. once the time is reach record will delete.
+// Enable the ttl in dynamoDB table.
+// Add the value when we inserting the data.
+// Once the value is expire the record will delete automatically.
+// Ex: if we add the attribute expireTime.. once the time is reach record will delete.
 //------------------------------------------------------
 
 // How to do multi-region replication in serverless apps?
-    // Use the dynamoDB global tables.
-    // Add the replica regions from yaml or manually.
-    // If we add the data one region it will automatically replicating other region.
+// Use the dynamoDB global tables.
+// Add the replica regions from yaml or manually.
+// If we add the data one region it will automatically replicating other region.
 
 // How do you optimize DynamoDB cost in serverless apps?
-    // Use On-Demand tables for unpredictable traffic.
-    // Use TTL for delete expired data items.
-    // Use Batch for read/write to reduce number of requests.
-    // Enable to Autoscaling.
+// Use On-Demand tables for unpredictable traffic.
+// Use TTL for delete expired data items.
+// Use Batch for read/write to reduce number of requests.
+// Enable to Autoscaling.
 
 
 // Table Creation:
 const params1 = {
     TableName: 'NotificationTable',
 
-    KeySchema :[
+    KeySchema: [
         {
-            attributeName: 'NotificationId',
+            AttributeName: 'NotificationId',
             KeyType: 'HASH'
-        }
-    ],
-    AttributeDefinitions:[
-        {
-            attributeName: 'NotificationMedium',
-            attributeType: 'S'
         },
         {
-            attributeName: 'UserId',
-            attributeType: 'S'
-        },
-        {
-            attributeName: 'NotificationMedium',
-            attributeType: 'S'
+            AttributeName: 'CreatedAt',
+            KeyType: 'RANGE'
         }
     ],
-    GlobalSecondaryIndexes:[
-        [
-            {
-                IndexName: 'UserId'
+
+    AttributeDefinitions: [
+        {
+            AttributeName: 'NotificationId',
+            AttributeType: 'S'
+        },
+        {
+            AttributeName: 'NotificationMedium',
+            AttributeType: 'S'
+        },
+        {
+            AttributeName: 'CreatedAt',
+            AttributeType: 'S'
+        },
+        {
+            AttributeName: 'UserId',
+            AttributeType: 'S'
+        }
+    ],
+
+    GlobalSecondaryIndexes: [
+        {
+            IndexName: 'UserIdIndex',
+            KeySchema: [
+                {
+                    AttributeName: 'UserId',
+                    AttributeType: 'S'
+                }
+            ],
+            Projection: {
+                ProjectionType: 'ALL'
             },
-            {
-                attributeName: 'UserIdIndex',
-                atributeType: 's'
-            }
-        ]
-        
+        }
+    ],
+
+    LocalSecondaryIndexes: [
+        {
+            IndexName: 'CreatedAtIndex',
+            Projection: {
+                ProjectionType: 'ALL'
+            },
+            KeySchema: [
+                {
+                    AttributeName: 'NotificationId',
+                    KeyType: 'HASH'
+                }
+            ]
+        }
     ]
 }

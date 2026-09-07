@@ -13,19 +13,22 @@
 //---> 5. What are the Aws Lambda Limitations?
 //---> 6. Project Explanations?
 //---> 7. Gave the array of numbers and asked to ascending order without using inbuilt sort function.
-          const arr1 = [1,0,2,5,6,0];
-          const result = arr1.sort((a,b) => a-b);
-            console.log(result);
+const arr1 = [1, 0, 2, 5, 6, 0];
 
-          const zeros = [];
-          const numbers = [];
-          for(let val of arr1){
-                if(val === 0){
-                    zeros.push(val);
-                }else{
-                    numbers.push(val);
-                }
-          }
-          const result1 = [...zeros, ...numbers];
-            console.log(result1);
+function ordering(arr1) {
+  for (let i = 0; i < arr1.length; i++) {
+    for (j = 0; j < arr1.length - i - 1; j++) {
+      if (arr1[j] > arr1[j + 1]) {
+        let result = arr1[j];
+        arr1[j] = arr1[j + 1];
+        arr1[j + 1] = result;
+      }
+    }
+  }
+  return arr1;
+}
+console.log(ordering(arr1));
+
+const result1 = [...zeros, ...numbers];
+console.log(result1);
 //---> 8. Asked the GraphQL experience?

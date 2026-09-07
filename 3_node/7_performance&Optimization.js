@@ -24,11 +24,23 @@
 //----------------------------------------------------------------------------------------------------------------
 
 // How would you design a serverless REST API using Node.js?
+    // 1. Design the api's in serverless, I will use Api Gateway to handle http requests and routing.
+    // 2. Before gateway call, we do the authentication, once it's done, will pass the request to gateway.
+    // 3. In gateway level will do the authorization, and check the permissions, once it's done.
+    // 4. It will route the proper lambda function, in lambda level will do the all field validation.
+    // 5. And if it is long running task will use the SQS, instead of sending request directly to lambda.
+    // 6. Then based on the business logic will get the data or process the file to s3 like that.
+    // 7. And use the cloudWatch logs for logging and monitoring purpose.
+    // 8. Like this will implement serverless API's.
 
-    // 1. I will use Api Gateway to handle http requests and routing.
-    // 2. Each route will call serverless function (like aws lambda) written in nodeJs.
-    // 3. The functions will connect to a serverless database (dynamoDb or firebase) to store the data.
-    // 4. I will use JWT or Cognito token for security purpose.
-    // 5. And I will add logging, error handling for monitoring to track the performance and issues.
+//----------------------------------------------------------------------------------------------------------------
 
-//
+//---> How would you design a REST API using Node.js?
+//      1. When designing a REST API in NodeJs, first we identify the resources and define the RESTful endpoints.
+//      2. Using the GET/POST/PUT/DELETE methods.
+//      3. And I follow the layered architecture like controllers, services and methods.
+//      4. And i will add the input validation, authentication and centralized error handling.
+//      5. And follow the logging, pagination and API documentation.
+//      6. And also I will follow the proper status code and structure response format.
+//      7. Like this I will develop and design the REST API'S.
+

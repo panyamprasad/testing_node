@@ -15,7 +15,7 @@
 // 		6. So we can create the two function for each and every service
 // 			1. One is main action
 // 			2. One is for Undo action.
-// 		6. If any thing fail in any service we can call undo function for previous services.
+// 		6. If any thing fail, will call undo function for previous services.
 // 		7. This undo function is called as Compensation.
 // 		8. We can use event or messages we can inform other services.
 // 		Ex:
@@ -107,6 +107,6 @@
 
 // ---> 8. How do you improve the database performance?
 // 		    1. We have to use the index, instead of scan full table.
-// 		    2. Optimize queries
+// 		    2. Optimize queries.
 // 		    3. Using caching, store the frequently used data in memory.
 // 		    4. Pagination, instead of load large data at one time, use LIMIT/ OFFSET.

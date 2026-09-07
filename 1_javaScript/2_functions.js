@@ -34,7 +34,7 @@ obj.arrowFunc(); // undefined
 
 //Example 2:
 // Arrow function doesn't have the own this.
-// It will take the this from the parent scopt.
+// It will take the this from the parent scope.
 // Example:
 const obj1 = {
     value : 100,
@@ -94,3 +94,4 @@ const userData = async () => {
     }
 }
 userData();
+

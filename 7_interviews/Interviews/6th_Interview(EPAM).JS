@@ -110,7 +110,7 @@
             function getUserData(user){
                 const {name, age, isAdmin, skills, address} = user;
 
-                if(typeof name !== String){
+                if(typeof name !== 'string'){
                     console.log('name is not a string');
                 }else{
                     console.log('firstName :' + name);

@@ -58,36 +58,36 @@
         
                const fs = require('fs');
                 
-               console.log("Start");  // 1
+               console.log("Start");  
                 
                process.nextTick(() => {
-                 console.log("nextTick 1");  // 4
+                 console.log("nextTick 1");  
                });
                 
                Promise.resolve().then(() => {
-                 console.log("promise 1");  //5
+                 console.log("promise 1"); 
                });
                 
                (async () => {
-                 console.log("inside async start"); // 2
+                 console.log("inside async start"); 
                  await Promise.resolve();
-                 console.log("async after await");  // 6
+                 console.log("async after await");
                })();
                 
                setTimeout(() => {
-                 console.log("setTimeout 1");  //7
+                 console.log("setTimeout 1"); 
                }, 0);
                 
                setImmediate(() => {
-                 console.log("setImmediate 1");  //8   
+                 console.log("setImmediate 1");
                });
                 
                fs.readFile(__filename, () => {
-                 console.log("fs.readFile callback"); //9
-                 setTimeout(() => console.log("setTimeout (inside readFile)"), 0);  //11
-                 setImmediate(() => console.log("setImmediate (inside readFile)"));  //10
+                 console.log("fs.readFile callback");
+                 setTimeout(() => console.log("setTimeout (inside readFile)"), 0);
+                 setImmediate(() => console.log("setImmediate (inside readFile)"));
                });
-               console.log("End");  // 3
+               console.log("End");
         // ------------------------------------------------------------------------------
     // Difference between process.nextTick() and setImmediate()?
         // Process.nextTick() is used to execute the callback function immediately after the current operation is completed.

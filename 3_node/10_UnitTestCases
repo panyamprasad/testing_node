@@ -1,0 +1,55 @@
+//---> 1. What is Mocha & Chai?
+//          1. Mocha & Chai are the testing frameworks, using this we can build the unit testcases.
+//          2. Using Mocha we can describe the testCases
+//          3. Using Chai we can verify the result and compare the data.
+
+//---> 2. What is Describe() and it()?
+//          1. Using Describe() we can define the group related unit testcases.
+//          2. Using it(), we can define individual testcases.
+// Ex:
+describe('User Testcases', async() => {
+    it('Should we get the User data', () => {
+
+    });
+
+    it('Should we get Failure response', () => {
+        
+    })
+})
+
+//---> 3. What are the Hooks in Mocha?
+//          1. There are different Hooks are there in Mocha
+//              - before() - It will execute before all Testcases
+//              - after() - It will execute after all Testcases
+//              - beforeEach() - Execute before specific Testcase
+//              - afterEach() - Execute after specific Testcase
+
+//---> 4. What is Sinon? 
+//          1. This is the mocking library, using this we can stub the mockData.
+
+//---> 5. What is nyc?
+//          1. This is code coverage tool, use this we can check the code coverage in every function.
+
+//Ex:
+
+describe('Testing User Service', async() => {
+    let userService;
+    let data;
+
+    beforeEach(() => {
+        userService = new userService();
+        data = {
+            fetchData: async() => {}
+        };
+    });
+ 
+    if('Should get the userDetails', async() => {
+        sinon.stub(data, 'fetchData').resolve({
+            id:1,
+            name: 'prasad'
+        });
+        const result = await userService.getUser(data, 1);
+        expect(result.id).to.equal(1);
+    });
+    
+});

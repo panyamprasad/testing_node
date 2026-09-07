@@ -1,6 +1,6 @@
 import { promises } from "stream";
 
-if ('JavaScript') {
+if ('JavaScript') { 
     //      Q1. What is JavaScript?
     //              1. JavaScript is Scripting language. Using for web development.
     //              2. Javascript dynamic typing.
@@ -27,14 +27,25 @@ if ('JavaScript') {
     //                  4. Using inside the block itself.
     //      ---------------------------------------------------------------------------
     //
-    //      Q3. Closer with Example?
+    //      Q3. Closure with Example?
     //              1. Closer is the function, It will remember the variable inside the memory.
     //              2. Closer gave the access to inner function to access the variable from the outer scope.
     //              3. Even the outer scope function execution is complete also.
     //              4. Using this callback functions like setTimeout, promises, async/await functions.
     //              5. Due to this some disAdvantages also is there like memory leak. So we have to use carefully.
     //              6. Always clean up the timers, unused references and subscribers.
-    //              Ex:
+    // Real Usecase:
+    //				1. Private variables:
+    //						- Bank Balance, 
+    // 						- Authentication State
+    //				2. Caching:
+    //						- Third-party Api Response, 
+    // 						- Frequently access data
+    //				3. Event handling:
+    //						- Delayed Notifications, 
+    //						- Background processing, 
+    //						- Async operations
+    // Ex:
     function outer() {
         let count = 0;
         function inner() {
@@ -126,9 +137,13 @@ if ('JavaScript') {
     //      ---------------------------------------------------------------------------
     //
     //      6. Prototype chain
-    //              1. Prototype is way to find property or method in JavaScript object.
-    //              2. If javaScript can't find the something in object, it's look  in its parent object
-    //              3. If it's not found there, it keep searching until it will reach null.
+    //              1. Prototype is a shared object, it will store the common properties and methods.
+    //              2. the other objects can access and reuse those properties and methods.
+    //              3. Instead of creating the same methods we can use the existing one.
+    //              4. Advantages of Prototype: Reusability, memory save and Inheritance.
+    //              5. Prototype chain is the way to find the properties and methods in objects.    
+    //              6. If javaScript can't find the something in object, it's look  in its parent object
+    //              7. If it's not found there, it keep searching until it will reach null.
     //      ---------------------------------------------------------------------------
     //
     //      7. Async/Await Execution flow
@@ -136,6 +151,26 @@ if ('JavaScript') {
     //              2. Using async we can create the function.
     //              3. Using Await we can hold the functionality until will get the response from the promises.
     //              4. And we can use the try/catch block to handle the exceptions.
+    //
+    //      ---------------------------------------------------------------------------
+    //
+    //      8. What it THIS?
+    //              1. THIS is the special Keyword.
+    //              2. Using this to refer the object, and invoke and execute the function.
+    //              3. its value depends on how the function is calling.
+    //
+    //      ---------------------------------------------------------------------------
+    //
+    //      9. What is Shallow Copy & Deep Copy?
+    //          Shallow Copy: 
+    //              1. Using Shallow Copy, we can copy the Primitive values and share the object and array values.
+    //              2. If anything change in primitive Copy values, it will not effect in original values.
+    //              3. But if anything change in object or array values in copy, it will effect in both copy & original values.
+    //
+    //          Deep Copy:
+    //              1. Coming to the Deep Copy it will completely create the different object copy.
+    //              2. If any changes happen in copy values, it will not effect in original values.
+
 }
 //----------------------------------------------------------------------------------------------------------------------------
 
@@ -418,9 +453,10 @@ if ('NodeJs') {
     //
     //      12. How Node.js handles 10,000 concurrent requests.
     //          1. Node.js uses the event loop and Input operations to handle thousands of requests.
-    //          2. And the Database queries and external api calls are not block the code symatancily it will execute the
-    //              remaining functionality, once the execution complete, the callback function execute and sent response.
-    //          3. Like this nodeJs execute the 10,000 if requests.
+    //          2. And the Database queries and external api calls are not block the code, and it will continue the execution of other requests.
+    //          3. Once the execution complete, the callback function execute and sent response.
+    //          4. Like this nodeJs execute the 10,000 if requests.
+    //
     //      ---------------------------------------------------------------------------
     //
     if ('ErrorHandling') {
@@ -791,6 +827,15 @@ if ('AWS') {
         //                      1. It will cheap, Old files will store, take 5 min time if we required
         //              5. Glacier Archive:
         //                      1. This files are not required. But keep store it for backup purpose.
+        //
+        //      5. If the upload still fails after multiple retries, what will you do?
+        //          1. Still file upload is failing after retries. We should not retry forever.
+        //          2. We have to move the file to failed status.
+        //          3. Update DB status
+        //          4. Send the file to DLQ if we using SQS
+        //          5. Notify the user proper SMS.
+        //          6. Send the Alert to Support team.
+        //          7. Then finally start Investigation. Like this we have to follow.
     }
     //
     if ('SNS_SQS') {
@@ -854,6 +899,14 @@ if ('AWS') {
         //          6. How would you secure a serverless API?
         //              Answer: API Gateway + Cognito/JWT + IAM + WAF
     }
+}
+//----------------------------------------------------------------------------------------------------------------------------
+
+if('API_Specification'){
+    //  1. Api specification is a contract between the API provider and consumers.
+    //  2. Api specification is nothing but it contains the all the endpoints what we implemented.
+    //  3. It contains available endpoints, request & response format, authentication requirements, error codes.
+    //  4. Current in IMS project we implemented Swagger API specifications each and every service.
 }
 //----------------------------------------------------------------------------------------------------------------------------
 
@@ -931,7 +984,6 @@ if ('Serverless_Architecture') {
     //      2. Execution Time
     //      3. Debugging
 }
-
 //----------------------------------------------------------------------------------------------------------------------------
 
 if ('MicroServices') {
@@ -1136,7 +1188,7 @@ if('API_Standards'){
 //----------------------------------------------------------------------------------------------------------------------------
 
 if('Challenging_Task'){
-	// 1. In my previous organization, while working on the VCM application, 
+	// 1. In my previous organization, while working on the VCM application,
     //    I faced a challenging production issue related to our NAO application flow.
 
 	// 2. In the NAO flow, the customer first submits the application and uploads the required KYC documents. 
@@ -1145,7 +1197,7 @@ if('Challenging_Task'){
     //    Pershing creates the account and returns an Account ID. Once we receive the Account ID, 
     //    the NAO application flow is considered complete.
 
-	// 3. The production issue we faced was that, for a small number of customers, duplicate accounts were being created in Pershing. 
+	// 3. The production issue we faced was that, for a few number of customers, duplicate accounts were being created in Pershing. 
     //    It was not happening consistently, so it was difficult to reproduce and investigate. 
     //    This became an L1 production issue for our team.
 
@@ -1181,4 +1233,11 @@ if('Challenging_Task'){
     //     And showing the alert to User if they upload large files.
 
 }
-	
+//---------------------------------------------------------------------------------------------------------------------------
+
+if("Why do you want join"){
+    // 1. I want to join in HCL, because it is well established and global organization company.
+    // 2. And it will provides good opportunities to learn, grown and work on challenging projects.
+    // 3. I believe my experience and skills can add values to the organization.
+    // 4. At the same time I can enhance my knowledge and career to work with good experience teams and new technologies.
+}

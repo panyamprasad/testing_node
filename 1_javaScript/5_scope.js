@@ -35,7 +35,21 @@ function outer() {
 } outer();
 
 // Closers:
-// Closer means if a function is accessing the variable from the outer function even after completing the outer function execution,it's called closer.
+// 		A Closure allows an innerfunction to access the variables from it's outerscope, even the outerscope function scope execution is completed. This is possible because javascript keeps a reference outerscope in memory.
+//
+// 		For Example: We have the accountOpening function with minimum balance, after function execution is done, but it will return inner functions like deposit, withDraw, balanceEnquiry still have the access to get balance through the Closure. That's way the balance is stays in the memory.
+//
+// Real Usecase:
+//				1. Private variables:
+//						- Bank Balance, 
+// 						- Authentication State
+//				2. Caching:
+//						- Third-party Api Response, 
+// 						- Frequently access data
+//				3. Event handling:
+//						- Delayed Notifications, 
+//						- Background processing, 
+//						- Async operations
 // Example:
 function outer() {
     let count = 0;

@@ -27,25 +27,50 @@
 							"name": "Leanne Graham",
 							"username": "Bret",
 							"email": "Sincere@april.biz",
-							"address": { "city": "Gwenborough", "zipcode": "92998-3874" },
-							"phone": "1-770-736-8031",
-							"website": "hildegard.org"
 						}
 					]
 // 		We can create the interfaces like below:
-		interface Address{
-			city: String;
-			zipcode: String;
-		}
 		interface User{
 			id: number;
 			name: string;
 			userName: String;
 			email: String;
-			address: Address;
-			phone: number;
-			website: String;
 		}
+
+//		Fetch Data using Async/Await
+		async function gerUsers(): Promise<User[]>{
+			try{
+				const res = await fetch('https://jsonplaceholder.typicode.com/users');
+
+				if(!res.ok){
+					throw new Error('Error');
+				}
+				const users: User[] = await res.json();
+				return users;
+			}catch(err){
+				console.log(err);
+			}
+		}
+
+//		Fetch the data and return only id, name and email.
+		async function gerUsers(): Promise<User[]>{
+			try{
+				const res = await fetch('https://jsonplaceholder.typicode.com/users');
+
+				if(!res.ok){
+					throw new Error('Error');
+				}
+				const users: User[] = await res.json();
+				return users.map((user) => {
+					id: user.id,
+					name: user.name,
+					email: user.email
+				});
+			}catch(err){
+				console.log(err);
+			}
+		}
+	
 //      ---------------------------------------------------------------------------------
 		
 // ---> 3. Self introduction.

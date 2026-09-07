@@ -26,3 +26,29 @@
 //      1. Throttling vs Rate Limiting?
 //      
 // TypeScript advanced concepts
+
+// Challenging
+
+
+// Promises Example:
+
+//ES6Modules:
+//Template  values
+
+// Str = "memory"
+// o/p : {m: 2, e:1, o:1 r:1, y:1}
+
+// input: [1,2,3,[4,5], 6];
+// Output: [1,2,3,4,5,6];
+
+// In the event loop fs will execute at the last... right... how can we execute it before?
+// Why do you want to join HCL?
+// Promises example of chaining process?
+
+// ✅ Q9: How to handle errors in NestJS?
+//      1. In Nestjs, exceptions are usually handled using built-in HTTP Exceptions such as.
+//      2. BadRequestException, UnauthorizedException, ForBiddenException and NotfoundException.
+//      3. These all are we can use in root level error handling.
+//      4. For Centralized error handling, we create the GlobalException Handler it will implemented by ExceptionFilter.
+//      5. using this we can catch the Unhandled exceptions and return error responses.
+//      6. And we also use the DTO'S, class validator it will automatically throw the errors for invalid requests.

@@ -9,7 +9,7 @@
 //         1. We have to install the Redis dependency.
 //         2. Then create client and connect the redis use the connect() method.
 //         3. Use set() and get() we can store and retrieve the data.
-//         4. In storage time we include the expire time.
+//         4. During the storage we include the expire time.
 
 // ---> When will store data in Redis?
 //         1. When we fetch the data from db or external api, the data will expiry shortly. The expire time will add when store the data.

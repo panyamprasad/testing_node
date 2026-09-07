@@ -7,6 +7,11 @@
 //              5. Generics are improve the code quality, reduce the duplication.
 //              6. And when we need same business logic with different type of parameters will use Generics.
 //
+//---> In IMS we used the Generics: Mainly
+//              1. We used creating a common API Response structures, it will be used in many API's.
+//              2. And we used in repository methods, it means these are middle layer between application and database.
+//              3. And we used building common utility functions, it will work in different modules.
+//
 //--> Interface:
 interface ApiResponse<T> {
     data: T;

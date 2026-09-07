@@ -26,13 +26,18 @@
 
 // 3. What is difference between REST API/ Http API / WebSocket api?
     // Rest API:
-        // Rest api is fully featured like (authentication, caching, mapping templates)
-        // But it is slower and more expensive.
-        // Best for the complex api's with many rules and security.
+        // Rest api is fully featured like (
+        //          authentication, authorization
+        //          caching, 
+        //          RateLimit,
+        //          Mapping templates,
+        //          Request Validation
+        //          WAF
+        // Best for the enterprise applications with many rules and security.
     
     // HTTP API:
         // It is faster and cheaper compare to Rest api.
-        // Support basic features like auth, jwt, cors like
+        // Support basic features like auth, jwt, cors, lambda integration like
         // Best for simple and new api's.
     
     // Websocket api:

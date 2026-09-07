@@ -160,6 +160,31 @@ function sorting(arr) {
 
 console.log(sorting([1, 2, 3, 2, 1, 3, 4, 5, 3, 4, 3, 2, 3]))
 
+//Using For loop
+function sorting(arr){
+   let result = {};
+
+   for(let val of arr){
+    result[val] = result[val] ? result[val] + 1 : 1;
+   }
+
+   let unique = [...new Set(arr)];
+
+   for(let i=0; i< unique.length-1; i++){
+    for(let j=0; j< unique.length-i-1; j++){
+        if(result[unique[j]] < result[unique[j+1]]){
+            let val = unique[j];
+            unique[j] = unique[j+1];
+            unique[j+1] = val;
+        }
+    }
+   }
+   console.log(result);
+   return unique;
+}
+
+console.log(sorting([1,2,1,2,3,2,3,4,3,4,4,3,5,5,4,5,4]));
+
 //------------------------------------------------------------------------------
 
 const arr = [1, 2, 3, [4, [5, 6]]];
