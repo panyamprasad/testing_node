@@ -21,7 +21,7 @@
 //                  - And audit fields such as createdAT, updateAt, deleteAt
 //          4. In dynamoDB mainly will focus on partition and index keys, because it will impact performance and scaling.
 //          5. Once analysis is done will discuss with design calls with architect team, once finalize.
-//          6. Will start develop using cloudFormation template.33
+//          6. Will start develop using cloudFormation template.
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -119,3 +119,4 @@ console.log(sortingArray([1,0,2,0,3,0,4]))
 //                                                  d. Govt applications & Enterprise applications.
 //
 //---> In our current IMS project, we are using the SOAP API, we are creating the SOAP client and calling the SOAP API using the WSDL file. And the SOAP library automatically convert the JSON to XML and XML to JSON. And during the soap call we are not sending any tokens or authentication, we jest sending the request and getting the data, the security everything handling thought the infra side.
+

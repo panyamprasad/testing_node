@@ -1,5 +1,5 @@
 // 🟢 2. Basic Types
-
+//
 // ---> 1. string, number, boolean
 //          1. string: Using this we can declare string values like name.. And declare this inside the braces.
 //          2. number: Using this we can declared only number values.. like age, amount like that.
@@ -34,7 +34,7 @@ let employees: string[] = ['prasad', 'panyam', 'babu']
 //                  Ex:
 let user: [string, number, boolean] = ['prasad', 28, true]
 //
-//---------------------------------------------------------------------------
+// -----------------------------------------------------------------------
 //
 // ---> 4. enum:
 //          1. Using enum we can declare the constants.
@@ -42,7 +42,7 @@ let user: [string, number, boolean] = ['prasad', 28, true]
 //          3. Enums or fixed values with meaningful names.
 enum Role { ADMIN, MANAGER, HR, DEVELOPER }
 //
-//----------------------------------------------------------------------------
+// ------------------------------------------------------------------------
 //
 // ---> 5. What is difference between ANY & UNKNOWN?
 //          1. ANY:
@@ -93,3 +93,23 @@ type Manager = {
     role: 'test'
 }
 type Lead = EmployeeType & Manager;
+//
+// ------------------------------------------------------------------------
+//
+//---> 9. never: 
+//          - If any function define the never it will never reach the end.
+//          - It will throw an error or runs Indefinitely.
+//          - Mostly using in Error Handling, Infinite Loops
+//
+//---> 10. Void:
+//          - Function finished but returns nothing.
+//          - But it completed the execution.
+//
+//
+//---> 11. Access Modifiers:
+//          - Public:
+//              - A public member can access anywhere.
+//          - Private:
+//              - A private member can access only inside the class.
+//          - Protected:
+//              - A Protected member can access inside the class and child classes.

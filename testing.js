@@ -52,3 +52,8 @@
 //      4. For Centralized error handling, we create the GlobalException Handler it will implemented by ExceptionFilter.
 //      5. using this we can catch the Unhandled exceptions and return error responses.
 //      6. And we also use the DTO'S, class validator it will automatically throw the errors for invalid requests.
+
+
+// input: [1,2,3,[4,5], 6];
+// Output: [1,2,3,4,5,6]
+

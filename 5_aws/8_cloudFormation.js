@@ -124,6 +124,8 @@
 //          1. Use Ref we can take the reference of name or IDs.
 //          2. Use GetAtt, when we need a specific attribute like ARN, Endpoint, or URL.
 //
+
+//-- CloudFormation --
 // - TemplateVersion
 // - Description
 // - Parameters
@@ -131,3 +133,16 @@
 // - Resources
 // - Output
 
+//-- Serverless ---
+// ServiceName
+// Version
+// Provider
+// Functions
+// Resources
+// output
+
+// -- CloudFormation is a Infrastructure as a Code Service in AWS. Serverless Framework is a Tool, it will sits top of the CloudFormation.
+// -- Using the CloudFormation we can make it large Templates. But in serverless we write simple yaml file.
+// -- Once we deploy the yaml file it will automatically create the cloudFormation template, and use the cloudFormation.
+// -- Create the infra like Lambda, gateway, dynamoDB, s3, sns, sqs all the resources create.
+// -- Serverless reduce the complexity.

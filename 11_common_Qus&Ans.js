@@ -1,6 +1,6 @@
 import { promises } from "stream";
 
-if ('JavaScript') { 
+if ('JavaScript') {
     //      Q1. What is JavaScript?
     //              1. JavaScript is Scripting language. Using for web development.
     //              2. Javascript dynamic typing.
@@ -638,7 +638,7 @@ if ('AWS') {
                 console.log('Hello World');
 
                 return {
-                    statusCode: 200,    
+                    statusCode: 200,
                     body: JSON.stringify('HelloWorld')
                 }
             } catch (err) {
@@ -738,7 +738,68 @@ if ('AWS') {
         //
         //          2. Throttling:
         //                  1. Instead of rejecting the request it will put on hold.
-        //                  2. I mean Requests are delayed or queued instead of immediately rejected. 
+        //                  2. I mean Requests are delayed or queued instead of immediately rejected.
+        // ------------------------------------
+        //---> What invocation types are there in API Gateway?
+        //          You can clarify:
+        //                      "Do you mean API Gateway API types or integration types?"
+        //          Then Answer:
+        //          Invocation Means:
+        //              1. A request that passes through an API Gateway and trigger the backend services, 
+        //                 such as Lambda functions.
+        //              2. It's called Gateway Invocations.
+        //          
+        //          API Types:
+        //              - REST API:
+        //              - HTTP API:
+        //              - WebSocket API:
+        //          
+        //          Integration Types: There are different types of Integration types are there:
+        //              - Lambda Proxy Integration: Directly request go from Gateway to Lambda.
+        //              - Lambda Custom Integration: Gateway transform the request before reach to lambda.
+        //              - HTTP Proxy Integration: Request directly go from Gateway to Lambda.
+        //              - Http Custom Integration: Gateway transform the request before reach lambda.
+        //              - AWS Service Integrations (SQS, SNS, Step Functions, etc.)
+        //
+        //---> What is synchronous Invocation & Asynchronous Invocation?
+        //          - Synchronous Invocation:
+        //              1. Synchronous means line by line, so client will be wait for response.
+        //              2. It means client call the api gateway.
+        //              3. Gateway Invoke the lambda function.
+        //              4. Lambda Execute the business logic, and get the response.
+        //              5. Gateway receive the response and submit to the client. This is called Synchronous Invocation.
+        //              - Real-world examples:
+        //                  1. Login API
+        //                  2. Get User API
+        //                  3. Get Product API
+        //
+        //          - Asynchronous Invocation:
+        //              1. Asynchronous means client does not wait for response.
+        //              2. It means when we upload the file to s3.
+        //              3. File store in S3, then s3 trigger the lambda.
+        //              4. Client get the success message immediately, lambda process file in background.
+        //              - Real world examples:
+        //                  1. File processing
+        //                  2. email sending
+        //                  3. Notifications and Report generation process.
+        //
+        //---> How will trigger one Lambda through the synchronous ans Asynchronous?
+        //          - Lambda trigger directly from Gateway and will wait for response it synchronous.
+        //          - Lambda trigger from s3, sns, sqs or other related services, 
+        //            and will not wait for response it's asynchronous.
+        // 
+        //---> How Gateway transformation the data?
+        //          - There are different types of Transformation templates are there.
+        //              - Mapping Templates:
+        //                  - For Example we got request like: {"id": 1, "name": 'Prasad'}
+        //                  - We can convert this using mapping templates like: {"UserId": 1, "UserName": 'Prasad'}
+        //
+        //              - Parameter Mapping:
+        //                  - Suppose the client sends: GET /users?id=101
+        //                  - API Gateway can map this like: userId = 101
+        //              - Header Mapping
+        //              - QueryParams Mapping
+        //              - Request/Response body Mapping.
     }
     //
     if ('DynamoDB') {
@@ -813,7 +874,6 @@ if ('AWS') {
         //              1. Standard:
         //                      1. Coming to Standard class for daily use we can prefer this.
         //                      2. It will more cost compare to remaining.
-        //
         //                      3. Using this for profile images, frequently used documents will store here.
         //              2. Standard AI:
         //                      1. Coming to standard AI, store files those not used daily.
@@ -902,7 +962,7 @@ if ('AWS') {
 }
 //----------------------------------------------------------------------------------------------------------------------------
 
-if('API_Specification'){
+if ('API_Specification') {
     //  1. Api specification is a contract between the API provider and consumers.
     //  2. Api specification is nothing but it contains the all the endpoints what we implemented.
     //  3. It contains available endpoints, request & response format, authentication requirements, error codes.
@@ -998,8 +1058,8 @@ if ('MicroServices') {
     //              4. Payment Service
     //              5. Notification service
     //      5. And if we want we can use the different technology and develop the services.
-    //      6. One service communicate to other service using API's or event driven architecture.
-    //      7. Event driven architecture is best for communication, 
+    //      6. One service communicate to other service using HTTP or event driven architecture.
+    //      7. Event driven architecture is best for communication,
     //         because if one service down it will not impact to other service.
     //      8. In event-driven architecture, when one service publishes an event, 
     //         another service listens to that event and performs its task.
@@ -1026,6 +1086,11 @@ if ('MicroServices') {
     //
     //
     // 2. How do you handle Distributed Transactions?
+    //      1. To handle the distributed transactions in microservices will use the Saga Pattern.
+    //      2. Each service have it's own database, so we can't use one transaction across all services.
+    //      3. So each service complete own work step by step, once success  it will process successfully.
+    //      4. If any step fails, the system perform undo action to revert the previous changes.
+    //      5. For example, if payment fails after an order is created, the order is cancelled and the inventory is restored.
 }
 //----------------------------------------------------------------------------------------------------------------------------
 
@@ -1158,7 +1223,7 @@ if ('Third_party_Integration') {
 }
 //----------------------------------------------------------------------------------------------------------------------------
 
-if('API_Standards'){
+if ('API_Standards') {
     // API Standards are set of Guidelines used to design secure and scalable apis.
     // There are different types of standards should we follow.
     //  1. Always used Resource based URL's. I mean use Nouns, not Verbs.
@@ -1187,55 +1252,55 @@ if('API_Standards'){
 }
 //----------------------------------------------------------------------------------------------------------------------------
 
-if('Challenging_Task'){
-	// 1. In my previous organization, while working on the VCM application,
+if ('Challenging_Task') {
+    // 1. In my previous organization, while working on the VCM application,
     //    I faced a challenging production issue related to our NAO application flow.
 
-	// 2. In the NAO flow, the customer first submits the application and uploads the required KYC documents. 
+    // 2. In the NAO flow, the customer first submits the application and uploads the required KYC documents. 
     //    Once the application is submitted, it is sent to Salesforce for approval. After Salesforce approves the application, 
     //    the request comes back to our service, and we then send it to Pershing for account creation. 
     //    Pershing creates the account and returns an Account ID. Once we receive the Account ID, 
     //    the NAO application flow is considered complete.
 
-	// 3. The production issue we faced was that, for a few number of customers, duplicate accounts were being created in Pershing. 
+    // 3. The production issue we faced was that, for a few number of customers, duplicate accounts were being created in Pershing. 
     //    It was not happening consistently, so it was difficult to reproduce and investigate. 
     //    This became an L1 production issue for our team.
 
-	// 4. Initially, we checked the CloudWatch logs and tried to understand the complete request flow. 
+    // 4. Initially, we checked the CloudWatch logs and tried to understand the complete request flow. 
     //    However, because the issue was intermittent, we could not identify the root cause from the logs immediately. 
     //    We also tried to reproduce the issue in our local environment and SIT, but we were unable to reproduce it.
 
-	// 5. So, we took one affected customer’s Client ID and started tracing the request in the production logs step by step, 
+    // 5. So, we took one affected customer’s Client ID and started tracing the request in the production logs step by step, 
     //    starting from the application submission and following the complete flow.
 
-	// 6. After several rounds of investigation, we identified that the issue was related to the document upload process.
+    // 6. After several rounds of investigation, we identified that the issue was related to the document upload process.
 
-	// 7. For some customers, especially when they uploaded very large documents, the document upload operation was 
+    // 7. For some customers, especially when they uploaded very large documents, the document upload operation was 
     //    taking a long time and eventually timing out. At that time, the UI did not have proper file-size validation.
 
-	// 8. When the upload timed out, the request was retried. After multiple retries, the message was eventually moved to the DLQ. 
+    // 8. When the upload timed out, the request was retried. After multiple retries, the message was eventually moved to the DLQ. 
     //    The important issue was that each retry was triggering the account-creation flow again, 
     //    which resulted in multiple account-creation requests being sent to Pershing. 
     //    This was the reason duplicate accounts were created for some customers.
 
-	// 9. Once we identified the root cause, we analyzed the business flow and found that document upload was not mandatory 
+    // 9. Once we identified the root cause, we analyzed the business flow and found that document upload was not mandatory 
     //    for completing the account-creation step. 
     //    The documents could be uploaded and stored after the account was successfully created.
 
-	// 10. So, as a temporary solution, we changed the flow to skip the document-upload step when it was causing a timeout 
+    // 10. So, as a temporary solution, we changed the flow to skip the document-upload step when it was causing a timeout 
     //     and allowed the remaining account-creation process to continue. Once we received the account confirmation 
     //     and Account ID from Pershing, we processed and stored the documents separately.
 
-	// 11. This resolved the duplicate-account issue and allowed us to complete the account-creation flow without being blocked 
+    // 11. This resolved the duplicate-account issue and allowed us to complete the account-creation flow without being blocked 
     //     by document-upload failures.
-	
-	// 12. After that we discussed with business, checking the file-size both frontend and Backend. 
+
+    // 12. After that we discussed with business, checking the file-size both frontend and Backend. 
     //     And showing the alert to User if they upload large files.
 
 }
 //---------------------------------------------------------------------------------------------------------------------------
 
-if("Why do you want join"){
+if ("Why do you want join") {
     // 1. I want to join in HCL, because it is well established and global organization company.
     // 2. And it will provides good opportunities to learn, grown and work on challenging projects.
     // 3. I believe my experience and skills can add values to the organization.

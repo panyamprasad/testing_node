@@ -34,10 +34,14 @@ const params = {
 //---> 3. What is Provesancy Concurrency? Reserve Concurrency? When will use senarios?
 //          1. First we have to understand what is Concurrency.
 //          2. Concurrency means how many lambda executions are running at the same time.
-//              Per account the max Concurrency is 1000.
-//          3. Reserve Concurrency: means we have to assign a specific limit of concurrency for a lambda function.
-//          4. Other lambdas can't use this reserve concurrency.
-//          5. Provesancy Concurrency means it will maintain some instance up and running, use this to overcome cold start.
+//             Per account the max Concurrency is 1000.
+//        Reserve Concurrency: 
+//          1. Reserve Concurrency means we have to assign a specific limit of concurrency for a lambda function.
+//          2. Other lambdas can't use this reserve concurrency.
+//          3. Basically lambda auto scales when it's got heavy traffic.
+//          4. But the downstream servers can't handle the heavy traffic, to overcome this issue will use this.
+//        Provesancy Concurrency:
+//          1. Provesancy Concurrency means it will maintain some instance up and running, use this to overcome cold start.
 //
 //---> 4. What is SNS/SQS what is senarios? when to use why to use?
 //

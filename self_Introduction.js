@@ -5,7 +5,7 @@
 
 // --> 3. I started my career with web application development, where I worked with Angular, TypeScript.
 
-// --> 4. One of my key projects was Tresl, where I worked on Angular frontend development.
+// --> 4. One of my key projects was Tresal, where I worked on Angular frontend development.
 
 // --> 5. After that, I moved to backend development. few of the projects, I worked mainly on Node.js APIs developing backend services and integrations.
 
@@ -13,7 +13,7 @@
 
 // --> 7. I developed scalable REST APIs using Node.js and worked with AWS Lambda, API Gateway, DynamoDB, Serverless Framework and microservices. I was also involved in unit testing using Mocha and Chai, CloudWatch monitoring, Git and Agile processes.
 
-// --> 8. Currently, I am working as a Senior Developer at Careator Technologies on the Insurance & Money Services project for Tesco Technologies.
+// --> 8. Currently, I am working as a Senior Developer at Creator Technologies on the Insurance & Money Services project for Tesco Technologies.
 
 // --> 9. In my current project, I am mainly working with NestJS, Node.js, TypeScript, AWS, REST APIs and SOAP integrations.
 

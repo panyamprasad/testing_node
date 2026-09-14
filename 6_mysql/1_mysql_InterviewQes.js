@@ -67,5 +67,36 @@ SELECT * FROM customers WHERE customer_Id = custId;
 END;
 // -------------------------------------------------------------
 
+// 🟡 10. What is a WHERE clause in MySQL?
+// WHERE clause is used for filtering purpose.
+// If we need any record form the table using specific condition will use WHERE clause. 
+// And it will use before GROUP BY.
+SELECT * from Customers WHERE Country = 'India';
+// -------------------------------------------------------------
+
+// 🟡 10. What is a HAVING clause in MySQL?
+//      - HAVING to filter the grouped records based on aggregate values like COUNT, SUM or AVG.
+
+// Joins
+// Primary Key vs Foreign Key
+// Indexes
+// Clustered vs Non-Clustered Index
+// Normalization
+// ACID Properties
+// Transactions
+// DELETE vs TRUNCATE vs DROP
+// Second Highest Salary Query
+// GROUP BY and HAVING
+// Views
+// Stored Procedures
+// EXPLAIN
+// Query Optimization
+// Pagination
+// Partitioning
+// Deadlock
+// Isolation Levels
+// Composite Index
+// Real-world Performance Tuning
+
 
 
