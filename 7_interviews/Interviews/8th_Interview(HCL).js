@@ -1,12 +1,15 @@
 // ---> 1. Which Design patterns you are using in serverless framework?
-// 		1. In my previous project we are follow the event-driven and modular design pattern, it means it is Architecture-Level design pattern.
-// 		2. We commonly use middleware pattern to handle the common logic like Authentication, logging and validation.
-// 		3. For data access we can follow the Repository pattern, to keep the business logic separate from the database logic.
-// 		4. In Architecture-Level will use the event-driven and pub/sub patterns with SNS/SQS/EventBridge
-// 		5. And will use th Saga and Orchestration pattern for rollback purpose.
+//          - Currently In my current project and previous projects we are using different design patterns at different levels.
+// 		1. Coming to the Event driven Pattern, Used this to communicate services through the events, 
+//         using SNS/SQS will follow this. it means it is Architecture-Level design pattern.
+// 		2. And We commonly use middleware pattern to handle the common logic like Authentication, logging and validation.
+//      3. And we follow the modular design pattern to organize the application into separate modules 
+//         like controllers, services and utilities.
+// 		4. For data access we can follow the Repository pattern, to keep the business logic separate from the database logic.
+// 		5. And will use th Saga and Orchestration pattern for rollback purpose like microservice transactions.
 // 	----------------------------------------------------------------------------
 	
-// ---> 2. How to implement rollback mechanism 
+// ---> 2. How to implement rollback mechanism
 // 		1. Rollback means undo the changes if something went wrong or fails.
 // 		2. In microservice, different services have different databases.
 // 		3. So for rollback we use the sega pattern.

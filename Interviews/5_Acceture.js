@@ -1,5 +1,5 @@
 //---> 1. How will do routing?
-//          1. Routing is mechanism, it will maps the request to appropriate controller or function.
+//          1. Routing is mechanism, it will maps the URL to appropriate controller or function.
 //          2. Without Routing we can't find the the which request which function should trigger.
 //          3. In nodeJs will use the Express Js for routing.
 //          4. Using NestJs we can handle the routing in Controller and decorators.

@@ -79,9 +79,11 @@ console.log("End");
 
 // 6. What is limitations of Lambda?
 // 7. What architecture is best suitable for NodeJS?
-//      1. For small applications I can prepared layard architecture, using controller, services.
-//      2. For Enterprise applications I use NestJS Moduler architecture, with proper separation.
-//      3. But for large scale applications will prefer MicroServices along with Event Driven Architecture.
+//      - As a developer there is no single best architecture, it's depends on the project, teamSize and scalability.
+//          1. For small & medium applications, layered or modular monolithic architecture is best choice.
+//          2. Because it is simple, maintainable and easily develop.
+//          3. For large scale applications, I prefer clean architecture with microservices and event-driven architecture.
+//          4. Because it's provide loose coupling, scalability and independent deployment of services.
 //
 // 8. What is difference between ProvisioningConcurrency and advanceConcurrency?
 // 9. How to handle the multiple requests in single lambda? It means 1 millions request came the how?
@@ -94,3 +96,4 @@ console.log("End");
 //      1. Batch means execute the multiple event or messages together, Instead of execute it independently.
 //      2. It will incrase the performance, and reduce the cost.
 //      3. In AWS commonly used SQS, and DynamoDB using the batchWrite. To process the large amount of data.
+

@@ -2,6 +2,13 @@
 //---> Asked file upload process? And Validation of during the add thd file data in dynamoDB?
 //---> Event Loop?
 //---> Optimization process?
+//          1. For Optimization code first I have to add proper error handling and response validation.
+//          2. Handling the timeout management, to avoid the hanging requests.
+//          3. For Production level will use the retry logic for temporary failures.
+//          4. Use the caching for frequently used data.
+//          5. Optimize the database query and use the pagination.
+//          6. Like this will optimize the process.
+//
 //---> API workflow?
 //---> Promise.nextTick(), setTimeout() and setImmediate() priority?
 //---> Cpu Intensive task how will handle?

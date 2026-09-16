@@ -1,12 +1,9 @@
 //---> 1. What is the CQRS pattern and how does it differ from traditional CRUD operations?
 
 //---> 2. What is libuv library?
-//          1. If we need an event loop, asynchronous operations, support for fileSystem, networking, timers, etc., 
-//          2. if we need all these features in across all platforms like windows, linux, macOS, then we can use the libuv library.
-//          3. Libuv is a fast because.
-//              a. It is written in C.
-//              b. It uses efficient data structures like the thread pool, the event loop, etc.
-//              c. It uses non-blocking I/O operations.
+//          1. NodeJs run on a single thread. But the operations like database calls, external api calls or file processing.
+//          2. Instead of blocking the event loop, nodeJs use the Libuv thread pool to execute it in background.
+//          3. Once the task is complete, libuv notify the event loop, and callback is executed. 
 
 //---> 3. Explain the event loop in Node.js.
 //---> 4. How does Node.js handle asynchronous operations?

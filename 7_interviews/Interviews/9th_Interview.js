@@ -49,7 +49,8 @@
 // 		    5. Backend verifies JWT → grants or denies access.
 //     ----------------------------------------------------------------------------------
 		
-// ---> 4. Error handling : How will handle the overall application level error handling, and how to handle the 400,401,402,403 errors?
+// ---> 4. Error handling : How will handle the overall application level error handling, 
+//         and how to handle the 400,401,402,403 errors?
 // 		    1. In nodeJs we can handle errors in two levels.
 // 		    2. Route level: 
 //              - This level we can use the try-catch in async functions. 
