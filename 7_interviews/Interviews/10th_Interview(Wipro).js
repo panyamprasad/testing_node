@@ -164,9 +164,12 @@
 //   -----------------------------------------------------------------------------
 
 // 8. What is memory leak?
-//      1. When a function or program allocates memory — for example, by creating objects, arrays, or other data — that memory is used while the program needs it.
-//      2. But if the program no longer needs that data and still keeps a reference to it, the memory cannot be released by the garbage collector.
-//      3. Over time, this unused memory keeps growing, reducing available memory, which can slow down the application or even cause it to crash.
+//      1. When a function or program allocates memory — for example, by creating objects, arrays, or other data — 
+//         that memory is used while the program needs it.
+//      2. But if the program no longer needs that data and still keeps a reference to it, 
+//         the memory cannot be released by the garbage collector.
+//      3. Over time, this unused memory keeps growing, reducing available memory, 
+//         which can slow down the application or even cause it to crash.
 //   -----------------------------------------------------------------------------
 
 // 9. What are the advantages of lambda?

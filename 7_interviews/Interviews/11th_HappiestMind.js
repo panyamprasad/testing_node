@@ -95,5 +95,9 @@ console.log("End");
 // 10. What is Batch? Why it will use? When should will use?
 //      1. Batch means execute the multiple event or messages together, Instead of execute it independently.
 //      2. It will incrase the performance, and reduce the cost.
+<<<<<<< Updated upstream
 //      3. In AWS commonly used SQS, and DynamoDB using the batchWrite. To process the large amount of data.
 
+=======
+//      3. In AWS commonly used SQS, and DynamoDB using the batchWrite. To process the large amount of data.
+>>>>>>> Stashed changes

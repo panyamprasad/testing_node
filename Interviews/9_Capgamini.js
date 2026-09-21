@@ -129,7 +129,7 @@
 //                  - Authentication Improvements etc...
 //
 //---> What is Capacity mode in DynamoDB?
-//---> What is CloudFormation
+//---> What is CloudFormation?
 //---> What is ColdStart & Warm Start?
 //          - Warm start means when AWS Lambda reuse the existing running environment, instead of create from scratch.
 //

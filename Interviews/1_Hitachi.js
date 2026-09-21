@@ -57,7 +57,7 @@ const params = {
 //              
 //              2. Approach Two:
 //                  1. If we have more items or large file will go this way.
-//                  2. Once the file will upload to s33 we have to trigger lambda and start the process.
+//                  2. Once the file will upload to s3 we have to trigger lambda and start the process.
 //                  3. So the file will too large then will split it multi parts.
 //                  4. Each part will push to SQS.
 //                  5. Then lambda will automatically scaling and process the all parts parallel.

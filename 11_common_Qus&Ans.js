@@ -923,11 +923,17 @@ if ('AWS') {
         //          4. Then use the publish method, we can publish the event/message or notification to the topic.
         //          5. Once the message push to SNS, sns automatically distribute the subscribers what we configured.
         //
+        //      6. How do you handle duplicate notifications in SNS & SQS?
+        //          1. SNS & SQS deliver notifications more than once, so we should design consumer to be Idempotent.
+        //          2. If SNS send the same notification twice, SQS contains both message, so we don't want to send both.
+        //          3. We have to generate unique NotificationId or eventID, and store it in DynamodB.
+        //          4. Before processing will check the db, if Id is not available will process the notification.
+        //          5. Like this will prevent the duplicate notification delivery.
+        //          6. Like this will handle the payment, notification, event everything.
+        //
     }
     //
-    else {
-        //      6. Scenario-Based Questions (Very Important)?
-        //
+    else if('Scenario_Based') {
         //          1. Your API was responding in 200ms earlier, now it takes 5 seconds. What will you do?
         //              1. First I will check the Cloud watch logs and metrics.
         //              2. Then I will check the issue is in 
@@ -938,20 +944,57 @@ if ('AWS') {
         //              3. Then I will find the root cause and fix the issue and recheck again.
         //          -------------------------------------------------------
         //
-        //          2. Yesterday API received 1,000 requests/hour. Today it receives 100,000 requests/hour. What will you do?
-        //              1. First I will check the cloud watch logs and metrics.
-        //              2. Then i will verify the lambda is throttling, due to more requests.
-        //              3. If needed, I will increase the concurrency and use SQS for buffer request.
-        //          -------------------------------------------------------
+        //        2. Yesterday API received 1,000 requests/hour. Today it receives 100,000 requests/hour. What will you do?
+        //        3. How did you handle a sudden traffic spike in production?
+        //        4. Suppose 1 million requests suddenly come. What will you do?
+        //        5. You increased concurrency from 200 to 400, but still the problem exists. What next?
+        //        6. How will you identify whether Lambda or DynamoDB is the problem?
+        //        7. What happens if your Lambda receives a huge number of requests suddenly?  
         //
-        //          2. How would you build a file upload System?
-        //              Answer: API Gateway → Lambda → Generate Pre-Signed URL → S3.
+        //          - Answer for Above all questions:
+        //          If suddenly 1 million requests come to production, my first priority is to protect and stabilize 
+        //          the production system. I would not immediately increase Lambda concurrency without understanding the problem.
+
+        //          First, I would check CloudWatch to see what is happening — Lambda invocations, concurrency, 
+        //          throttling, execution time, errors, and timeouts.
+
+        //          Then I would check the downstream services such as DynamoDB and external APIs to 
+        //          identify where the bottleneck is.
+
+        //          If the system is overloaded, I would use the existing API Gateway throttling or rate-limiting configuration 
+        //          to control the incoming traffic and protect the backend.
+
+        //          If Lambda is the bottleneck and the downstream services can handle more traffic, I would carefully increase 
+        //          the Lambda concurrency. If the downstream service is already overloaded, I would not increase Lambda
+        //          concurrency because that could make the problem worse.
+
+        //          At the same time, I would inform the team and monitor the system continuously until the traffic comes 
+        //          back under control.
+
+        //          After the production issue is stabilized, I would analyze why the sudden traffic happened and make 
+        //          permanent improvements so the system can handle similar traffic in the future.
+
+        //          So my approach is:
+
+        //          **Stabilize → Monitor → Find the bottleneck → Control traffic → Scale where required → Fix the root cause
+        //          → Prevent it in the future.**
+
+        //          **First stabilize the production system → identify the bottleneck → fix the actual problem → 
+        //          monitor the system → make preventive changes.**
+
+        //          -------------------------------------------------------
         //
         //          3. How would process 1million orders asynchronously?
         //              Answer: API Gateway → Lambda → SQS → Worker Lambda → DynamoDB.
         //
         //          4. How would you send notifications to multiple systems?
         //              Answer: SNS Topic → Multiple subscribers (Email, Lambda, SQS).
+        // 
+                    "For sending notifications to multiple users or systems, I would use a messaging-based architecture. when The lambda publish the notification to SNS, and SNS distributes it to the required subscribers such as SQS queues. SQS acts as a buffer, and Lambda consumes the messages and sends the notification to the users"
+
+                    "For duplicate messages, I would make the Lambda idempotent by maintaining a unique notification ID and user ID. Before processing, we check whether it was already processed, and we use a conditional write to handle cases where two Lambdas process the same message at the same time."
+
+                    "For temporary failures, we use retries, and if the message continues to fail, we move it to a DLQ. We use CloudWatch for monitoring errors, throttling, execution time, and queue depth. This gives us reliable notification processing without creating duplicate notifications."
         //
         //          5. How would you prevent lambda timeout issues?
         //              Answer: Use SQS, Step Functions, optimize code, increase memory.
@@ -971,47 +1014,79 @@ if ('API_Specification') {
 //----------------------------------------------------------------------------------------------------------------------------
 
 if ('Project Overview') {
-    // Project overview:
-    //      1. IMS api platform is a NestJS-based microservices platform, it will provides APIs for various insurance & Money services.
-    //      2. It contains different types of services like Portfolios, Customer Forms, Documents, Pay by Voucher, preference etc.
-    //      3. We use a monoRepo architecture, with npm Workspaces and TurboRepo to manage multiple service's 
-    //          and shared libraries in single repo.
-    //      4. The services are developed using NestJS, Node.js, and TypeScript, and we use the Jest framework for unit testing.
-    //      5. For deployment, we use GitHub for source code management and Jenkins for CI/CD automation.
-    //      6. Once the code is pushed to GitHub, Jenkins triggers the pipeline and executes all the required steps 
-    //          such as dependency installation, code validation, and unit test execution.
-    //      7. After all validation, the build artifact is generated and published to Nexus Repository Manager.
-    //      8. Then terraform will read the artifact file and store it in s3.
-    //      9. Terraform use the artifact file and extract all required files, updates the AWS cloud infrastructure.
-    //      10. In this way, the IMS platform is developed, tested, and deployed through an automated CI/CD process, 
-    //          ensuring consistent and reliable releases.
+    if('Project overview'){
+        //      1. IMS api platform is a NestJS-based microservices platform, it will provides APIs for various insurance & Money services.
+        //      2. It contains different types of services like Portfolios, Customer Forms, Documents, Pay by Voucher, preference etc.
+        //      3. We use a monoRepo architecture, with npm Workspaces and TurboRepo to manage multiple service's 
+        //          and shared libraries in single repo.
+        //      4. The services are developed using NestJS, Node.js, and TypeScript, and we use the Jest framework for unit testing.
+        //      5. For deployment, we use GitHub for source code management and Jenkins for CI/CD automation.
+        //      6. Once the code is pushed to GitHub, Jenkins triggers the pipeline and executes all the required steps 
+        //          such as dependency installation, code validation, and unit test execution.
+        //      7. After all validation, the build artifact is generated and published to Nexus Repository Manager.
+        //      8. Then terraform will read the artifact file and store it in s3.
+        //      9. Terraform use the artifact file and extract all required files, updates the AWS cloud infrastructure.
+        //      10. In this way, the IMS platform is developed, tested, and deployed through an automated CI/CD process, 
+        //          ensuring consistent and reliable releases.
+        //
+        // Architecture:
+        //      1. We are using the microservice architecture with a monoRepo setUp.
+        //      2. Each business requirement will implemented separate service , like Portfolios, preferences, document like that.
+        //      3. And we maintain the shared code in common libraries inside the monoRepo.
+        //      4. The request come through the API gateway layer, first it will go the controller.
+        //      5. After routing and validation it will move to service layer for business logic execution.
+        //      6. At finally interact with external systems if required.
+        //      7. Like this The architecture help to maintain, scaling and reusability.
+        //
+        // Monorepo setup:
+        //      1. In our project, we use a Monorepo architecture.
+        //      2. Here multiple microservices and shared libraries are maintained within a single repo instead of multiple repo's.
+        //      3. Using NPM Packages to manage dependencies across all services and TurboRepo to optimize build, testing.
+        //      4. The setup divide into three parts:
+        //          services: It contains all business related services.
+        //          packages: It contains all shared libraries such as helper functions, common configuration etc.
+        //          scripts: It contains automation and utility scripts.
+        //      5. Like this the Monorepo setup will be there.
+        //
+        // NestJS services      
+        // API flow
+        // AWS deployment
+        // SNS/SQS usage
+        // DynamoDB design
+        // Challenges faced
+        // Migration from Tesco Bank to Tesco IMS
+    }
     //
-    // Architecture:
-    //      1. We are using the microservice architecture with a monoRepo setUp.
-    //      2. Each business requirement will implemented separate service , like Portfolios, preferences, document like that.
-    //      3. And we maintain the shared code in common libraries inside the monoRepo.
-    //      4. The request come through the API gateway layer, first it will go the controller.
-    //      5. After routing and validation it will move to service layer for business logic execution.
-    //      6. At finally interact with external systems if required.
-    //      7. Like this The architecture help to maintain, scaling and reusability.
+    if('PAF Service Explanation'){
+        //      1. PAF stands for Postcode Address Finder. Developed this using NestJs and deployed to AWS Lambda.
+        //      2. The main purpose of this service is find the addresses based on UK postcode from client request.
+        //      3. First the request come from gateway to our lambda / NestJs application, we validate the request and headers.
+        //      4. During the validation we are using the Guards, Pipes and Interceptor.
+        //      5. After validation the request passes to controller, in controller we are doing routing and pass the request to
+        //         Service layer.
+        //      6. So in service layer I am doing the actual business logic, we are fetching the address details from the external
+        //         Tesco service.
+        //      7. First we get the authentication token from the tesco Identity service, use the tesco url, clientId and secretId.
+        //      8. Then use the token we fetch the address details using Tesco Address API.
+        //      9. We get the matched address, if required call the address-details api to get full address information.
+        //      10. Finally we transform the tesco response into our PAF response format and return to client.
+        //      11. There is no database in this service, because we won't store the address data. Tesco is source of address info.
+        //      12. For errors, validation issues return 400 errors, if any downstream service fails using 500 errors.
+    }
     //
-    // Monorepo setup:
-    //      1. In our project, we use a Monorepo architecture.
-    //      2. Here multiple microservices and shared libraries are maintained within a single repo instead of multiple repo's.
-    //      3. Using NPM Packages to manage dependencies across all services and TurboRepo to optimize build, testing.
-    //      4. The setup divide into three parts:
-    //          services: It contains all business related services.
-    //          packages: It contains all shared libraries such as helper functions, common configuration etc.
-    //          scripts: It contains automation and utility scripts.
-    //      5. Like this the Monorepo setup will be there.
-    //
-    // NestJS services      
-    // API flow
-    // AWS deployment
-    // SNS/SQS usage
-    // DynamoDB design
-    // Challenges faced
-    // Migration from Tesco Bank to Tesco IMS
+    if('Payment Gateway'){
+        //      “I haven't directly worked on a payment gateway implementation in my recent project. However, 
+        //       I have worked extensively with external REST API integrations, authentication, request validation, error handling, 
+        //       and downstream service communication.
+
+        //       From a technical perspective, a payment gateway integration would follow a similar pattern. Our backend would receive 
+        //       the payment request, validate it, authenticate with the payment provider, call the payment API, handle the response, 
+        //       and return the appropriate status to the client.
+
+        //       For payment-specific requirements, I would also focus on things like idempotency to avoid duplicate payments, 
+        //       secure   handling of credentials, transaction status management, timeouts, retries, webhook handling, and proper 
+        //       logging and tracing without exposing sensitive payment information.”
+    }
 }
 //----------------------------------------------------------------------------------------------------------------------------
 
@@ -1091,6 +1166,20 @@ if ('MicroServices') {
     //      3. So each service complete own work step by step, once success  it will process successfully.
     //      4. If any step fails, the system perform undo action to revert the previous changes.
     //      5. For example, if payment fails after an order is created, the order is cancelled and the inventory is restored.
+    //
+    //  3. Advantages & DisAdvantages?
+    //      Advantages:
+    //          1. Easily development - Multiple teams will work together, so develop will fast
+    //          2. Deployment - There is no dependancy between the services so it will easy.
+    //          3. Flexibility - We can use different technology for every service.
+    //          4. Failure Isolation - If any service down it will not impact other services.
+    //          5. Scaling
+    //
+    //      DisAdvantages:
+    //          1. Complexity:
+    //          2. Failures, difficult to debugging and testing
+    //          3. Distributed transaction - It means every service handle different db, if any service fail, we have to update all.
+    //          4. Higher Infra monitoring.
 }
 //----------------------------------------------------------------------------------------------------------------------------
 

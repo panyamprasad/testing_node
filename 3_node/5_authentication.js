@@ -86,7 +86,7 @@
     
     // What is Oauth 2.0?
     // Ans:
-            // OAuth 2.0 is using to get the access for third-party providers like google, github. No need to send the userName and password. Application get the access token from the providers.
+            // OAuth 2.0 is using to get the access for third-party providers like google, github. No need to send the userName and      password. Application get the access token from the providers.
     
     //-------------------------------------------------------------
 
@@ -118,4 +118,4 @@
 
     // What is different between HTTP & HTTPS?
         // Using HTTPs it will send the data as plain text format, everyone can access the user data or sensitive data. Like Username & Password.
-        // But Using HTTPS it will encrypted the data during the transmission. So HTTPS is more secure because attackers can't access the data≥
+        // But Using HTTPS it will encrypted the data during the transmission. So HTTPS is more secure because attackers can't access the data.

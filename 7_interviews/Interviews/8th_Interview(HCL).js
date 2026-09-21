@@ -113,3 +113,9 @@
 // 		    2. Optimize queries.
 // 		    3. Using caching, store the frequently used data in memory.
 // 		    4. Pagination, instead of load large data at one time, use LIMIT/ OFFSET.
+
+// "First request sends the limit. DynamoDB returns the records along with LastEvaluatedKey. For the next request, we pass that key as ExclusiveStartKey along with the limit. DynamoDB starts after that key and returns the next set of records.
+
+// Limit → controls how many you want per page.
+// LastEvaluatedKey → DynamoDB automatically gives you when more data remains.
+// ExclusiveStartKey → you send that key back for the next page.

@@ -19,7 +19,7 @@
 // 		2. fetch the data using async/await
 // 		3. Use the type-safe operations intend of any[].
 // 		4. It helps catch the errors at compile time.
-// 		5. Ex: 
+// 		5. Ex:
 // 		Response: 
 const data = [
 	{

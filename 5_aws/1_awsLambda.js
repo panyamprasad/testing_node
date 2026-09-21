@@ -132,7 +132,7 @@
 // ---> What are resource-based-polices in lambda?
     // Resource based polices means we have to provide some permission to lambda to access in other services like dynamodb, s3 etc..
 
-// ---> What do you restrict a lambda to access only  a specific S3 bucket?
+// ---> What do you restrict a lambda to access only a specific S3 bucket?
     // Every lambda function runs with a IAM Role.
     // We can attach a policy to that role. In that policy we can provide to access only one s3 bucket.
     // Steps:

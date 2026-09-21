@@ -4,7 +4,7 @@
     // 1. Always use the async methods to keep the event loop free and responsive.
     // 2. Always use the cluster. It will allows the multiple node processes and handle more requests.
     // 3. Use the catching. It store the frequently used data into the memory or Radis, so the response will spread up.
-    // 4. Use the streams. Stream is loading the data, the data will come piece by piece instend of loading total data at once.
+    // 4. Use the streams. Stream is loading the data, the data will come piece by piece instead of loading total data at once.
     // 5. Avoid th unnecessary middleware in express. Load only what we need.
 
 // Common Interview questions and answers:
@@ -43,4 +43,3 @@
 //      5. And follow the logging, pagination and API documentation.
 //      6. And also I will follow the proper status code and structure response format.
 //      7. Like this I will develop and design the REST API'S.
-
